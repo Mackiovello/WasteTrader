@@ -65,6 +65,12 @@
     <Compile Include="Api\MainHandlers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\AboutPage.json.cs">
+      <DependentUpon>AboutPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\FindPage.json.cs">
+      <DependentUpon>FindPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\HomePage.json.cs">
       <DependentUpon>HomePage.json</DependentUpon>
     </Compile>
@@ -83,6 +89,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\views\FindPage.html" />
+    <None Include="wwwroot\WasteTrader\views\AboutPage.html" />
+    <TypedJSON Include="ViewModels\FindPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\AboutPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\SellPage.html" />
     <TypedJSON Include="ViewModels\SellPage.json">
       <Generator>MsBuild:Compile</Generator>

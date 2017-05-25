@@ -44,6 +44,33 @@ namespace WasteTrader.Api
 
                 return master;
             });
+
+            Handle.GET("/WasteTrader/Sell", () =>
+            {
+                var master = GetMasterPage();
+
+                master.CurrentPage = new SellPage();
+
+                return master;
+            });
+
+            Handle.GET("/WasteTrader/Find", () =>
+            {
+                var master = GetMasterPage();
+
+                master.CurrentPage = new FindPage();
+
+                return master;
+            });
+
+            Handle.GET("/WasteTrader/About", () =>
+            {
+                var master = GetMasterPage();
+
+                master.CurrentPage = new AboutPage();
+
+                return master;
+            });
         }
 
         private MasterPage GetMasterPage()

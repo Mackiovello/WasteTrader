@@ -23,6 +23,8 @@ namespace WasteTrader.Api
     <link rel=""import"" href=""/sys/starcounter-include/starcounter-include.html"">
     <link rel=""import"" href=""/sys/starcounter-debug-aid/src/starcounter-debug-aid.html"">
     <link rel=""import"" href=""/sys/bootstrap.html"">
+    <link rel=""stylesheet"" type=""text/css"" href=""/sys/bootstrap-material-design.min.css"">
+    <link rel=""stylesheet"" type=""text/css"" href=""/sys/ripples.min.css"">
 </head>
 <body>
     <template is=""dom-bind"" id=""puppet-root"">

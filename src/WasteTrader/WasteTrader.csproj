@@ -62,8 +62,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\MainHandlers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\HomePage.json.cs">
+      <DependentUpon>HomePage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MasterPage.json.cs">
+      <DependentUpon>MasterPage.json</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <TypedJSON Include="ViewModels\MasterPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <TypedJSON Include="ViewModels\HomePage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <None Include="wwwroot\WasteTrader\views\HomePage.html" />
+    <None Include="wwwroot\WasteTrader\scss\style.scss" />
+    <None Include="wwwroot\WasteTrader\views\MasterPage.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(StarcounterBin)\Starcounter.MsBuild.targets" />

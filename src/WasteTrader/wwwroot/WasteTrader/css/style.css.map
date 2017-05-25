@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AACA,YAAY",
-"sources": ["../scss/base/_variables.scss"],
+"mappings": "AACA,YAAY;ACDZ,IAAK;EACD,gBAAgB,EAAE,OAAO;;ACD7B,iBAAkB;EACd,UAAU,EAAE,cAAc;EAC1B,OAAO,EAAE,IAAI;EACb,gBAAgB,EAAE,IAAI;EACtB,aAAa,EAAE,IAAI;;ACJvB,iBAAkB;EACd,SAAS,EAAE,KAAK;EAChB,MAAM,EAAE,MAAM",
+"sources": ["../scss/base/_variables.scss","../scss/base/_base.scss","../scss/components/_card.scss","../scss/pages/_home.scss"],
 "names": [],
 "file": "style.css"
 }

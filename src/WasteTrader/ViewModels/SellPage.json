@@ -1,3 +1,12 @@
 {
-  "Html": "/WasteTrader/views/SellPage.html"
+  "Html": "/WasteTrader/views/SellPage.html",
+  "Waste": {
+    "Description$": "",
+    "Quantity$": 0.0
+  },
+  "Person": {
+    "Name$": "",
+    "Email$": ""
+  },
+  "SubmitTrigger$": 0
 }

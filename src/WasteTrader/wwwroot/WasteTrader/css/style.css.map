@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAAA,UAAW;EACP,KAAK,EAAE,OAAO;EACd,gBAAgB,EAAE,OAAO",
-"sources": ["../scss/components/_tabs.scss"],
+"mappings": "",
+"sources": [],
 "names": [],
 "file": "style.css"
 }

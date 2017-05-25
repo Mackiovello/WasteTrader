@@ -3,6 +3,21 @@
 <link rel="stylesheet" href="/WasteTrader/css/style.css">
 
 <template>
+    <style>
+        :root {
+            --my-custom-color: red;
+            --paper-tab-ink: var(--my-custom-color);
+            /* custom CSS property */
+            --paper-tabs-selection-bar-color: blue;
+            /* custom CSS mixin */
+            --paper-tabs: {
+                color: var(--default-primary-color); /* variable defined in default-theme.html */
+                font-size: 20px;
+            }
+
+        }
+    </style>
+
     <template is="dom-bind">
         <paper-tabs selected="0" scrollable>
             <paper-tab>The first tab</paper-tab>

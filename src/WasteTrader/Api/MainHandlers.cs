@@ -62,15 +62,6 @@ namespace WasteTrader.Api
 
                 return master;
             });
-
-            Handle.GET("/WasteTrader/About", () =>
-            {
-                var master = GetMasterPage();
-
-                master.CurrentPage = new AboutPage();
-
-                return master;
-            });
         }
 
         private MasterPage GetMasterPage()

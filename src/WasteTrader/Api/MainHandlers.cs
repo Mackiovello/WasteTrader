@@ -8,7 +8,7 @@ using WasteTrader.ViewModels;
 
 namespace WasteTrader.Api
 {
-    class MainHandlers
+    class MainHandlers : IHandler
     {
         public void Register()
         {

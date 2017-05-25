@@ -8,11 +8,16 @@ namespace WasteTrader
     {
         static void Main()
         {
-            var mainHandlers = new MainHandlers();
-            var partialHandlers = new PartialHandlers();
+            var handlers = new IHandler[]
+            {
+                new MainHandlers(),
+                new PartialHandlers()
+            };
 
-            mainHandlers.Register();
-            partialHandlers.Register();
+            foreach (var handler in handlers)
+            {
+                handler.Register();
+            }
         }
     }
 }

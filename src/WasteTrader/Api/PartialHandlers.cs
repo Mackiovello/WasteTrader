@@ -4,7 +4,7 @@ using WasteTrader.ViewModels;
 
 namespace WasteTrader.Api
 {
-    public class PartialHandlers
+    public class PartialHandlers : IHandler
     {
         public void Register()
         {

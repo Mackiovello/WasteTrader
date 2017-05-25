@@ -80,7 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\scss\base\_variables.scss" />
+    <None Include="wwwroot\WasteTrader\scss\base\_index.scss" />
     <None Include="wwwroot\WasteTrader\scss\components\_index.scss" />
+    <None Include="wwwroot\WasteTrader\scss\components\_navbar.scss" />
     <TypedJSON Include="ViewModels\HomePage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>

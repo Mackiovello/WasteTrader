@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AACA,YAAY",
+"sources": ["../scss/base/_variables.scss"],
 "names": [],
 "file": "style.css"
 }

@@ -1,9 +1,21 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
-<link rel="import" href="/sys/paper-tabs/paper-tabs.html">
 <link rel="stylesheet" href="/WasteTrader/css/style.css">
 
 <template>
     <template is="dom-bind">
+        <nav class="navbar wastetrader-navbar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand wastetrader-navbar__link--logo" href="#">WasteTrader</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#" class="wastetrader-navbar__link">Home</a></li>
+                    <li><a href="#" class="wastetrader-navbar__link">Sell</a></li>
+                    <li><a href="#" class="wastetrader-navbar__link">Find</a></li>
+                    <li><a href="#" class="wastetrader-navbar__link">About</a></li>
+                </ul>
+            </div>
+        </nav>
         <starcounter-include partial="{{model.CurrentPage}}"></starcounter-include>
     </template>
 </template>

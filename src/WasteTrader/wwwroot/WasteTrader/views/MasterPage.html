@@ -1,7 +1,15 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/paper-tabs/paper-tabs.html">
+<link rel="stylesheet" href="/WasteTrader/css/style.css">
 
 <template>
     <template is="dom-bind">
+        <paper-tabs selected="0" scrollable>
+            <paper-tab>The first tab</paper-tab>
+            <paper-tab>Tab two</paper-tab>
+            <paper-tab>The third tab</paper-tab>
+            <paper-tab>Fourth tab</paper-tab>
+        </paper-tabs>
         <starcounter-include partial="{{model.CurrentPage}}"></starcounter-include>
     </template>
 </template>

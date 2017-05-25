@@ -71,6 +71,9 @@
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\SellPage.json.cs">
+      <DependentUpon>SellPage.json</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -80,13 +83,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\views\SellPage.html" />
+    <TypedJSON Include="ViewModels\SellPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <None Include="wwwroot\WasteTrader\scss\base\_base.scss" />
     <None Include="wwwroot\WasteTrader\scss\base\_variables.scss" />
     <None Include="wwwroot\WasteTrader\scss\base\_index.scss" />
+    <None Include="wwwroot\WasteTrader\scss\components\_card.scss" />
     <None Include="wwwroot\WasteTrader\scss\components\_index.scss" />
     <None Include="wwwroot\WasteTrader\scss\components\_navbar.scss" />
     <TypedJSON Include="ViewModels\HomePage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
+    <None Include="wwwroot\WasteTrader\scss\pages\_home.scss" />
+    <None Include="wwwroot\WasteTrader\scss\pages\_index.scss" />
     <None Include="wwwroot\WasteTrader\views\HomePage.html" />
     <None Include="wwwroot\WasteTrader\scss\style.scss" />
     <None Include="wwwroot\WasteTrader\views\MasterPage.html" />

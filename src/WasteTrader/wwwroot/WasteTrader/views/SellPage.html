@@ -2,6 +2,45 @@
 
 <template>
     <template is="dom-bind">
-        <h1>SellPage</h1>        
+        <div class="wastetrader-home">
+            <form class="wastetrader-card">
+                <fieldset>
+                    <legend>Personal info</legend>
+                    <div class="form-group">
+                        <label>Name
+                            <input class="form-control" type="text">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Email
+                            <input class="form-control" type="email">
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+
+            <form class="wastetrader-card">
+                <fieldset>
+                    <legend>Waste info</legend>
+                    <div class="form-group">
+                        <label>Description
+                            <input class="form-control" type="text">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity
+                            <input class="form-control" type="email">
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+
+            <form class="wastetrader-card">
+                <fieldset>
+                    <legend>Actions</legend>
+                    <button class="btn btn-success">Submit</button>
+                </fieldset>
+            </form>
+        </div>       
     </template>
 </template>

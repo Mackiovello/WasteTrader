@@ -1,5 +1,6 @@
 ﻿using System;
 using Starcounter;
+using WasteTrader.Api;
 
 namespace WasteTrader
 {
@@ -7,6 +8,9 @@ namespace WasteTrader
     {
         static void Main()
         {
+            var mainHandlers = new MainHandlers();
+
+            mainHandlers.Register();
 
         }
     }

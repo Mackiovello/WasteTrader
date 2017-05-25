@@ -1,4 +1,5 @@
 using Starcounter;
+using WasteTrader.Database;
 
 namespace WasteTrader.ViewModels
 {

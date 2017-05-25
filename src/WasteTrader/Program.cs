@@ -9,9 +9,10 @@ namespace WasteTrader
         static void Main()
         {
             var mainHandlers = new MainHandlers();
+            var partialHandlers = new PartialHandlers();
 
             mainHandlers.Register();
-
+            partialHandlers.Register();
         }
     }
 }

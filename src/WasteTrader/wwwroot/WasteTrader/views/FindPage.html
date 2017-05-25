@@ -2,6 +2,13 @@
 
 <template>
     <template is="dom-bind">
-        <h1>Find</h1>        
+        <div class="wastetrader-home">
+            <template is="dom-repeat" items="{{model.Waste}}">
+                <div class="wastetrader-card">
+                    <h3>{{item.Description}}</h3>
+                    <p>{{item.Quantity}}</p>
+                </div>        
+            </template>
+        </div>
     </template>
 </template>

@@ -58,7 +58,7 @@ namespace WasteTrader.Api
             {
                 var master = GetMasterPage();
 
-                master.CurrentPage = new FindPage();
+                master.CurrentPage = Self.GET("/WasteTrader/partial/Find");
 
                 return master;
             });

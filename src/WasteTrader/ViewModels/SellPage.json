@@ -9,5 +9,6 @@
     "Name$": "",
     "Email$": ""
   },
-  "SubmitTrigger$": 0
+  "SubmitTrigger$": 0,
+  "ShowSuccessMessage": false
 }

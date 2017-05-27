@@ -5,11 +5,21 @@
         .wastetrader-legend {
             margin-bottom: 0;
         }
+
+        .wastetrader-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .wastetrader-controls__alert {
+            margin-left: 20px;
+        }
     </style>
     <template is="dom-bind">
         <div class="wastetrader-header">
             <h1>Skapa annons</h1>
         </div>
+
         <div class="wastetrader-home">
             <form class="wastetrader-card">
                 <fieldset>
@@ -45,7 +55,14 @@
                 </fieldset>
             </form>
 
-            <button class="btn btn-success btn-raised btn-lg" value="{{model.SubmitTrigger$::click}}" onclick="++this.value">Skapa</button>
+            <div class="wastetrader-controls">
+                <button class="btn btn-success btn-raised btn-lg" value="{{model.SubmitTrigger$::click}}" onclick="++this.value">Skapa</button>
+                <template is="dom-if" if="{{model.ShowSuccessMessage}}">
+                    <div class="wastetrader-controls__alert">
+                        <strong>Grattis!</strong> Din annons är nu inlagd.
+                    </div>
+                </template>
+            </div>
         </div>       
     </template>
 </template>

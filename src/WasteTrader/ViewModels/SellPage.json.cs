@@ -18,6 +18,7 @@ namespace WasteTrader.ViewModels
             });
 
             this.ClearViewModel();
+            this.ShowSuccessMessage = true;
         }
 
         private void ClearViewModel()

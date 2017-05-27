@@ -2,7 +2,8 @@
   "Html": "/WasteTrader/views/SellPage.html",
   "Waste": {
     "Description$": "",
-    "Quantity$": 0.0
+    "Quantity$": 0.0,
+    "Unit$":  ""
   },
   "Person": {
     "Name$": "",

@@ -1,0 +1,13 @@
+.wastetrader-legend {
+    margin-bottom: 0;
+}
+
+.wastetrader-input-row {
+    display: flex;
+    justify-content: space-between;
+
+    div:first-child {
+        width: 75%;
+        margin-right: 5%;
+    }
+}

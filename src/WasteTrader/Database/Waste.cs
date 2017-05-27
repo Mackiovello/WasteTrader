@@ -7,5 +7,6 @@ namespace WasteTrader.Database
     {
         public string Description { get; set; }
         public double Quantity { get; set; }
+        public string Unit { get; set; }
     }
 }

@@ -34,4 +34,14 @@ body {
   max-width: 800px;
   margin: 0 auto; }
 
+.wastetrader-legend {
+  margin-bottom: 0; }
+
+.wastetrader-input-row {
+  display: flex;
+  justify-content: space-between; }
+  .wastetrader-input-row div:first-child {
+    width: 75%;
+    margin-right: 5%; }
+
 /*# sourceMappingURL=style.css.map */

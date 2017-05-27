@@ -12,7 +12,8 @@ namespace WasteTrader.ViewModels
                 new Waste
                 {
                     Description = this.Waste.Description,
-                    Quantity = (double) this.Waste.Quantity
+                    Quantity = (double) this.Waste.Quantity,
+                    Unit = this.Waste.Unit
                 };
             });
         }

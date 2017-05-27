@@ -22,9 +22,7 @@ namespace WasteTrader.Api
     <link rel=""import"" href=""/sys/starcounter.html"">
     <link rel=""import"" href=""/sys/starcounter-include/starcounter-include.html"">
     <link rel=""import"" href=""/sys/starcounter-debug-aid/src/starcounter-debug-aid.html"">
-    <link rel=""import"" href=""/sys/bootstrap.html"">
-    <link rel=""stylesheet"" type=""text/css"" href=""/sys/bootstrap-material-design.min.css"">
-    <link rel=""stylesheet"" type=""text/css"" href=""/sys/ripples.min.css"">
+    <link rel=""import"" href=""/sys/bootstrap-material.html"">
 </head>
 <body>
     <template is=""dom-bind"" id=""puppet-root"">
@@ -32,7 +30,11 @@ namespace WasteTrader.Api
     </template>
     <puppet-client ref=""puppet-root"" remote-url=""{1}""></puppet-client>
     <starcounter-debug-aid></starcounter-debug-aid>
-</body>
+    <script src=""https://code.jquery.com/jquery-3.2.1.min.js"" integrity=""sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="" crossorigin=""anonymous""></script>
+    <script src=""/sys/bootstrap.min.js""></script>
+    <script src=""/sys/material.min.js""></script>
+    <script>$.material.init()</script>
+ </body>
 </html>";
 
             Application.Current.Use(new HtmlFromJsonProvider());

@@ -88,7 +88,12 @@
     </TypedJSON>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="wwwroot\sys\bootstrap-material-design.min.css" />
+    <Content Include="wwwroot\sys\bootstrap-material.html" />
+    <Content Include="wwwroot\sys\bootstrap.min.js" />
+    <Content Include="wwwroot\sys\material.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\scss\components\_header.scss" />
     <None Include="wwwroot\WasteTrader\views\FindPage.html" />
     <TypedJSON Include="ViewModels\FindPage.json">
       <Generator>MsBuild:Compile</Generator>

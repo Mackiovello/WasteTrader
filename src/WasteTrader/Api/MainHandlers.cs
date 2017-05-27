@@ -49,7 +49,7 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            Handle.GET("/Waste2Value/Sell", () =>
+            Handle.GET("/Waste2Value/Salj", () =>
             {
                 var master = GetMasterPage();
 
@@ -58,11 +58,11 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            Handle.GET("/Waste2Value/Find", () =>
+            Handle.GET("/Waste2Value/Hitta", () =>
             {
                 var master = GetMasterPage();
 
-                master.CurrentPage = Self.GET("/WasteTrader/partial/Find");
+                master.CurrentPage = Self.GET("/Waste2Value/partial/Hitta");
 
                 return master;
             });

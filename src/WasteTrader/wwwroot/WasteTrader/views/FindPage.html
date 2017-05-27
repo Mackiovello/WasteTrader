@@ -1,17 +1,50 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
+    <style>
+        .wastetrader-home {
+            max-width: 1000px;
+        }
+
+        .wastetrader-entry-card p {
+            margin-bottom: 0;
+        }
+
+        .wastetrader-card__metadata {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wastetrader-entry-card {
+            width: 23%;
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 1px 3px #999;
+        }
+
+        .wastetrader-entry-card__container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 110px;
+        }
+    </style>
     <template is="dom-bind">
         <div class="wastetrader-header">
             <h1>Hitta annons</h1>
         </div>
         <div class="wastetrader-home">
-            <template is="dom-repeat" items="{{model.Waste}}">
-                <div class="wastetrader-card">
-                    <h3>{{item.Description}}</h3>
-                    <p>{{item.Quantity}} {{item.Unit}}</p>
-                </div>        
-            </template>
+            <div class="wastetrader-entry-card__container">
+                <template is="dom-repeat" items="{{model.Waste}}">
+                    <div class="wastetrader-entry-card">
+                        <div class="lead">{{item.Description}}</div>
+                        <p>Mängd: {{item.Quantity}} {{item.Unit}}</p>
+                        <p>Inlagd: {{item.EntryTime}}</p>
+                        <button class="btn btn-raised btn-primary">Läs mer</button>
+                    </div>       
+                </template>
+            </div>
         </div>
     </template>
 </template>

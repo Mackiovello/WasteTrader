@@ -3,7 +3,35 @@ body {
   background-color: #f2f2f2; }
 
 .wastetrader-navbar {
-  margin-bottom: 0; }
+  display: flex;
+  color: white;
+  width: 100%;
+  height: 60px;
+  background-color: #673AB7; }
+
+.wastetrader-navbar__logo, .wastetrader-navbar__link {
+  height: 100%;
+  background-color: #673AB7;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif; }
+  .wastetrader-navbar__logo:hover, .wastetrader-navbar__link:hover, .wastetrader-navbar__logo:active, .wastetrader-navbar__link:active, .wastetrader-navbar__logo:visited, .wastetrader-navbar__link:visited, .wastetrader-navbar__logo:link, .wastetrader-navbar__link:link {
+    color: white;
+    text-decoration: none; }
+
+.wastetrader-navbar__logo {
+  width: 150px;
+  font-size: 1.3em;
+  padding: 18px; }
+
+.wastetrader-navbar__link {
+  width: 80px;
+  transition: background-color .15s ease-in-out;
+  font-size: 20px; }
+  .wastetrader-navbar__link:hover {
+    background-color: #7446c4; }
 
 .wastetrader-card {
   box-shadow: 0 1px 3px #999;

@@ -1,37 +1,65 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand wastetrader-navbar__link--logo" on-click="changeActive" href="/Waste2Value">Waste2Value</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active wastetrader-home-link"><a href="/Waste2Value" on-click="changeActive" class="wastetrader-navbar__link">Hem</a></li>
-                <li><a href="/Waste2Value/Salj" on-click="changeActive" class="wastetrader-navbar__link">Sälj</a></li>
-                <li><a href="/Waste2Value/Hitta" on-click="changeActive" class="wastetrader-navbar__link">Hitta</a></li>
-            </ul>
-        </div>
-    </nav>
-    <script>
-        (function () {
-            const script = document._currentScript || document.currentScript;
-            const template = script.previousElementSibling;
+    <style>
+        .navbar-item {
+            height: 100%;
+            background-color: #673AB7;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Roboto', sans-serif;
+        }
 
-            template.changeActive = function (event) {
-                const navigationElements = document.querySelectorAll(".navbar-nav > li")
-                let target = event.target.parentElement;
+        .navbar-item:hover,
+        .navbar-item:active,
+        .navbar-item:visited,
+        .navbar-item:link {
+            color: white;
+            text-decoration: none;
+        }
 
-                if (target.classList.contains("navbar-header")) {
-                    target = document.querySelector(".wastetrader-home-link");
-                }
+        .wastetrader-navbar__logo {
+            width: 150px;
+            font-size: 1.3em;
+        }
 
-                for (let i = 0; i < navigationElements.length; i += 1) {
-                    navigationElements[i].classList.remove("active");
-                }
+        .wastetrader-navbar__link {
+            width: 80px;
+            transition: background-color .15s ease-in-out;
+            font-size: 20px;
+        }
 
-                target.classList.add("active");
+        .wastetrader-navbar__link:hover {
+            background-color: #7447C4;
+        }
+    </style>
+
+    <a slot="wastetrader/navigation-logo" href="/Waste2Value" on-click="changeActive" class="navbar-item wastetrader-navbar__logo">Waste2Value</a>
+    <a slot="wastetrader/navigation-home-link" href="/Waste2Value" on-click="changeActive" class="navbar-item wastetrader-navbar__link">Hem</a>
+    <a slot="wastetrader/navigation-sell-link" href="/Waste2Value/Salj" on-click="changeActive" class="navbar-item wastetrader-navbar__link">Sälj</a>
+    <a slot="wastetrader/navigation-find-link" href="/Waste2Value/Hitta" on-click="changeActive" class="navbar-item wastetrader-navbar__link">Hitta</a>
+
+    <template is="declarative-shadow-dom">
+        <style>
+            .wastetrader-navbar {
+                display: flex;
+                color: white;
+                width: 100%;
+                height: 60px;
+                background-color: #673AB7;
+                box-shadow: 0 1px 4px #666;
+                align-items: center;
+                justify-content: space-between;
             }
-        })();
-    </script>
+        </style>
+        <nav class="wastetrader-navbar">
+            <div>
+                <slot name="wastetrader/navigation-logo"></slot>
+                <slot name="wastetrader/navigation-home-link"></slot>
+                <slot name="wastetrader/navigation-sell-link"></slot>
+                <slot name="wastetrader/navigation-find-link"></slot>
+            </div>
+        </nav>
+    </template>
 </template>

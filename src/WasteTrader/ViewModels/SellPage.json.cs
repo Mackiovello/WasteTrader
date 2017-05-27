@@ -16,6 +16,17 @@ namespace WasteTrader.ViewModels
                     Unit = this.Waste.Unit
                 };
             });
+
+            this.ClearViewModel();
+        }
+
+        private void ClearViewModel()
+        {
+            this.Person.Name = "";
+            this.Person.Email = "";
+            this.Waste.Description = "";
+            this.Waste.Quantity = 0;
+            this.Waste.Unit = "";
         }
     }
 }

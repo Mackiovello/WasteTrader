@@ -115,7 +115,6 @@
     <None Include="wwwroot\WasteTrader\scss\base\_index.scss" />
     <None Include="wwwroot\WasteTrader\scss\components\_card.scss" />
     <None Include="wwwroot\WasteTrader\scss\components\_index.scss" />
-    <None Include="wwwroot\WasteTrader\scss\components\_navbar.scss" />
     <TypedJSON Include="ViewModels\HomePage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>

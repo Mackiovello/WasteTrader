@@ -11,7 +11,7 @@ namespace WasteTrader.Api
             Handle.GET("/Waste2Value/partial/Hitta", () =>
             {
                 var page = new FindPage();
-                page.Waste.Data = Db.SQL<Waste>("SELECT w FROM WasteTrader.Database.Waste w");
+                page.Waste.Data = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC");
                 return page;
             });
 

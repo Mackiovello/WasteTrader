@@ -20,10 +20,15 @@ body {
   background-color: #ccc;
   z-index: -1;
   position: absolute;
-  top: 60px;
+  top: 50px;
   width: 100%;
   height: 200px;
   text-align: center; }
+  @media (min-width: 1200px) {
+    .wastetrader-header {
+      top: 60px; } }
+  .wastetrader-header h1 {
+    font-size: 3.5em; }
 
 .wastetrader-home {
   max-width: 800px;

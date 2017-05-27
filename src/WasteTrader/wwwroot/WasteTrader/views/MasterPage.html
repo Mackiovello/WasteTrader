@@ -6,15 +6,37 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand wastetrader-navbar__link--logo" href="/Waste2Value">Waste2Value</a>
+                    <a class="navbar-brand wastetrader-navbar__link--logo" on-click="changeActive" href="/Waste2Value">Waste2Value</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/Waste2Value" class="wastetrader-navbar__link">Hem</a></li>
-                    <li><a href="/Waste2Value/Salj" class="wastetrader-navbar__link">Sälj</a></li>
-                    <li><a href="/Waste2Value/Hitta" class="wastetrader-navbar__link">Hitta</a></li>
+                    <li class="active wastetrader-home-link"><a href="/Waste2Value" on-click="changeActive" class="wastetrader-navbar__link">Hem</a></li>
+                    <li><a href="/Waste2Value/Salj" on-click="changeActive" class="wastetrader-navbar__link">Sälj</a></li>
+                    <li><a href="/Waste2Value/Hitta" on-click="changeActive" class="wastetrader-navbar__link">Hitta</a></li>
                 </ul>
             </div>
         </nav>
         <starcounter-include partial="{{model.CurrentPage}}"></starcounter-include>
     </template>
+    <script>
+        (function () {
+            const script = document._currentScript || document.currentScript;
+            const template = script.previousElementSibling;
+
+            template.changeActive = function (event) {
+                const navigationElements = document.querySelectorAll(".navbar-nav > li")
+                let target = event.target.parentElement;
+
+                if (target.classList.contains("navbar-header")) {
+                    target = document.querySelector(".wastetrader-home-link");
+                    console.log(target);
+                }
+
+                for (let i = 0; i < navigationElements.length; i += 1) {
+                    navigationElements[i].classList.remove("active");
+                }
+
+                target.classList.add("active");
+            }
+        })();
+    </script>
 </template>

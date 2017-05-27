@@ -1,5 +1,5 @@
+using System;
 using Starcounter;
-using WasteTrader.Database;
 
 namespace WasteTrader.ViewModels
 {
@@ -8,7 +8,7 @@ namespace WasteTrader.ViewModels
         [FindPage_json.Waste]
         partial class FindWastePartial : Json, IExplicitBound<Database.Waste>
         {
-
+            public string FormattedDate => this.Data.EntryTime.Date.ToString("d");
         }
     }
 }

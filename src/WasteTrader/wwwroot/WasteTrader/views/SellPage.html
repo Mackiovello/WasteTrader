@@ -1,6 +1,11 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
+    <style>
+        .wastetrader-legend {
+            margin-bottom: 0;
+        }
+    </style>
     <template is="dom-bind">
         <div class="wastetrader-header">
             <h1>Skapa annons</h1>
@@ -8,32 +13,28 @@
         <div class="wastetrader-home">
             <form class="wastetrader-card">
                 <fieldset>
-                    <legend>Personal info</legend>
-                    <div class="form-group">
-                        <label>Name
-                            <input class="form-control" type="text" value="{{model.Person.Name$::change}}">
-                        </label>
+                    <legend class="wastetrader-legend">Kontaktinformation</legend>
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">Namn</label>
+                        <input class="form-control" type="text" value="{{model.Person.Name$::change}}">
                     </div>
-                    <div class="form-group">
-                        <label>Email
-                            <input class="form-control" type="email" value="{{model.Person.Email$::change}}">
-                        </label>
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">Mail address</label>
+                        <input class="form-control" type="email" value="{{model.Person.Email$::change}}">
                     </div>
                 </fieldset>
             </form>
 
             <form class="wastetrader-card">
                 <fieldset>
-                    <legend>Waste info</legend>
-                    <div class="form-group">
-                        <label>Description
-                            <input class="form-control" type="text" value="{{model.Waste.Description$::change}}">
-                        </label>
+                    <legend class="wastetrader-legend">Beskriv ditt avfall</legend>
+                    <div class="form-group label-floating is-empty">
+                        <label class="control-label">Beskrivning</label>
+                        <input class="form-control" type="text" value="{{model.Waste.Description$::change}}" />
                     </div>
-                    <div class="form-group">
-                        <label>Quantity
-                            <input class="form-control" type="email" value="{{model.Waste.Quantity$::change}}">
-                        </label>
+                    <div class="form-group label-static is-empty">
+                        <label class="control-label">Mängd</label>
+                        <input class="form-control" type="number" value="{{model.Waste.Quantity$::change}}">
                     </div>
                 </fieldset>
             </form>
@@ -41,7 +42,7 @@
             <form class="wastetrader-card">
                 <fieldset>
                     <legend>Actions</legend>
-                    <button class="btn btn-success" value="{{model.SubmitTrigger$::click}}" onclick="++this.value">Submit</button>
+                    <button class="btn btn-success btn-raised" value="{{model.SubmitTrigger$::click}}" onclick="++this.value">Submit</button>
                 </fieldset>
             </form>
         </div>       

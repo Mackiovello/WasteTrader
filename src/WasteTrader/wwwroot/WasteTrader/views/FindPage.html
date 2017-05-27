@@ -20,7 +20,18 @@
             background-color: white;
             padding: 15px;
             box-shadow: 0 1px 3px #999;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: box-shadow .23s cubic-bezier(.26,0,.83,1), transform .17s cubic-bezier(.26,0,.83,1);
         }
+
+        .wastetrader-entry-card:hover {
+            transform: scale(1.007);
+            box-shadow: 0 2px 5px #999;
+        } 
 
         .wastetrader-entry-card__container {
             display: flex;
@@ -39,9 +50,11 @@
                 <template is="dom-repeat" items="{{model.Waste}}">
                     <div class="wastetrader-entry-card">
                         <div class="lead">{{item.Description}}</div>
-                        <p>Mängd: {{item.Quantity}} {{item.Unit}}</p>
-                        <p>Inlagd: {{item.FormattedDate}}</p>
-                        <button class="btn btn-raised btn-primary">Läs mer</button>
+                        <div class="this-div">
+                            <p>Mängd: {{item.Quantity}} {{item.Unit}}</p>
+                            <p>Inlagd: {{item.FormattedDate}}</p>
+                            <button class="btn btn-default btn-raised">Läs mer</button>
+                        </div>
                     </div>       
                 </template>
             </div>

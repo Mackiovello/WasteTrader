@@ -19,6 +19,11 @@ namespace WasteTrader.Api
             {
                 return new NavigationBar();
             });
+
+            Handle.GET("/Waste2Value/partial/Home?{?}", (string redirect) =>
+            {
+                return new Json();
+            });
         }
     }
 }

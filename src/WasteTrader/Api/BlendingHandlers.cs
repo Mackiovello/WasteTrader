@@ -1,9 +1,4 @@
 ﻿using Starcounter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WasteTrader.Api
 {
@@ -12,6 +7,7 @@ namespace WasteTrader.Api
         public void Register()
         {
             Blender.MapUri("/Waste2Value/partial/navigationbar", "user");
+            Blender.MapUri("/Waste2Value/partial/home?{?}", "userform-return");
         }
     }
 }

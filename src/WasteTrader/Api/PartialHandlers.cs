@@ -14,6 +14,11 @@ namespace WasteTrader.Api
                 page.Waste.Data = Db.SQL<Waste>("SELECT w FROM WasteTrader.Database.Waste w");
                 return page;
             });
+
+            Handle.GET("/Waste2Value/partial/navigationbar", () =>
+            {
+                return new NavigationBar();
+            });
         }
     }
 }

@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Api\IHandler.cs" />
     <Compile Include="Api\MainHandlers.cs" />
+    <Compile Include="Api\BlendingHandlers.cs" />
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Database\Waste.cs" />
     <Compile Include="Program.cs" />
@@ -76,6 +77,9 @@
     </Compile>
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\NavigationBar.json.cs">
+      <DependentUpon>NavigationBar.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\SellPage.json.cs">
       <DependentUpon>SellPage.json</DependentUpon>
@@ -93,6 +97,10 @@
     <Content Include="wwwroot\sys\bootstrap.min.js" />
     <Content Include="wwwroot\sys\material.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\views\Navigationbar.html" />
+    <TypedJSON Include="ViewModels\NavigationBar.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\WasteTrader\scss\components\_header.scss" />
     <None Include="wwwroot\WasteTrader\views\FindPage.html" />
     <TypedJSON Include="ViewModels\FindPage.json">

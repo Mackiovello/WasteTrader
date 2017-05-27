@@ -79,7 +79,11 @@ namespace WasteTrader.Api
 
             if (master == null)
             {
-                master = new MasterPage() { Session = Session.Current };
+                master = new MasterPage()
+                {
+                    Session = Session.Current,
+                    NavigationBar = Self.GET("/Waste2Value/partial/navigationbar")
+                };
             }
 
             return master;

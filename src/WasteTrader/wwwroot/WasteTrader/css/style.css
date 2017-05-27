@@ -13,6 +13,8 @@ body {
   z-index: 1; }
   .wastetrader-card:first-child {
     margin-top: 110px; }
+  .wastetrader-card:last-of-type {
+    margin-bottom: 30px; }
 
 .wastetrader-header {
   background-color: #ccc;

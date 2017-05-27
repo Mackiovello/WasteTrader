@@ -40,7 +40,7 @@ namespace WasteTrader.Api
             Application.Current.Use(new HtmlFromJsonProvider());
             Application.Current.Use(new PartialToStandaloneHtmlProvider(html));
 
-            Handle.GET("/WasteTrader", () =>
+            Handle.GET("/Waste2Value", () =>
             {
                 var master = GetMasterPage();
 
@@ -49,7 +49,7 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            Handle.GET("/WasteTrader/Sell", () =>
+            Handle.GET("/Waste2Value/Sell", () =>
             {
                 var master = GetMasterPage();
 
@@ -58,7 +58,7 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            Handle.GET("/WasteTrader/Find", () =>
+            Handle.GET("/Waste2Value/Find", () =>
             {
                 var master = GetMasterPage();
 

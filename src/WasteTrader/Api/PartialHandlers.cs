@@ -8,7 +8,7 @@ namespace WasteTrader.Api
     {
         public void Register()
         {
-            Handle.GET("/WasteTrader/partial/Find", () =>
+            Handle.GET("/Waste2Value/partial/Find", () =>
             {
                 var page = new FindPage();
                 page.Waste.Data = Db.SQL<Waste>("SELECT w FROM WasteTrader.Database.Waste w");

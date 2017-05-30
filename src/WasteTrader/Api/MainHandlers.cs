@@ -44,7 +44,7 @@ namespace WasteTrader.Api
             {
                 var master = GetMasterPage();
 
-                master.CurrentPage = Self.GET("/Waste2Value/partial/Home?waste2value/salj");
+                master.CurrentPage = Self.GET("/Waste2Value/partial/Home");
 
                 return master;
             });

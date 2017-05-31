@@ -40,6 +40,10 @@ namespace WasteTrader.Api
             Application.Current.Use(new HtmlFromJsonProvider());
             Application.Current.Use(new PartialToStandaloneHtmlProvider(html));
 
+            Handle.GET("/WasteTrader", () => {
+                return Self.GET("/Waste2Value");
+            });
+
             Handle.GET("/Waste2Value", () =>
             {
                 var master = GetMasterPage();

@@ -44,6 +44,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -60,6 +63,7 @@
     <Reference Include="Starcounter.XSON, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d2df1e81d0ca3abf">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\IHandler.cs" />
@@ -67,6 +71,13 @@
     <Compile Include="Api\BlendingHandlers.cs" />
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Database\Waste.cs" />
+    <Compile Include="Measurements\Area.cs" />
+    <Compile Include="Measurements\IMeasurement.cs" />
+    <Compile Include="Measurements\Length.cs" />
+    <Compile Include="Measurements\Mass.cs" />
+    <Compile Include="Measurements\Measurement.cs" />
+    <Compile Include="Measurements\MetricPrefixes.cs" />
+    <Compile Include="Measurements\Volume.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FindPage.json.cs">
@@ -97,6 +108,7 @@
     <Content Include="wwwroot\sys\bootstrap.min.js" />
     <Content Include="wwwroot\sys\material.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="packages.config" />
     <None Include="wwwroot\WasteTrader\views\Navigationbar.html" />
     <TypedJSON Include="ViewModels\NavigationBar.json">
       <Generator>MsBuild:Compile</Generator>

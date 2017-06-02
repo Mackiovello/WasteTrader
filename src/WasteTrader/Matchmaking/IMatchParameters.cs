@@ -25,11 +25,11 @@ namespace WasteTrader.Matchmaking
         /// <summary>
         /// The highest quantity that should be allowed.
         /// </summary>
-        BigInteger MaxQuantity { get; }
+        long MaxQuantity { get; }
         /// <summary>
         /// The lowest quantity that should be allowed.
         /// </summary>
-        BigInteger MinQuantity { get; }
+        long MinQuantity { get; }
         /// <summary>
         /// Oldest allowed post date, null is infinite.
         /// </summary>

@@ -10,14 +10,14 @@ namespace WasteTrader.Matchmaking
     {
         public BuyWaste[] MatchSeller(IMatchParameters parameters)
         {
-            var ss = Db.SQL<IWaste>("SELECT i FROM WasteTrader.BuyWaste i WHERE i.Category = ?", parameters.UnitType).ToImmutableSortedSet();
-            var refined = Match(parameters, ss).Cast<BuyWaste>().ToArray();
+            var result = Db.SQL<IWaste>("SELECT i FROM WasteTrader.BuyWaste i WHERE i.Category = ?", parameters.UnitType);
+            var refined = Match(parameters, result).Cast<BuyWaste>().ToArray();
             return refined;
         }
         public SellWaste[] MatchBuyer(IMatchParameters parameters)
         {
-            var ss = Db.SQL<IWaste>("SELECT i FROM WasteTrader.SellWaste i WHERE i.Category = ?", parameters.UnitType).ToImmutableSortedSet();
-            var refined = Match(parameters, ss).Cast<SellWaste>().ToArray();
+            var result = Db.SQL<IWaste>("SELECT i FROM WasteTrader.SellWaste i WHERE i.Category = ?", parameters.UnitType);
+            var refined = Match(parameters, result).Cast<SellWaste>().ToArray();
             return refined;
         }
         public abstract IWaste[] Match(IMatchParameters parameters, IEnumerable<IWaste> searchspace);

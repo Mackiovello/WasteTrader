@@ -13,15 +13,15 @@ namespace WasteTrader.Measurements
 
         private static ImmutableDictionary<sbyte, Unit> Units = MetricPrefixes.Symbol.ToImmutableDictionary(ConvertKey, ConvertValue);
 
-        private static sbyte ConvertKey(KeyValuePair<sbyte, string> kvp)
+        private static sbyte ConvertKey(KeyValuePair<sbyte, string> pair)
         {
-            return kvp.Key;
+            return pair.Key;
         }
 
-        private static Unit ConvertValue(KeyValuePair<sbyte, string> kvp)
+        private static Unit ConvertValue(KeyValuePair<sbyte, string> pair)
         {
-            if (kvp.Key >= 6) return new Unit(kvp.Value + "t", -6);
-            else return new Unit(kvp.Value + "g", 0);
+            if (pair.Key >= 6) return new Unit(pair.Value + "t", -6);
+            else return new Unit(pair.Value + "g", 0);
         }
 
         public override IImmutableDictionary<sbyte, Unit> Symbols => Units;

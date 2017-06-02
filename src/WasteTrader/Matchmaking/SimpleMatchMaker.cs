@@ -18,7 +18,7 @@ namespace WasteTrader.Matchmaking
                 else if (parameters.Oldest != null && univ >= parameters.Oldest.ToUniversalTime()) return false;
 
                 //Filter by UnitType
-                else if (parameters.UnitType != 0 && w.Unit != parameters.UnitType) return false;
+                if (parameters.UnitType != 0 && w.Unit != parameters.UnitType) return false;
 
                 var measurement = MeasurementReader.Read(w).Item1;
 

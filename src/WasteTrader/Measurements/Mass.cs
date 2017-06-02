@@ -5,6 +5,11 @@ namespace WasteTrader.Measurements
 {
     public class Mass : Measurement<Mass>
     {
+        public Mass(long Quantity, sbyte UnitMetricPrefixPower)
+        {
+            this.UnitMetricPrefixPower = UnitMetricPrefixPower;
+            this.Quantity = Quantity;
+        }
 
         private static ImmutableDictionary<sbyte, Unit> Units = MetricPrefixes.Symbol.ToImmutableDictionary(ConvertKey, ConvertValue);
 
@@ -17,12 +22,6 @@ namespace WasteTrader.Measurements
         {
             if (kvp.Key >= 6) return new Unit(kvp.Value + "t", -6);
             else return new Unit(kvp.Value + "g", 0);
-        }
-
-        public Mass(long Quantity, sbyte UnitMetricPrefixPower)
-        {
-            this.UnitMetricPrefixPower = UnitMetricPrefixPower;
-            this.Quantity = Quantity;
         }
 
         public override IImmutableDictionary<sbyte, Unit> Symbols => Units;

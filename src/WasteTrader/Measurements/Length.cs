@@ -5,6 +5,11 @@ namespace WasteTrader.Measurements
 {
     public class Length : Measurement<Length>
     {
+        public Length(long Quantity, sbyte UnitMetricPrefixPower)
+        {
+            this.Quantity = Quantity;
+            this.UnitMetricPrefixPower = UnitMetricPrefixPower;
+        }
 
         private static ImmutableDictionary<sbyte, Unit> Units = MetricPrefixes.Symbol.ToImmutableDictionary(ConvertKey, ConvertValue);
 
@@ -18,11 +23,6 @@ namespace WasteTrader.Measurements
             return new Unit(kvp.Value + "m", 0);
         }
 
-        public Length(long Quantity, sbyte UnitMetricPrefixPower)
-        {
-            this.Quantity = Quantity;
-            this.UnitMetricPrefixPower = UnitMetricPrefixPower;
-        }
 
         public override IImmutableDictionary<sbyte, Unit> Symbols => Units;
     }

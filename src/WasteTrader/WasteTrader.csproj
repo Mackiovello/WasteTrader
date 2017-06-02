@@ -64,7 +64,6 @@
     <Reference Include="Starcounter.XSON, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d2df1e81d0ca3abf">
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\IHandler.cs" />
@@ -82,6 +81,7 @@
     <Compile Include="Matchmaking\RoughMatchMaker.cs" />
     <Compile Include="Matchmaking\SimpleMatchMaker.cs" />
     <Compile Include="MathUtils\GeographyMath.cs" />
+    <Compile Include="MathUtils\LongMath.cs" />
     <Compile Include="Measurements\Area.cs" />
     <Compile Include="Measurements\IMeasurement.cs" />
     <Compile Include="Measurements\Length.cs" />
@@ -89,14 +89,21 @@
     <Compile Include="Measurements\Measurement.cs" />
     <Compile Include="Measurements\MeasurementReader.cs" />
     <Compile Include="Measurements\MetricPrefixes.cs" />
+    <Compile Include="Measurements\Unit.cs" />
     <Compile Include="Measurements\Volume.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BuyWasteJson.json.cs">
+      <DependentUpon>BuyWasteJson.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\FindPage.json.cs">
       <DependentUpon>FindPage.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\HomePage.json.cs">
       <DependentUpon>HomePage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Location.json.cs">
+      <DependentUpon>Location.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
@@ -106,6 +113,9 @@
     </Compile>
     <Compile Include="ViewModels\SellPage.json.cs">
       <DependentUpon>SellPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\SellWasteJson.json.cs">
+      <DependentUpon>SellWasteJson.json</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
@@ -122,6 +132,15 @@
     <Content Include="wwwroot\WasteTrader\css\style.css" />
     <None Include="app.config" />
     <None Include="packages.config" />
+    <TypedJSON Include="ViewModels\SellWasteJson.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\BuyWasteJson.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\Location.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\Navigationbar.html" />
     <TypedJSON Include="ViewModels\NavigationBar.json">
       <Generator>MsBuild:Compile</Generator>

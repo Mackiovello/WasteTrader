@@ -10,6 +10,6 @@ namespace WasteTrader.Matchmaking
 {
     public interface IMatchSorter
     {
-        ImmutableArray<IWaste> Sort(IImmutableSet<IWaste> waste);
+        IWaste[] Sort(IEnumerable<IWaste> waste);
     }
 }

@@ -10,8 +10,8 @@ namespace WasteTrader.Matchmaking
 {
     public interface IMatchMaker
     {
-        ImmutableArray<BuyWaste> MatchSeller(IMatchParameters parameters);
-        ImmutableArray<SellWaste> MatchBuyer(IMatchParameters parameters);
-        ImmutableArray<IWaste> Match(IMatchParameters parameters, IImmutableSet<IWaste> searchspace);
+        BuyWaste[] MatchSeller(IMatchParameters parameters);
+        SellWaste[] MatchBuyer(IMatchParameters parameters);
+        IWaste[] Match(IMatchParameters parameters, IEnumerable<IWaste> searchspace);
     }
 }

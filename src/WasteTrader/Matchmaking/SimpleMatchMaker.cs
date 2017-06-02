@@ -12,7 +12,7 @@ namespace WasteTrader.Matchmaking
 {
     class SimpleMatchMaker : RoughMatchMaker
     {
-        public override ImmutableArray<IWaste> Match(IMatchParameters parameters, IImmutableSet<IWaste> searchspace)
+        public override IWaste[] Match(IMatchParameters parameters, IEnumerable<IWaste> searchspace)
         {
             var filtered = searchspace.AsParallel().Where(w =>
             {
@@ -40,7 +40,7 @@ namespace WasteTrader.Matchmaking
                 else if (parameters.MaxDistance != 0 && distance > parameters.MaxDistance) return false;
 
                 return true;
-            }).ToImmutableSortedSet();
+            });
 
             return parameters.Sorter.Sort(filtered);
         }

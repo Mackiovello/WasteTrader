@@ -37,7 +37,7 @@ namespace WasteTrader.Measurements
         {
             get
             {
-                var mult = LongMath.Pow(10,UnitMetricPrefixPower);
+                var mult = LongMath.Pow(10, UnitMetricPrefixPower);
                 return Quantity * mult;
             }
         }
@@ -45,14 +45,28 @@ namespace WasteTrader.Measurements
         public override string ToString()
         {
             Unit unit = null;
-            Symbols.TryGetValue(UnitMetricPrefixPower,out unit);
+            Symbols.TryGetValue(UnitMetricPrefixPower, out unit);
             if (unit != null) return CalcValue(unit) + " " + unit.Text;
             else return CalcValue(new Unit("E", 0)) + " " + "E" + UnitMetricPrefixPower;
         }
-        
+
         public void ConvertOptimal()
         {
-            throw new NotImplementedException();
+            var valueString = Value.ToString();
+            sbyte lenghtDifference = (sbyte)(valueString.Length - valueString.TrimEnd(new Char[] { '0' }).Length);
+            if (lenghtDifference == 0) return;
+            sbyte start = (sbyte)(Math.Min(UnitMetricPrefixPower + lenghtDifference, sbyte.MaxValue));
+
+            for (sbyte i = start; i > UnitMetricPrefixPower; i--)
+            {
+                Unit unit = null;
+                Symbols.TryGetValue(i, out unit);
+                if (unit != null)
+                {
+                    UnitMetricPrefixPower = i;
+                    Quantity /= LongMath.Pow(10, start - i);
+                }
+            }
         }
 
         public long CalcValue(Unit unit)

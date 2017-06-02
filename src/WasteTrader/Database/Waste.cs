@@ -1,10 +1,13 @@
-﻿using Starcounter;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Starcounter;
 
 namespace WasteTrader.Database
 {
-    [Database]
-    public class Waste
+    public abstract class Waste : IWaste
     {
         public Waste()
         {
@@ -15,9 +18,14 @@ namespace WasteTrader.Database
         public long Quantity { get; set; }
         public sbyte UnitMetricPrefixPower { get; set; }
         public byte Unit { get; set; }
-        public DateTime EntryTime { get; private set; }
-        public decimal LatitudeDD { get; set; }
-        public decimal LongitudeDD { get; set; }
-        public string LocationName { get; set; }
+
+        public DateTime EntryTime { get; }
+        
+        public int Category { get; set; }
+        public Location Location
+        {
+            get => Db.SQL<Location>("SELECT l FROM WasteTrader.Location WHERE l.Waste = ?", this).First;
+        }
+        public long Price { get; set; }
     }
 }

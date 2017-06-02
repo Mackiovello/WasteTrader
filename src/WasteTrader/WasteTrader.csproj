@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
@@ -11,11 +11,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WasteTrader</RootNamespace>
     <AssemblyName>WasteTrader</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
     <StarcounterVersionCompatibility>2.3</StarcounterVersionCompatibility>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,12 +71,22 @@
     <Compile Include="Api\MainHandlers.cs" />
     <Compile Include="Api\BlendingHandlers.cs" />
     <Compile Include="Api\PartialHandlers.cs" />
+    <Compile Include="Database\BuyWaste.cs" />
+    <Compile Include="Database\IWaste.cs" />
+    <Compile Include="Database\SellWaste.cs" />
     <Compile Include="Database\Waste.cs" />
+    <Compile Include="Database\Location.cs" />
+    <Compile Include="Matchmaking\IMatchMaker.cs" />
+    <Compile Include="Matchmaking\IMatchParameters.cs" />
+    <Compile Include="Matchmaking\RoughMatchMaker.cs" />
+    <Compile Include="Matchmaking\SimpleMatchMaker.cs" />
+    <Compile Include="MathUtils\GeographyMath.cs" />
     <Compile Include="Measurements\Area.cs" />
     <Compile Include="Measurements\IMeasurement.cs" />
     <Compile Include="Measurements\Length.cs" />
     <Compile Include="Measurements\Mass.cs" />
     <Compile Include="Measurements\Measurement.cs" />
+    <Compile Include="Measurements\MeasurementReader.cs" />
     <Compile Include="Measurements\MetricPrefixes.cs" />
     <Compile Include="Measurements\Volume.cs" />
     <Compile Include="Program.cs" />
@@ -108,6 +119,7 @@
     <Content Include="wwwroot\sys\bootstrap.min.js" />
     <Content Include="wwwroot\sys\material.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="wwwroot\WasteTrader\views\Navigationbar.html" />
     <TypedJSON Include="ViewModels\NavigationBar.json">

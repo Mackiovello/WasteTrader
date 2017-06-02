@@ -8,7 +8,7 @@ using System.Collections.Immutable;
 
 namespace WasteTrader.Measurements
 {
-    interface IMeasurement<T> : IComparable, IEquatable<T>, IEqualityComparer<T>, ICloneable where T : IMeasurement<T>
+    public interface IMeasurement<T> : IComparable, IEquatable<T>, IEqualityComparer<T>, ICloneable
     {
         BigInteger Value { get; }
 

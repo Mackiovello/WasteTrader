@@ -19,7 +19,7 @@ namespace WasteTrader.MathUtils
 
         public static double Haversine(double radians)
         {
-            return (1 - Math.Cos(radians)) / 2;
+            return (1 - Math.Cos(radians)) * 0.5;
         }
 
         /// <summary>
@@ -43,15 +43,11 @@ namespace WasteTrader.MathUtils
 
         public static double GreatCircleDistance(double longitudeP1, double latitudeP1, double longitudeP2, double latitudeP2, double diameter)
         {
-            double havLo = Haversine(longitudeP1-longitudeP2);
-            double havLa = Haversine(latitudeP1-latitudeP2);
-            double cosLaP1 = Math.Cos(latitudeP1);
-            double cosLaP2 = Math.Cos(latitudeP2);
-            double a = havLa + (cosLaP1 * cosLaP2 * havLo);
-            double b = Math.Sqrt(a);
-            double c = Math.Asin(b);
-            double d = diameter * c;
-            return d;
+            double havsLong = Haversine(longitudeP1-longitudeP2);
+            double havsLati = Haversine(latitudeP1-latitudeP2);
+            double inner = havsLati + (Math.Cos(latitudeP1) * Math.Cos(latitudeP2) * havsLong);
+            double outer = Math.Asin(Math.Sqrt(inner));
+            return diameter * outer;
         }
 
     }

@@ -10,38 +10,25 @@ namespace WasteTrader.Measurements
 {
     public class Volume : Measurement<Volume>
     {
+        private static ImmutableDictionary<sbyte, Unit> Units = MetricPrefixes.Symbol.ToImmutableDictionary(ConvertKey, ConvertValue);
+
+        private static sbyte ConvertKey(KeyValuePair<sbyte, string> kvp)
+        {
+            return (sbyte)(kvp.Key * 3);
+        }
+
+        private static Unit ConvertValue(KeyValuePair<sbyte, string> kvp)
+        {
+            if (kvp.Key <= -3) return new Unit(kvp.Value + "l", 3);
+            else return new Unit(kvp.Value + "m³", 0);
+        }
+
         public Volume(long Quantity, sbyte UnitMetricPrefixPower)
         {
             this.UnitMetricPrefixPower = UnitMetricPrefixPower;
             this.Quantity = Quantity;
         }
 
-        public static ImmutableDictionary<sbyte, string> Dictionary = MetricPrefixes.Symbol.ToImmutableDictionary(p => (sbyte) (p.Key * 3), p => p.Value);
-
-        public override Tuple<string, sbyte> Unit(sbyte prefix)
-        {
-            return base.Unit(prefix, Dictionary);
-        }
-
-        public override Tuple<string, sbyte> Unit(sbyte prefix, IImmutableDictionary<sbyte,string> dictionary)
-        {
-            if (prefix <= -3)
-            {
-                sbyte literPrefix = (sbyte)(prefix + 3);
-                var bUnit = base.Unit(literPrefix, dictionary);
-                var r = new Tuple<string, sbyte>(bUnit.Item1 + "l", (sbyte)(bUnit.Item2 + 3));
-                return r;
-            }
-            else
-            {
-                var unit = base.Unit(prefix);
-                return new Tuple<string, sbyte>(unit.Item1 + "m³", unit.Item2);
-            }
-        }
-
-        public override object Clone()
-        {
-            return new Volume(Quantity, UnitMetricPrefixPower);
-        }
+        public override IImmutableDictionary<sbyte, Unit> Symbols => Units;
     }
 }

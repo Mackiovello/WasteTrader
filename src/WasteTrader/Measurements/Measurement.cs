@@ -4,13 +4,13 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime;
 using System.Collections.Immutable;
 
 namespace WasteTrader.Measurements
 {
     public abstract class Measurement<T> : IMeasurement<T> where T : Measurement<T>
     {
-        public abstract object Clone();
         public int CompareTo(object obj)
         {
             if (obj == null) return 1;
@@ -38,41 +38,34 @@ namespace WasteTrader.Measurements
             return (obj.Value ^ obj.GetType().GetHashCode()).GetHashCode();
         }
 
-        public virtual Tuple<string, sbyte> Unit(sbyte prefix)
-        {
-            return Unit(prefix, MetricPrefixes.Symbol);
-        }
-
-        public virtual Tuple<string, sbyte> Unit(sbyte prefix, IImmutableDictionary<sbyte,string> dictionary)
-        {
-            string mpref = "";
-            bool found = dictionary.TryGetValue(prefix, out mpref);
-            if (found) return new Tuple<string, sbyte>(mpref, 0);
-            else return new Tuple<string, sbyte>("E" + prefix, 0);
-        }
-
         public BigInteger Value
         {
             get
             {
-                return calcValue(Quantity, UnitMetricPrefixPower);
+                var mult = BigInteger.Pow(10, UnitMetricPrefixPower);
+                return Quantity * mult;
             }
-        }
-
-        public static BigInteger calcValue(long quantity, sbyte unitMetricPrefixPower)
-        {
-            var mult = BigInteger.Pow(10, unitMetricPrefixPower);
-            return quantity * mult;
         }
 
         public override string ToString()
         {
-            var unit = Unit(UnitMetricPrefixPower);
-            var value = calcValue(Quantity, unit.Item2);
-            return value.ToString() + " " + unit.Item1;
+            var unit = Symbols[UnitMetricPrefixPower];
+            return CalcValue(unit) + " " + unit.Text;
+        }
+        
+        public void Optimise()
+        {
+            throw new NotImplementedException();
+        }
+
+        public BigInteger CalcValue(Unit unit)
+        {
+            var mult = BigInteger.Pow(10, UnitMetricPrefixPower + unit.Offset);
+            return Quantity * mult;
         }
 
         public long Quantity { get; set; }
         public sbyte UnitMetricPrefixPower { get; set; }
+        public abstract IImmutableDictionary<sbyte, Unit> Symbols { get; }
     }
 }

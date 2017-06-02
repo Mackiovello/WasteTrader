@@ -9,31 +9,26 @@ namespace WasteTrader.Measurements
 {
     public class Mass : Measurement<Mass>
     {
+
+        private static ImmutableDictionary<sbyte, Unit> Units = MetricPrefixes.Symbol.ToImmutableDictionary(ConvertKey, ConvertValue);
+
+        private static sbyte ConvertKey(KeyValuePair<sbyte, string> kvp)
+        {
+            return kvp.Key;
+        }
+
+        private static Unit ConvertValue(KeyValuePair<sbyte, string> kvp)
+        {
+            if (kvp.Key >= 6) return new Unit(kvp.Value + "t", -6);
+            else return new Unit(kvp.Value + "g", 0);
+        }
+
         public Mass(long Quantity, sbyte UnitMetricPrefixPower)
         {
             this.UnitMetricPrefixPower = UnitMetricPrefixPower;
             this.Quantity = Quantity;
         }
 
-        public override Tuple<string, sbyte> Unit(sbyte prefix, IImmutableDictionary<sbyte, string> dictionary)
-        {
-            if (prefix > 6)
-            {
-                sbyte tonPrefix = (sbyte)(prefix - 6);
-                var unit = base.Unit(tonPrefix, dictionary);
-                var r = new Tuple<string, sbyte>(unit.Item1 + "t", (sbyte)(unit.Item2 - 6));
-                return r;
-            }
-            else
-            {
-                var unit = base.Unit(prefix);
-                return new Tuple<string, sbyte>(unit.Item1 + "g", unit.Item2);
-            }
-        }
-
-        public override object Clone()
-        {
-            return new Mass(Quantity, UnitMetricPrefixPower);
-        }
+        public override IImmutableDictionary<sbyte, Unit> Symbols => Units;
     }
 }

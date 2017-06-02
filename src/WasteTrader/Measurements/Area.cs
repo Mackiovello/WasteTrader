@@ -4,13 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Immutable;
+using System.Collections;
 
 namespace WasteTrader.Measurements
 {
     public class Area : Measurement<Area>
     {
-        public static ImmutableDictionary<sbyte, string> Dictionary = MetricPrefixes.Symbol.ToImmutableDictionary(p => (sbyte) (p.Key * 2), p => p.Value);
+        private static ImmutableDictionary<sbyte, Unit> Units = MetricPrefixes.Symbol.ToImmutableDictionary(ConvertKey, ConvertValue);
 
+        private static sbyte ConvertKey(KeyValuePair<sbyte, string> kvp)
+        {
+            return (sbyte)(kvp.Key * 2);
+        }
+
+        private static Unit ConvertValue(KeyValuePair<sbyte, string> kvp)
+        {
+            return new Unit(kvp.Value + "m²", 0);
+        }
 
         public Area(long Quantity, sbyte UnitMetricPrefixPower)
         {
@@ -18,20 +28,6 @@ namespace WasteTrader.Measurements
             this.UnitMetricPrefixPower = UnitMetricPrefixPower;
         }
 
-        public override Tuple<string, sbyte> Unit(sbyte prefix)
-        {
-            return base.Unit(prefix,Dictionary);
-        }
-
-        public override Tuple<string, sbyte> Unit(sbyte prefix, IImmutableDictionary<sbyte,string> dictionary)
-        {
-            var unit = base.Unit(prefix, dictionary);
-            return new Tuple<string, sbyte>(unit.Item1 + "m²", unit.Item2);
-        }
-
-        public override object Clone()
-        {
-            return new Area(Quantity, UnitMetricPrefixPower);
-        }
+        public override IImmutableDictionary<sbyte, Unit> Symbols => Units;
     }
 }

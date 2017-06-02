@@ -4,6 +4,7 @@ namespace WasteTrader.Database
 {
     public interface IWaste
     {
+        string Name { get; set; }
         string Description { get; set; }
         long Quantity { get; set; }
         sbyte UnitMetricPrefixPower { get; set; }

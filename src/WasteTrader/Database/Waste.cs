@@ -27,5 +27,6 @@ namespace WasteTrader.Database
             get => Db.SQL<Location>("SELECT l FROM WasteTrader.Location WHERE l.Waste = ?", this).First;
         }
         public long Price { get; set; }
+        public string Name { get; set; }
     }
 }

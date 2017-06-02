@@ -37,7 +37,7 @@ namespace WasteTrader.Measurements
         {
             get
             {
-                var mult = LongMath.Pow(10, UnitMetricPrefixPower);
+                long mult = LongMath.Pow(10, UnitMetricPrefixPower);
                 return Quantity * mult;
             }
         }
@@ -52,7 +52,7 @@ namespace WasteTrader.Measurements
 
         public void ConvertOptimal()
         {
-            var valueString = Value.ToString();
+            string valueString = Value.ToString();
             sbyte lenghtDifference = (sbyte)(valueString.Length - valueString.TrimEnd(new Char[] { '0' }).Length);
             if (lenghtDifference == 0) return;
             sbyte start = (sbyte)(Math.Min(UnitMetricPrefixPower + lenghtDifference, sbyte.MaxValue));
@@ -71,7 +71,7 @@ namespace WasteTrader.Measurements
 
         public long CalcValue(Unit unit)
         {
-            var mult = LongMath.Pow(10, UnitMetricPrefixPower + unit.Offset);
+            long mult = LongMath.Pow(10, UnitMetricPrefixPower + unit.Offset);
             return Quantity * mult;
         }
 

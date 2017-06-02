@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using WasteTrader.Database;
 using WasteTrader.MathUtils;
@@ -13,7 +14,7 @@ namespace WasteTrader.Matchmaking
             var filtered = searchspace.AsParallel().Where(w =>
             {
                 //Filter by date
-                var univ = w.EntryTime.ToUniversalTime();
+                DateTime univ = w.EntryTime.ToUniversalTime();
                 if (univ <= parameters.Youngest.ToUniversalTime()) return false;
                 else if (parameters.Oldest != null && univ >= parameters.Oldest.ToUniversalTime()) return false;
 

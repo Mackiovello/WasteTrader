@@ -44,8 +44,10 @@ namespace WasteTrader.Measurements
 
         public override string ToString()
         {
-            var unit = Symbols[UnitMetricPrefixPower];
-            return CalcValue(unit) + " " + unit.Text;
+            Unit unit = null;
+            Symbols.TryGetValue(UnitMetricPrefixPower,out unit);
+            if (unit != null) return CalcValue(unit) + " " + unit.Text;
+            else return CalcValue(new Unit("E", 0)) + " " + "E" + UnitMetricPrefixPower;
         }
         
         public void ConvertOptimal()

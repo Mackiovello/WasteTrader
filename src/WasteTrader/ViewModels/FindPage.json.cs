@@ -1,4 +1,3 @@
-using System;
 using Starcounter;
 
 namespace WasteTrader.ViewModels

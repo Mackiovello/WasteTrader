@@ -1,6 +1,4 @@
-﻿using System;
-using Starcounter;
-using WasteTrader.Api;
+﻿using WasteTrader.Api;
 
 namespace WasteTrader
 {

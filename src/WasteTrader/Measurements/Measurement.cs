@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime;
 using System.Collections.Immutable;
+using WasteTrader.MathUtils;
 
 namespace WasteTrader.Measurements
 {
@@ -38,11 +33,11 @@ namespace WasteTrader.Measurements
             return (obj.Value ^ obj.GetType().GetHashCode()).GetHashCode();
         }
 
-        public BigInteger Value
+        public long Value
         {
             get
             {
-                var mult = BigInteger.Pow(10, UnitMetricPrefixPower);
+                var mult = LongMath.Pow(10,UnitMetricPrefixPower);
                 return Quantity * mult;
             }
         }
@@ -53,14 +48,14 @@ namespace WasteTrader.Measurements
             return CalcValue(unit) + " " + unit.Text;
         }
         
-        public void Optimise()
+        public void ConvertOptimal()
         {
             throw new NotImplementedException();
         }
 
-        public BigInteger CalcValue(Unit unit)
+        public long CalcValue(Unit unit)
         {
-            var mult = BigInteger.Pow(10, UnitMetricPrefixPower + unit.Offset);
+            var mult = LongMath.Pow(10, UnitMetricPrefixPower + unit.Offset);
             return Quantity * mult;
         }
 

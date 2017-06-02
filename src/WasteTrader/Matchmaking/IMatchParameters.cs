@@ -50,5 +50,9 @@ namespace WasteTrader.Matchmaking
         /// The location to calculate distance from.
         /// </summary>
         Location SearchFrom { get; }
+        /// <summary>
+        /// The class that sorts the matches.
+        /// </summary>
+        IMatchSorter Sorter { get; }
     }
 }

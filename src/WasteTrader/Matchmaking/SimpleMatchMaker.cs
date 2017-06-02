@@ -14,7 +14,7 @@ namespace WasteTrader.Matchmaking
     {
         public override ImmutableArray<IWaste> Match(IMatchParameters parameters, IImmutableSet<IWaste> searchspace)
         {
-            return searchspace.AsParallel().Where(w =>
+            var filtered = searchspace.AsParallel().Where(w =>
             {
                 //Filter by date
                 var univ = w.EntryTime.ToUniversalTime();
@@ -40,7 +40,9 @@ namespace WasteTrader.Matchmaking
                 else if (parameters.MaxDistance != 0 && distance > parameters.MaxDistance) return false;
 
                 return true;
-            }).ToImmutableArray();
+            }).ToImmutableSortedSet();
+
+            return parameters.Sorter.Sort(filtered);
         }
     }
 }

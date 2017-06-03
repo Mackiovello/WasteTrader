@@ -2,5 +2,6 @@
   "Html": "/WasteTrader/views/MasterPage.html",
   "NavigationBar": { },
   "CurrentPage": {},
-  "Drawer": { }
+  "Drawer": { },
+  "Header": { }
 }

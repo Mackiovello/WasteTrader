@@ -75,6 +75,9 @@
     <Compile Include="ViewModels\FindPage.json.cs">
       <DependentUpon>FindPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Header.json.cs">
+      <DependentUpon>Header.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\HomePage.json.cs">
       <DependentUpon>HomePage.json</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <TypedJSON Include="ViewModels\Header.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <None Include="wwwroot\WasteTrader\views\Header.html" />
     <None Include="wwwroot\WasteTrader\views\Drawer.html" />
     <TypedJSON Include="ViewModels\Drawer.json">
       <Generator>MsBuild:Compile</Generator>

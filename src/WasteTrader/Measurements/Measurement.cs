@@ -53,11 +53,11 @@ namespace WasteTrader.Measurements
         public void ConvertOptimal()
         {
             string valueString = Value.ToString();
-            sbyte lenghtDifference = (sbyte)(valueString.Length - valueString.TrimEnd(new Char[] { '0' }).Length);
+            int lenghtDifference = (int)(valueString.Length - valueString.TrimEnd(new Char[] { '0' }).Length);
             if (lenghtDifference == 0) return;
-            sbyte start = (sbyte)(Math.Min(UnitMetricPrefixPower + lenghtDifference, sbyte.MaxValue));
+            int start = (int)(Math.Min(UnitMetricPrefixPower + lenghtDifference, int.MaxValue));
 
-            for (sbyte i = start; i > UnitMetricPrefixPower; i--)
+            for (int i = start; i > UnitMetricPrefixPower; i--)
             {
                 Unit unit = null;
                 Symbols.TryGetValue(i, out unit);
@@ -76,7 +76,7 @@ namespace WasteTrader.Measurements
         }
 
         public long Quantity { get; set; }
-        public sbyte UnitMetricPrefixPower { get; set; }
-        public abstract IImmutableDictionary<sbyte, Unit> Symbols { get; }
+        public int UnitMetricPrefixPower { get; set; }
+        public abstract IImmutableDictionary<int, Unit> Symbols { get; }
     }
 }

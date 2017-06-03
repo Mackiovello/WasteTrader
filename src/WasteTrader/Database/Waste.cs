@@ -3,7 +3,8 @@ using Starcounter;
 
 namespace WasteTrader.Database
 {
-    public abstract class Waste : IWaste
+    [Database]
+    public class Waste : IWaste
     {
         public Waste()
         {
@@ -12,8 +13,8 @@ namespace WasteTrader.Database
 
         public string Description { get; set; }
         public long Quantity { get; set; }
-        public sbyte UnitMetricPrefixPower { get; set; }
-        public byte Unit { get; set; }
+        public int UnitMetricPrefixPower { get; set; }
+        public int Unit { get; set; }
 
         public DateTime EntryTime { get; }
         

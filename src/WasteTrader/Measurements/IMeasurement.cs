@@ -10,7 +10,7 @@ namespace WasteTrader.Measurements
         /// <summary>
         /// All generally accepted units for a specific measurement.
         /// </summary>
-        IImmutableDictionary<sbyte,Unit> Symbols { get; }
+        IImmutableDictionary<int, Unit> Symbols { get; }
 
         /// <summary>
         /// The value in the baseunit
@@ -26,7 +26,7 @@ namespace WasteTrader.Measurements
         /// <summary>
         /// The power to use, i.e. 10^x
         /// </summary>
-        sbyte UnitMetricPrefixPower { get; set; }
+        int UnitMetricPrefixPower { get; set; }
         /// <summary>
         /// The value before 10^x
         /// </summary>

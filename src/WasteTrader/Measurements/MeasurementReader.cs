@@ -10,7 +10,7 @@ namespace WasteTrader.Measurements
             return Read(waste.Unit, waste.Quantity, waste.UnitMetricPrefixPower);
         }
 
-        public static Tuple<IMeasurement<Object>,Type> Read(byte unit, long quantity, sbyte unitMetricPrefixPower)
+        public static Tuple<IMeasurement<Object>,Type> Read(int unit, long quantity, int unitMetricPrefixPower)
         {
             switch (unit)
             {

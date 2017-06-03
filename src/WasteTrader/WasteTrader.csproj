@@ -136,10 +136,6 @@
     <TypedJSON Include="ViewModels\Location.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
-    <None Include="wwwroot\WasteTrader\views\Navigationbar.html" />
-    <TypedJSON Include="ViewModels\NavigationBar.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
     <None Include="wwwroot\WasteTrader\scss\components\_header.scss" />
     <None Include="wwwroot\WasteTrader\views\FindPage.html" />
     <TypedJSON Include="ViewModels\FindPage.json">

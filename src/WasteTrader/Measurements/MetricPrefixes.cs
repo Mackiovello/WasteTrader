@@ -6,7 +6,7 @@ namespace WasteTrader.Measurements
 {
     public static class MetricPrefixes
     {
-        public static ImmutableDictionary<sbyte, string> Symbol = new Dictionary<sbyte, String>
+        public static ImmutableDictionary<int, string> Symbol = new Dictionary<int, String>
         {
             {-24,"y"},
             {-21, "z"},

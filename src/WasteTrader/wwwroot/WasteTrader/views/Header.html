@@ -6,9 +6,12 @@
     <template is="declarative-shadow-dom">
         <link rel="stylesheet" href="/sys/material-components-web.min.css" />  
 
-        <header class="mdc-toolbar mdc-toolbar--fixed">
+        <header class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall mdc-toolbar--flexible-space-maximized">
             <div class="mdc-toolbar__row">
-                <slot name="wastetrader/header-title"></slot>
+                <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                    <slot name="wastetrader/header-title"></slot>
+                </section>
+                <section class="mdc-toolbar__section mdc-toolbar__section--align-end"></section>
             </div>
         </header>
     </template>

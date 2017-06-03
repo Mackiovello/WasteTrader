@@ -18,3 +18,7 @@
 .wastetrader-main-headline {
     text-align: center;
 }
+
+.wastetrader-input--fullwidth {
+    width: 100%;
+}

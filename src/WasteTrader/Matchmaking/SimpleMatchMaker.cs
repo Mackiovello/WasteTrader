@@ -9,7 +9,7 @@ namespace WasteTrader.Matchmaking
 {
     class SimpleMatchMaker : RoughMatchMaker
     {
-        public override IWaste[] Match(IMatchParameters parameters, IEnumerable<IWaste> searchspace)
+        public override Waste[] Match(IMatchParameters parameters, IEnumerable<Waste> searchspace)
         {
             var filtered = searchspace.AsParallel().Where(w =>
             {

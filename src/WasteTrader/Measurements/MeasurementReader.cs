@@ -5,7 +5,7 @@ namespace WasteTrader.Measurements
 {
     public static class MeasurementReader
     {
-        public static Tuple<IMeasurement<Object>, Type> Read(IWaste waste)
+        public static Tuple<IMeasurement<Object>, Type> Read(Waste waste)
         {
             return Read(waste.Unit, waste.Quantity, waste.UnitMetricPrefixPower);
         }

@@ -13,22 +13,7 @@
                 </div>    
             </header>
             <div class="mdc-toolbar-fixed-adjust wastetrader-below-toolbar">
-                <nav class="mdc-permanent-drawer">
-                    <div class="mdc-list-group">
-                        <a href="/Waste2Value" class="mdc-list-item">
-                            <i class="mdc-list-item__start-detail material-icons">home</i>
-                            Hem
-                        </a>
-                        <a href="/Waste2Value/Salj" class="mdc-list-item">
-                            <i class="mdc-list-item__start-detail material-icons">store</i>
-                            Sälj
-                        </a>
-                        <a href="/Waste2Value/Hitta" class="mdc-list-item">
-                            <i class="mdc-list-item__start-detail material-icons">search</i>
-                            Hitta
-                        </a>
-                    </div>
-                </nav>
+                <starcounter-include partial="{{model.Drawer}}"></starcounter-include>
                 <div class="wastetrader-below-toolbar__current-page">
                     <starcounter-include partial="{{model.CurrentPage}}"></starcounter-include>
                 </div>

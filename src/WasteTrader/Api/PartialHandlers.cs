@@ -19,6 +19,8 @@ namespace WasteTrader.Api
             {
                 return new HomePage();
             });
+
+            Handle.GET("/Waste2Value/partial/drawer", () => new Drawer());
         }
     }
 }

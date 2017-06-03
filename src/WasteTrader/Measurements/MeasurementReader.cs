@@ -15,16 +15,24 @@ namespace WasteTrader.Measurements
             switch (unit)
             {
                 //Mass
-                case 1: return new Tuple<IMeasurement<Object>, Type>((IMeasurement<Object>)new Mass(quantity, unitMetricPrefixPower), typeof(Mass));
+                case 1:
+                    var mass = (IMeasurement<Object>) new Mass(quantity, unitMetricPrefixPower);
+                    return new Tuple<IMeasurement<Object>, Type>(mass, typeof(Mass));
 
                 //Length
-                case 2: return new Tuple<IMeasurement<Object>, Type>((IMeasurement<Object>)new Length(quantity, unitMetricPrefixPower), typeof(Length));
+                case 2:
+                    var length = (IMeasurement<Object>)new Length(quantity, unitMetricPrefixPower);
+                    return new Tuple<IMeasurement<Object>, Type>(length, typeof(Length));
 
                 //Area
-                case 3: return new Tuple<IMeasurement<Object>, Type>((IMeasurement<Object>)new Area(quantity, unitMetricPrefixPower), typeof(Area));
+                case 3:
+                    var area = (IMeasurement<Object>)new Area(quantity, unitMetricPrefixPower);
+                    return new Tuple<IMeasurement<Object>, Type>(area, typeof(Area));
 
                 //Volume
-                case 4: return new Tuple<IMeasurement<Object>, Type>((IMeasurement<Object>)new Volume(quantity, unitMetricPrefixPower), typeof(Volume));
+                case 4:
+                    var volume = (IMeasurement<Object>)new Volume(quantity, unitMetricPrefixPower);
+                    return new Tuple<IMeasurement<Object>, Type>(volume, typeof(Volume));
 
                 default: throw new ArgumentOutOfRangeException("Unit " + unit + " is not a known measurement type.");
             }

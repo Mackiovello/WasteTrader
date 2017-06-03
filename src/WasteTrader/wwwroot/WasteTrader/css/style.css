@@ -1,3 +1,20 @@
 .wastetrader-below-toolbar {
     display: flex;
 }
+
+.wastetrader-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.wastetrader-below-toolbar__current-page {
+    flex-grow: 1;
+}
+
+.wastetrader-card {
+    margin-bottom: 20px;
+}
+
+.wastetrader-main-headline {
+    text-align: center;
+}

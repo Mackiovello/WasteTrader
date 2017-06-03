@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Collections.Immutable;
+using System.Linq;
 
 namespace WasteTrader.Measurements
 {
@@ -11,7 +11,7 @@ namespace WasteTrader.Measurements
             this.Quantity = Quantity;
         }
 
-        private static ImmutableDictionary<int, Unit> Units = MetricPrefixes.Symbol.ToImmutableDictionary(ConvertKey, ConvertValue);
+        private static Dictionary<int, Unit> Units = MetricPrefixes.Symbol.ToDictionary(ConvertKey, ConvertValue);
 
         private static int ConvertKey(KeyValuePair<int, string> pair)
         {
@@ -24,6 +24,6 @@ namespace WasteTrader.Measurements
             else return new Unit(pair.Value + "m³", 0);
         }
 
-        public override IImmutableDictionary<int, Unit> Symbols => Units;
+        public override Dictionary<int, Unit> Symbols => Units;
     }
 }

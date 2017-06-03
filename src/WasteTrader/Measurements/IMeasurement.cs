@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Collections.Immutable;
 
 namespace WasteTrader.Measurements
 {
@@ -10,7 +9,7 @@ namespace WasteTrader.Measurements
         /// <summary>
         /// All generally accepted units for a specific measurement.
         /// </summary>
-        IImmutableDictionary<int, Unit> Symbols { get; }
+        Dictionary<int, Unit> Symbols { get; }
 
         /// <summary>
         /// The value in the baseunit

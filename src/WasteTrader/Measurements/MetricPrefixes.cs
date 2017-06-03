@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 
 namespace WasteTrader.Measurements
 {
     public static class MetricPrefixes
     {
-        public static ImmutableDictionary<int, string> Symbol = new Dictionary<int, String>
+        public readonly static Dictionary<int, string> Symbol = new Dictionary<int, String>
         {
             {-24,"y"},
             {-21, "z"},
@@ -29,6 +28,6 @@ namespace WasteTrader.Measurements
             {18, "E" },
             {21, "Z" },
             {24, "Y" }
-        }.ToImmutableDictionary();
+        };
     }
 }

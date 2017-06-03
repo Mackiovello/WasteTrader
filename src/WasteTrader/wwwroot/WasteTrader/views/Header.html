@@ -1,12 +1,14 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
-    <template is="dom-bind">
+    <span slot="wastetrader/header-title" class="mdc-toolbar__title">Waste2Value</span>
+
+    <template is="declarative-shadow-dom">
+        <link rel="stylesheet" href="/sys/material-components-web.min.css" />  
+
         <header class="mdc-toolbar mdc-toolbar--fixed">
             <div class="mdc-toolbar__row">
-                <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                    <span class="mdc-toolbar__title">Waste2Value</span>
-                </section>
+                <slot name="wastetrader/header-title"></slot>
             </div>
         </header>
     </template>

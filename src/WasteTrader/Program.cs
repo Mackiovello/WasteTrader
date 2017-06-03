@@ -6,11 +6,6 @@ namespace WasteTrader
     {
         static void Main()
         {
-            //Db.Transact(() => 
-            //{
-            //    Db.SQL("SELECT w FROM WasteTrader.Database.Waste w WHERE w.Description=?", "Betong").First.Delete();
-            //});
-
             var handlers = new IHandler[]
             {
                 new MainHandlers(),

@@ -15,11 +15,6 @@ namespace WasteTrader.Api
                 return page;
             });
 
-            Handle.GET("/Waste2Value/partial/navigationbar", () =>
-            {
-                return new NavigationBar();
-            });
-
             Handle.GET("/Waste2Value/partial/Home", () =>
             {
                 return new HomePage();

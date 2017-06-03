@@ -17,7 +17,7 @@ namespace WasteTrader.Api
     <link rel=""import"" href=""/sys/starcounter.html"">
     <link rel=""import"" href=""/sys/starcounter-include/starcounter-include.html"">
     <link rel=""import"" href=""/sys/starcounter-debug-aid/src/starcounter-debug-aid.html"">
-    <link rel=""import"" href=""/sys/bootstrap-material.html"">
+    <link rel=""stylesheet"" href=""/sys/material-components-web.min.css"">
 </head>
 <body>
     <template is=""dom-bind"" id=""puppet-root"">
@@ -25,10 +25,7 @@ namespace WasteTrader.Api
     </template>
     <puppet-client ref=""puppet-root"" remote-url=""{1}""></puppet-client>
     <starcounter-debug-aid></starcounter-debug-aid>
-    <script src=""https://code.jquery.com/jquery-3.2.1.min.js"" integrity=""sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="" crossorigin=""anonymous""></script>
-    <script src=""/sys/bootstrap.min.js""></script>
-    <script src=""/sys/material.min.js""></script>
-    <script>$.material.init()</script>
+    <script src=""/sys/material-components-web.min.js""></script>
  </body>
 </html>";
 

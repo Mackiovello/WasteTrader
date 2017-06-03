@@ -1,9 +1,38 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
 <link rel="stylesheet" href="/WasteTrader/css/style.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <template>
     <template is="dom-bind">
-        <starcounter-include partial="{{model.NavigationBar}}"></starcounter-include>
-        <starcounter-include partial="{{model.CurrentPage}}"></starcounter-include>
+        <div class="mdc-typography">
+            <header class="mdc-toolbar mdc-toolbar--fixed">
+                <div class="mdc-toolbar__row">
+                    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                        <span class="mdc-toolbar__title">Waste2Value</span>
+                    </section>
+                </div>    
+            </header>
+            <div class="mdc-toolbar-fixed-adjust wastetrader-below-toolbar">
+                <nav class="mdc-permanent-drawer">
+                    <div class="mdc-list-group">
+                        <a href="/Waste2Value" class="mdc-list-item">
+                            <i class="mdc-list-item__start-detail material-icons">home</i>
+                            Hem
+                        </a>
+                        <a href="/Waste2Value/Salj" class="mdc-list-item">
+                            <i class="mdc-list-item__start-detail material-icons">store</i>
+                            Sälj
+                        </a>
+                        <a href="/Waste2Value/Hitta" class="mdc-list-item">
+                            <i class="mdc-list-item__start-detail material-icons">search</i>
+                            Hitta
+                        </a>
+                    </div>
+                </nav>
+                <div class="wastetrader-below-toolbar__current-page">
+                    <starcounter-include partial="{{model.CurrentPage}}"></starcounter-include>
+                </div>
+            </div>
+        </div>
     </template>
 </template>

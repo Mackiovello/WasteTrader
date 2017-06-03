@@ -1,63 +1,33 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
-    <style>
-        .wastetrader-home {
-            max-width: 1000px;
-        }
-
-        .wastetrader-entry-card p {
-            margin-bottom: 0;
-        }
-
-        .wastetrader-card__metadata {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .wastetrader-entry-card {
-            width: 23%;
-            background-color: white;
-            padding: 15px;
-            box-shadow: 0 1px 3px #999;
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-start;
-            transition: box-shadow .23s cubic-bezier(.26,0,.83,1), transform .17s cubic-bezier(.26,0,.83,1);
-        }
-
-        .wastetrader-entry-card:hover {
-            transform: scale(1.007);
-            box-shadow: 0 2px 5px #999;
-        } 
-
-        .wastetrader-entry-card__container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 110px;
-        }
-    </style>
     <template is="dom-bind">
-        <div class="wastetrader-header">
-            <h1>Hitta annons</h1>
-        </div>
-        <div class="wastetrader-home">
-            <div class="wastetrader-entry-card__container">
-                <template is="dom-repeat" items="{{model.Waste}}">
-                    <div class="wastetrader-entry-card">
-                        <div class="lead">{{item.Description}}</div>
-                        <div class="this-div">
-                            <p>Mängd: {{item.Quantity}} {{item.Unit}}</p>
-                            <p>Inlagd: {{item.FormattedDate}}</p>
-                            <button class="btn btn-default btn-raised">Läs mer</button>
-                        </div>
-                    </div>       
-                </template>
-            </div>
+        <div class="wastetrader-wrapper">
+            <h1 class="mdc-typography--display2 wastetrader-main-headline">Hitta annons</h1>
+            <template is="dom-repeat" items="{{model.Waste}}">
+                <div class="mdc-card wastetrader-card">
+                    <section class="mdc-card__primary">
+                        <h2 class="mdc-card__title mdc-card__title--large">{{item.Description}}</h2>
+                    </section>
+                    <section class="mdc-card__supporting-text">
+                        <p>Mängd: {{item.Quantity}} {{item.Unit}}</p>
+                        <p>Inlagd: {{item.FormattedDate}}</p>
+                    </section>
+                    <section class="mdc-card__actions">
+                        <button class="mdc-button">Läs mer</button>
+                    </section>
+                </div>       
+                <script>
+                    (function () {
+                        const template = (document._currentScript || document.currentScript).previousElementSibling;
+                        const buttons = template.getElementsByClassName('mdc-button');
+
+                        for (var i = 0, btn; btn = buttons[i]; i++) {
+                            mdc.ripple.MDCRipple.attachTo(btn);
+                        }
+                    })();
+                </script>
+            </template>
         </div>
     </template>
 </template>

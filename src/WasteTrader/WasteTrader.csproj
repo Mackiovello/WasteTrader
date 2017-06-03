@@ -108,9 +108,6 @@
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\NavigationBar.json.cs">
-      <DependentUpon>NavigationBar.json</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\SellPage.json.cs">
       <DependentUpon>SellPage.json</DependentUpon>
     </Compile>
@@ -125,10 +122,8 @@
     </TypedJSON>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="wwwroot\sys\bootstrap-material-design.min.css" />
-    <Content Include="wwwroot\sys\bootstrap-material.html" />
-    <Content Include="wwwroot\sys\bootstrap.min.js" />
-    <Content Include="wwwroot\sys\material.min.js" />
+    <Content Include="wwwroot\sys\material-components-web.min.css" />
+    <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -154,18 +149,10 @@
     <TypedJSON Include="ViewModels\SellPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
-    <None Include="wwwroot\WasteTrader\scss\base\_base.scss" />
-    <None Include="wwwroot\WasteTrader\scss\base\_variables.scss" />
-    <None Include="wwwroot\WasteTrader\scss\base\_index.scss" />
-    <None Include="wwwroot\WasteTrader\scss\components\_card.scss" />
-    <None Include="wwwroot\WasteTrader\scss\components\_index.scss" />
     <TypedJSON Include="ViewModels\HomePage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
-    <None Include="wwwroot\WasteTrader\scss\pages\_home.scss" />
-    <None Include="wwwroot\WasteTrader\scss\pages\_index.scss" />
     <None Include="wwwroot\WasteTrader\views\HomePage.html" />
-    <None Include="wwwroot\WasteTrader\scss\style.scss" />
     <None Include="wwwroot\WasteTrader\views\MasterPage.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,23 @@
+{
+    "name": "SignIn",
+    "version": "3.0.0",
+    "authors": [
+        "andwah <anders.wahlgren@societyobjects.com>",
+        "miyconst <const.miyang@gmail.com>"
+    ],
+    "description": "SignIn App Powered by Starcounter",
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "sys",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "juicy-popover": "Juicy/juicy-popover#~0.0.3",
+        "paper-icon-button": "PolymerElements/paper-icon-button#~1.0.3",
+        "sgb-property-metadata": "Smorgasbord-Development/sgb-property-metadata"
+    }
+}

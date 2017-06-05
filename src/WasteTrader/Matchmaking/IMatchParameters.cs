@@ -40,7 +40,7 @@ namespace WasteTrader.Matchmaking
         /// <summary>
         /// Unit type filter. 0 is allow all.
         /// </summary>
-        byte UnitType { get; }
+        UnitType UnitType { get; }
         /// <summary>
         /// The location to calculate distance from.
         /// </summary>

@@ -4,6 +4,14 @@ using System.Linq;
 
 namespace WasteTrader.Database
 {
+    public enum UnitType
+    {
+        Mass = 1,
+        Length = 2,
+        Area = 3,
+        Volume = 4
+    }
+
     [Database]
     public class Waste
     {
@@ -15,7 +23,7 @@ namespace WasteTrader.Database
         public string Description { get; set; }
         public long Quantity { get; set; }
         public int UnitMetricPrefixPower { get; set; }
-        public int Unit { get; set; }
+        public UnitType Unit { get; set; }
 
         public DateTime EntryTime { get; }
         

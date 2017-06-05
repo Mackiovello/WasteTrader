@@ -21,7 +21,7 @@ namespace WasteTrader.Matchmaking
                 //Filter by UnitType
                 if (parameters.UnitType != 0 && w.Unit != parameters.UnitType) return false;
 
-                var measurement = MeasurementReader.Read(w).Item1;
+                var measurement = MeasurementReader.Read(w);
 
                 //Filter by Quantity
                 if (measurement.Value < parameters.MinQuantity) return false;

@@ -14,7 +14,7 @@ namespace WasteTrader.Matchmaking
         {
             var valued = waste.AsParallel().Select(p => new Tuple<Waste, IComparable>(p, Valuer(p)));
             var sorted = DescendingOrder ? valued.OrderByDescending(p => p.Item2) : valued.OrderBy(p => p.Item2);
-            var cleaned = sorted.Select(p => p.Item1).ToArray();
+            Waste[] cleaned = sorted.Select(p => p.Item1).ToArray();
             return cleaned;
         }
     }

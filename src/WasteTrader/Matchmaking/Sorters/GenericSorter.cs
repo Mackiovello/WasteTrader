@@ -7,7 +7,7 @@ namespace WasteTrader.Matchmaking
 {
     public abstract class GenericSorter : IMatchSorter
     {
-        public bool DescendingOrder { get; protected set; }
+        public bool DescendingOrder { get; protected set; } = false;
         protected abstract IComparable Valuer(Waste waste);
 
         public Waste[] Sort(IEnumerable<Waste> waste)

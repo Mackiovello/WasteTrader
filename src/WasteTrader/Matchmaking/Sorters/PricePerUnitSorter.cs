@@ -12,7 +12,7 @@ namespace WasteTrader.Matchmaking
 
         protected override IComparable Valuer(Waste waste)
         {
-            return waste.Price / waste.Measurement.Value;
+            return (double) waste.Price / (double) waste.Measurement.Value;
         }
     }
 }

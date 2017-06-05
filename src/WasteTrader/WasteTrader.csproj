@@ -71,9 +71,14 @@
     <Compile Include="Database\SellWaste.cs" />
     <Compile Include="Database\Waste.cs" />
     <Compile Include="Database\Location.cs" />
+    <Compile Include="Matchmaking\Sorters\DateSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\DistanceSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\GenericSorter.cs" />
     <Compile Include="Matchmaking\IMatchMaker.cs" />
     <Compile Include="Matchmaking\IMatchParameters.cs" />
     <Compile Include="Matchmaking\IMatchSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\PricePerUnitSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\QuantitySorter.cs" />
     <Compile Include="Matchmaking\RoughMatchMaker.cs" />
     <Compile Include="Matchmaking\SimpleMatchMaker.cs" />
     <Compile Include="MathUtils\GeographyMath.cs" />

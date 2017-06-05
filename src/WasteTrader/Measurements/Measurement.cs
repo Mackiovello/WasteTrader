@@ -16,8 +16,7 @@ namespace WasteTrader.Measurements
             if (obj == null)
                 return 1;
 
-            T other = obj as T;
-            if (other != null)
+            if (obj is T other)
                 return Value.CompareTo(other.Value);
 
             else
@@ -50,8 +49,7 @@ namespace WasteTrader.Measurements
 
         public override string ToString()
         {
-            Unit unit = null;
-            Symbols.TryGetValue(UnitMetricPrefixPower, out unit);
+            Symbols.TryGetValue(UnitMetricPrefixPower, out Unit unit);
 
             if (unit != null)
                 return CalcValue(unit) + " " + unit.Text;
@@ -71,8 +69,7 @@ namespace WasteTrader.Measurements
 
             for (int i = start; i > UnitMetricPrefixPower; i--)
             {
-                Unit unit = null;
-                Symbols.TryGetValue(i, out unit);
+                Symbols.TryGetValue(i, out Unit unit);
                 if (unit != null)
                 {
                     UnitMetricPrefixPower = i;

@@ -76,8 +76,9 @@
     <Compile Include="Matchmaking\Sorters\GenericSorter.cs" />
     <Compile Include="Matchmaking\IMatchMaker.cs" />
     <Compile Include="Matchmaking\IMatchParameters.cs" />
-    <Compile Include="Matchmaking\IMatchSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\IMatchSorter.cs" />
     <Compile Include="Matchmaking\Sorters\PricePerUnitSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\PriceSorter.cs" />
     <Compile Include="Matchmaking\Sorters\QuantitySorter.cs" />
     <Compile Include="Matchmaking\RoughMatchMaker.cs" />
     <Compile Include="Matchmaking\SimpleMatchMaker.cs" />

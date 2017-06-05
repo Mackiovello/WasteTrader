@@ -1,33 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using WasteTrader.Database;
 
 namespace WasteTrader.Measurements
 {
     public static class MeasurementReader
     {
-        public static Tuple<IMeasurement<Object>, Type> Read(IWaste waste)
+
+        private static readonly Dictionary<UnitType, Func<long, int, IMeasurement<object>>> Types = new Dictionary<UnitType, Func<long, int, IMeasurement<object>>>
+        {
+            { UnitType.Mass, (long quantity, int prefixpower) => (IMeasurement<Object>) new Mass(quantity,prefixpower)},
+            { UnitType.Length, (long quantity, int prefixpower) => (IMeasurement<Object>) new Length(quantity, prefixpower) },
+            { UnitType.Area, (long quantity, int prefixpower) => (IMeasurement<Object>) new Area(quantity,prefixpower)},
+            { UnitType.Volume, (long quantity, int prefixpower) => (IMeasurement<Object>) new Volume(quantity,prefixpower)}
+        };
+
+        public static IMeasurement<Object> Read(Waste waste)
         {
             return Read(waste.Unit, waste.Quantity, waste.UnitMetricPrefixPower);
         }
 
-        public static Tuple<IMeasurement<Object>,Type> Read(byte unit, long quantity, sbyte unitMetricPrefixPower)
+        public static IMeasurement<Object> Read(UnitType unit, long quantity, int unitMetricPrefixPower)
         {
-            switch (unit)
-            {
-                //Mass
-                case 1: return new Tuple<IMeasurement<Object>, Type>((IMeasurement<Object>)new Mass(quantity, unitMetricPrefixPower), typeof(Mass));
-
-                //Length
-                case 2: return new Tuple<IMeasurement<Object>, Type>((IMeasurement<Object>)new Length(quantity, unitMetricPrefixPower), typeof(Length));
-
-                //Area
-                case 3: return new Tuple<IMeasurement<Object>, Type>((IMeasurement<Object>)new Area(quantity, unitMetricPrefixPower), typeof(Area));
-
-                //Volume
-                case 4: return new Tuple<IMeasurement<Object>, Type>((IMeasurement<Object>)new Volume(quantity, unitMetricPrefixPower), typeof(Volume));
-
-                default: throw new ArgumentOutOfRangeException("Unit " + unit + " is not a known measurement type.");
-            }
+            return Types[unit].Invoke(quantity, unitMetricPrefixPower);
         }
     }
 }

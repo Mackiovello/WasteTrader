@@ -45,9 +45,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
-    </Reference>
     <Reference Include="System.Core">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -71,13 +68,17 @@
     <Compile Include="Api\BlendingHandlers.cs" />
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Database\BuyWaste.cs" />
-    <Compile Include="Database\IWaste.cs" />
     <Compile Include="Database\SellWaste.cs" />
     <Compile Include="Database\Waste.cs" />
     <Compile Include="Database\Location.cs" />
+    <Compile Include="Matchmaking\Sorters\DateSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\DistanceSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\GenericSorter.cs" />
     <Compile Include="Matchmaking\IMatchMaker.cs" />
     <Compile Include="Matchmaking\IMatchParameters.cs" />
     <Compile Include="Matchmaking\IMatchSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\PricePerUnitSorter.cs" />
+    <Compile Include="Matchmaking\Sorters\QuantitySorter.cs" />
     <Compile Include="Matchmaking\RoughMatchMaker.cs" />
     <Compile Include="Matchmaking\SimpleMatchMaker.cs" />
     <Compile Include="MathUtils\GeographyMath.cs" />
@@ -134,10 +135,6 @@
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <TypedJSON Include="ViewModels\Location.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <None Include="wwwroot\WasteTrader\views\Navigationbar.html" />
-    <TypedJSON Include="ViewModels\NavigationBar.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\WasteTrader\scss\components\_header.scss" />

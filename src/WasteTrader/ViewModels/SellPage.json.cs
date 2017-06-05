@@ -9,11 +9,11 @@ namespace WasteTrader.ViewModels
         {
             Db.Transact(() =>
             {
-                new Waste
+                new SellWaste
                 {
                     Description = this.Waste.Description,
-                    Quantity = (double) this.Waste.Quantity,
-                    Unit = this.Waste.Unit
+                    Quantity = (long)this.Waste.Quantity,
+                    Unit = (byte)this.Waste.Unit
                 };
             });
 
@@ -27,7 +27,7 @@ namespace WasteTrader.ViewModels
             this.Person.Email = "";
             this.Waste.Description = "";
             this.Waste.Quantity = 0;
-            this.Waste.Unit = "";
+            this.Waste.Unit = 0;
         }
     }
 }

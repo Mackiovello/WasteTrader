@@ -1,9 +1,20 @@
 ﻿using System;
 using Starcounter;
+using System.Linq;
+using WasteTrader.Measurements;
 
 namespace WasteTrader.Database
 {
-    public abstract class Waste : IWaste
+    public enum UnitType
+    {
+        Mass = 1,
+        Length = 2,
+        Area = 3,
+        Volume = 4
+    }
+
+    [Database]
+    public class Waste
     {
         public Waste()
         {
@@ -12,16 +23,13 @@ namespace WasteTrader.Database
 
         public string Description { get; set; }
         public long Quantity { get; set; }
-        public sbyte UnitMetricPrefixPower { get; set; }
-        public byte Unit { get; set; }
-
+        public int UnitMetricPrefixPower { get; set; }
+        public UnitType Unit { get; set; }
+        public IMeasurement<Object> Measurement => MeasurementReader.Read(this);
         public DateTime EntryTime { get; }
         
         public int Category { get; set; }
-        public Location Location
-        {
-            get => Db.SQL<Location>("SELECT l FROM WasteTrader.Location WHERE l.Waste = ?", this).First;
-        }
+        public Location Location => Db.SQL<Location>($"SELECT w FROM {nameof(Location)} WHERE w.{typeof(Waste)} = ?", this).FirstOrDefault();
         public long Price { get; set; }
         public string Name { get; set; }
     }

@@ -23,6 +23,6 @@ namespace WasteTrader.Matchmaking
         /// <param name="parameters"></param>
         /// <param name="searchspace"></param>
         /// <returns>Matched IWaste</returns>
-        IWaste[] Match(IMatchParameters parameters, IEnumerable<IWaste> searchspace);
+        Waste[] Match(IMatchParameters parameters, IEnumerable<Waste> searchspace);
     }
 }

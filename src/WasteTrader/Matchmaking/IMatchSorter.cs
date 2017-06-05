@@ -5,6 +5,6 @@ namespace WasteTrader.Matchmaking
 {
     public interface IMatchSorter
     {
-        IWaste[] Sort(IEnumerable<IWaste> waste);
+        Waste[] Sort(IEnumerable<Waste> waste);
     }
 }

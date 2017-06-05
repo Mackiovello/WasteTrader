@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using WasteTrader.Database;
 using WasteTrader.MathUtils;
-using WasteTrader.Measurements;
 
 namespace WasteTrader.Matchmaking
 {
     class SimpleMatchMaker : RoughMatchMaker
     {
-        public override IWaste[] Match(IMatchParameters parameters, IEnumerable<IWaste> searchspace)
+        public override Waste[] Match(IMatchParameters parameters, IEnumerable<Waste> searchspace)
         {
             var filtered = searchspace.AsParallel().Where(w =>
             {
@@ -21,7 +20,7 @@ namespace WasteTrader.Matchmaking
                 //Filter by UnitType
                 if (parameters.UnitType != 0 && w.Unit != parameters.UnitType) return false;
 
-                var measurement = MeasurementReader.Read(w).Item1;
+                var measurement = w.Measurement;
 
                 //Filter by Quantity
                 if (measurement.Value < parameters.MinQuantity) return false;
@@ -39,7 +38,7 @@ namespace WasteTrader.Matchmaking
                 return true;
             });
 
-            return parameters.Sorter.Sort(filtered);
+            return parameters.Sorter.Sort(filtered).Take(parameters.Matches).ToArray();
         }
     }
 }

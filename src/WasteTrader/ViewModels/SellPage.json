@@ -3,7 +3,7 @@
   "Waste": {
     "Description$": "",
     "Quantity$": 0.0,
-    "Unit$":  ""
+    "Unit$":  0
   },
   "Person": {
     "Name$": "",

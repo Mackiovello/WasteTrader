@@ -19,10 +19,8 @@ namespace WasteTrader.Matchmaking
 
         public Waste[] Sort(IEnumerable<Waste> waste)
         {
-            var calculatedWaste = waste.AsParallel().Select(p => new Tuple<Waste, double>(p, CalcPPU(p)));
-            var sorted = DescendingOrder ? calculatedWaste.OrderByDescending(p => p.Item2) : calculatedWaste.OrderBy(p => p.Item2);
-            var cleaned = sorted.Select(p => p.Item1).ToArray();
-            return cleaned;
+            var calculatedWaste = waste.AsParallel().Select(p => new Tuple<Waste, IComparable>(p, CalcPPU(p)));
+            return ValueSorter.Sort(calculatedWaste, DescendingOrder);
         }
     }
 }

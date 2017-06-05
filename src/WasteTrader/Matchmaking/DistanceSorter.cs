@@ -23,10 +23,8 @@ namespace WasteTrader.Matchmaking
 
         public Waste[] Sort(IEnumerable<Waste> waste)
         {
-            var calculated = waste.AsParallel().Select(p => new Tuple<Waste, double>(p, CalcDistance(p.Location)));
-            var sorted = DescendingOrder ? calculated.OrderByDescending(p => p.Item2) : calculated.OrderBy(p => p.Item2);
-            var cleaned = sorted.Select(p => p.Item1).ToArray();
-            return cleaned;
+            var calculated = waste.AsParallel().Select(p => new Tuple<Waste, IComparable>(p, CalcDistance(p.Location)));
+            return ValueSorter.Sort(calculated, DescendingOrder);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using WasteTrader.Database;
 using WasteTrader.MathUtils;
-using WasteTrader.Measurements;
 
 namespace WasteTrader.Matchmaking
 {
@@ -21,7 +20,7 @@ namespace WasteTrader.Matchmaking
                 //Filter by UnitType
                 if (parameters.UnitType != 0 && w.Unit != parameters.UnitType) return false;
 
-                var measurement = MeasurementReader.Read(w);
+                var measurement = w.Measurement;
 
                 //Filter by Quantity
                 if (measurement.Value < parameters.MinQuantity) return false;

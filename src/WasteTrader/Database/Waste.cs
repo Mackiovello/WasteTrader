@@ -1,6 +1,7 @@
 ﻿using System;
 using Starcounter;
 using System.Linq;
+using WasteTrader.Measurements;
 
 namespace WasteTrader.Database
 {
@@ -24,7 +25,7 @@ namespace WasteTrader.Database
         public long Quantity { get; set; }
         public int UnitMetricPrefixPower { get; set; }
         public UnitType Unit { get; set; }
-
+        public IMeasurement<Object> Measurement => MeasurementReader.Read(this);
         public DateTime EntryTime { get; }
         
         public int Category { get; set; }

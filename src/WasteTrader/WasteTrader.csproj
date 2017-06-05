@@ -82,6 +82,7 @@
     <Compile Include="Matchmaking\Sorters\QuantitySorter.cs" />
     <Compile Include="Matchmaking\RoughMatchMaker.cs" />
     <Compile Include="Matchmaking\SimpleMatchMaker.cs" />
+    <Compile Include="Matchmaking\Sorters\WeightedSorter.cs" />
     <Compile Include="MathUtils\GeographyMath.cs" />
     <Compile Include="MathUtils\LongMath.cs" />
     <Compile Include="Measurements\Area.cs" />

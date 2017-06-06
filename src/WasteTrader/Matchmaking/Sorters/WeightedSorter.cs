@@ -27,7 +27,7 @@ namespace WasteTrader.Matchmaking.Sorters
 
         protected IDictionary<Waste, double> joiner(IDictionary<Waste, double> dic1, IDictionary<Waste, double> dic2)
         {
-            var joined = Enumerable.Join(dic1, dic2, pair => pair.Key, pair => pair.Key, (outer, inner) => new KeyValuePair<Waste, double>(outer.Key, outer.Value + inner.Value));
+            IEnumerable<KeyValuePair<Waste, double>> joined = Enumerable.Join(dic1, dic2, pair => pair.Key, pair => pair.Key, (outer, inner) => new KeyValuePair<Waste, double>(outer.Key, outer.Value + inner.Value));
             return joined.ToDictionary(p => p.Key, p => p.Value);
         }
 

@@ -20,8 +20,10 @@ namespace WasteTrader.Measurements
 
         private static Unit ConvertValue(KeyValuePair<int, string> pair)
         {
-            if (pair.Key <= -3) return new Unit(pair.Value + "l", 3);
-            else return new Unit(pair.Value + "m³", 0);
+            if (pair.Key <= -3)
+                return new Unit(pair.Value + "l", 3);
+            else
+                return new Unit(pair.Value + "m³", 0);
         }
 
         public override Dictionary<int, Unit> Symbols => Units;

@@ -5,12 +5,12 @@ namespace WasteTrader.MathUtils
 {
     public static class GeographyMath
     {
-        private static double DtrDenominator = Math.PI / 180;
-        public static double EarthRadius = 6371000;
-        public static double EarthDiameter = EarthRadius * 2;
+        private const double DtrDenominator = Math.PI / 180;
+        private const double EarthRadius = 6371000;
+        private const double EarthDiameter = EarthRadius * 2;
         public static double DegreesToRadians(double degrees)
         {
-            return degrees*DtrDenominator;
+            return degrees * DtrDenominator;
         }
 
         public static double Haversine(double radians)
@@ -37,7 +37,7 @@ namespace WasteTrader.MathUtils
             return GreatCircleDistance(longitudeP1, latitudeP1, longitudeP2, latitudeP2, EarthDiameter);
         }
 
-        public static double GreatCircleDistance(double longitudeP1, double latitudeP1, double longitudeP2, double latitudeP2, double diameter)
+        private static double GreatCircleDistance(double longitudeP1, double latitudeP1, double longitudeP2, double latitudeP2, double diameter)
         {
             double havsLong = Haversine(longitudeP1-longitudeP2);
             double havsLati = Haversine(latitudeP1-latitudeP2);

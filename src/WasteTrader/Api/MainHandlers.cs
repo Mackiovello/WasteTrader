@@ -78,7 +78,8 @@ namespace WasteTrader.Api
                 master = new MasterPage()
                 {
                     Session = Session.Current,
-                    NavigationBar = Self.GET("/Waste2Value/partial/navigationbar")
+                    Drawer = Self.GET("/Waste2Value/partial/drawer"),
+                    Header = Self.GET("/Waste2Value/partial/header")
                 };
             }
 

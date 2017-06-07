@@ -3,7 +3,7 @@
 namespace WasteTrader.Database
 {
     [Database]
-    public class SellWaste: Waste
+    public class SellWaste : Waste
     {
 
     }

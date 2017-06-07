@@ -33,7 +33,7 @@ namespace WasteTrader.Matchmaking
                     return false;
 
                 //Filter by PricePerUnit
-                if (parameters.PricePerUnitLimit != 0 && ((decimal)measurement.Value) / w.Price > parameters.PricePerUnitLimit)
+                if (parameters.PricePerUnitLimit != 0 && ((double)measurement.Value) / w.Price > parameters.PricePerUnitLimit)
                     return false;
 
                 //Filter by Distance

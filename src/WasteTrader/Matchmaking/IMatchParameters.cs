@@ -1,5 +1,7 @@
 ﻿using System;
 using WasteTrader.Database;
+using WasteTrader.MathUtils;
+using WasteTrader.Matchmaking.Sorters;
 
 namespace WasteTrader.Matchmaking
 {
@@ -16,11 +18,11 @@ namespace WasteTrader.Matchmaking
         /// <summary>
         /// Number of matches to make, a limiter.
         /// </summary>
-        int Matches { get; }
+        int MaxMatches { get; }
         /// <summary>
         /// The highest price per unit that should be allowed. 0 allows everything.
         /// </summary>
-        decimal PricePerUnitLimit { get; }
+        double PricePerUnitLimit { get; }
         /// <summary>
         /// The highest quantity that should be allowed.
         /// </summary>
@@ -44,7 +46,7 @@ namespace WasteTrader.Matchmaking
         /// <summary>
         /// The location to calculate distance from.
         /// </summary>
-        Location SearchFrom { get; }
+        ILocation SearchFrom { get; }
         /// <summary>
         /// The class that sorts the matches.
         /// </summary>

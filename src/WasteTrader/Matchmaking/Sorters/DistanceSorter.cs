@@ -2,12 +2,12 @@
 using WasteTrader.Database;
 using WasteTrader.MathUtils;
 
-namespace WasteTrader.Matchmaking
+namespace WasteTrader.Matchmaking.Sorters
 {
     public class DistanceSorter : GenericSorter
     {
-        protected Location SourceLocation;
-        public DistanceSorter(bool descendingOrder, Location sourceLocation)
+        protected ILocation SourceLocation;
+        public DistanceSorter(bool descendingOrder, ILocation sourceLocation)
         {
             this.DescendingOrder = descendingOrder;
             this.SourceLocation = sourceLocation;

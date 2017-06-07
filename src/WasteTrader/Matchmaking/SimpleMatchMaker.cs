@@ -27,7 +27,7 @@ namespace WasteTrader.Matchmaking
                 else if (parameters.MaxQuantity != 0 && measurement.Value > parameters.MaxQuantity) return false;
 
                 //Filter by PricePerUnit
-                if (parameters.PricePerUnitLimit != 0 && ((decimal)measurement.Value) / w.Price > parameters.PricePerUnitLimit) return false;
+                if (parameters.PricePerUnitLimit != 0 && ((double)measurement.Value) / w.Price > parameters.PricePerUnitLimit) return false;
 
                 //Filter by Distance
                 double distance = GeographyMath.RoughEarthDistance(parameters.SearchFrom, w.Location);
@@ -38,7 +38,7 @@ namespace WasteTrader.Matchmaking
                 return true;
             });
 
-            return parameters.Sorter.Sort(filtered).Take(parameters.Matches).ToArray();
+            return parameters.Sorter.Sort(filtered).Take(parameters.MaxMatches).ToArray();
         }
     }
 }

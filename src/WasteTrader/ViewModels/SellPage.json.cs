@@ -13,7 +13,7 @@ namespace WasteTrader.ViewModels
                 {
                     Description = this.Waste.Description,
                     Quantity = (long)this.Waste.Quantity,
-                    Unit = (byte)this.Waste.Unit
+                    Unit = (UnitType)this.Waste.Unit
                 };
             });
 

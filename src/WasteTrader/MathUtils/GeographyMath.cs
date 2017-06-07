@@ -22,7 +22,7 @@ namespace WasteTrader.MathUtils
         /// Calculates the distance between two points on earth.
         /// Should be about at worst about 0.5% accurate.
         /// </summary>
-        public static double RoughEarthDistance(Location loc1, Location loc2)
+        public static double RoughEarthDistance(ILocation loc1, ILocation loc2)
         {
             return RoughEarthDistance(loc1.LongitudeRadians, loc1.LatitudeRadians, loc2.LongitudeRadians, loc2.LatitudeRadians);
         }

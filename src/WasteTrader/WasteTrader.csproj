@@ -131,6 +131,21 @@
     <Compile Include="ViewModels\Sorters\DateSorterPage.json.cs">
       <DependentUpon>DateSorterPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Sorters\DistanceSorterPage.json.cs">
+      <DependentUpon>DistanceSorterPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Sorters\PricePerUnitSorterPage.json.cs">
+      <DependentUpon>PricePerUnitSorterPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Sorters\PriceSorterPage.json.cs">
+      <DependentUpon>PriceSorterPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Sorters\QuantitySorterPage.json.cs">
+      <DependentUpon>QuantitySorterPage.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Sorters\WeightedSorterPage.json.cs">
+      <DependentUpon>WeightedSorterPage.json</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -157,6 +172,21 @@
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <TypedJSON Include="ViewModels\Sorters\DateSorterPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\Sorters\DistanceSorterPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\Sorters\PricePerUnitSorterPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\Sorters\PriceSorterPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\Sorters\QuantitySorterPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\Sorters\WeightedSorterPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\WasteTrader\scss\components\_header.scss" />

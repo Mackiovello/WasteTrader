@@ -1,47 +1,51 @@
-using System;
 using Starcounter;
-using WasteTrader.Database;
-using WasteTrader.Matchmaking;
+using WasteTrader.ViewModels.Sorters;
 using WasteTrader.Matchmaking.Sorters;
-using WasteTrader.MathUtils;
+using WasteTrader.Matchmaking;
+using System;
+using WasteTrader.Database;
 
 namespace WasteTrader.ViewModels
 {
-    partial class MatchParametersPage : Json, IMatchParameters
+    partial class MatchParametersPage : Json
     {
         static MatchParametersPage()
         {
-            DefaultTemplate.Parameters.MaxDistance.Bind = "MaxDistance";
-            DefaultTemplate.Parameters.MinDistance.Bind = "MinDistance";
-            DefaultTemplate.Parameters.MaxMatches.Bind = "MaxMatches";
-            DefaultTemplate.Parameters.PricePerUnitLimit.Bind = "PricePerUnitLimit";
-            DefaultTemplate.Parameters.MaxQuantity.Bind = "MaxQuantity";
-            DefaultTemplate.Parameters.MinQuantity.Bind = "MinQuantity";
-            DefaultTemplate.Parameters.Oldest.Bind = "Oldest";
-            DefaultTemplate.Parameters.Youngest.Bind = "Youngest";
-            DefaultTemplate.Parameters.UnitType.Bind = "UnitType";
+            DefaultTemplate.MaxDistance.InstanceType = typeof(double);
+            DefaultTemplate.MinDistance.InstanceType = typeof(double);
+            DefaultTemplate.PricePerUnitLimit.InstanceType = typeof(double);
         }
 
-        public double MaxDistance { get; }
+        public int MaxMatches { get; set; }
 
-        public double MinDistance { get; }
+        void Handle(Input.SubmitTrigger action)
+        {
+            
+        }
 
-        public int MaxMatches { get; }
-
-        public double PricePerUnitLimit { get; }
-
-        public long MaxQuantity { get; }
-
-        public long MinQuantity { get; }
-
-        public DateTime Oldest { get; }
-
-        public DateTime Youngest { get; }
-
-        public UnitType UnitType { get; }
-
-        public ILocation SearchFrom => new NoDBLocation((double) Parameters.LongitudeDD, (double) Parameters.LatitudeDD);
-
-        public IMatchSorter Sorter => throw new NotImplementedException();
+        void Handle(Input.SelectedSorter action)
+        {
+            switch (action.Value)
+            {
+                case "DateSorter":
+                    Sorter = new DateSorterPage();
+                    break;
+                case "DistanceSorter":
+                    Sorter = new DistanceSorterPage();
+                    break;
+                case "PPUSorter":
+                    Sorter = new PricePerUnitSorterPage();
+                    break;
+                case "PriceSorter":
+                    Sorter = new PriceSorterPage();
+                    break;
+                case "QuantitySorter":
+                    Sorter = new QuantitySorterPage();
+                    break;
+                case "WeightedSorter":
+                    Sorter = new WeightedSorterPage();
+                    break;
+            }
+        }
     }
 }

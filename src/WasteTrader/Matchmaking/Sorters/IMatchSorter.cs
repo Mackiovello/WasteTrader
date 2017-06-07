@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using WasteTrader.Database;
 
-namespace WasteTrader.Matchmaking
+namespace WasteTrader.Matchmaking.Sorters
 {
     public interface IMatchSorter
     {

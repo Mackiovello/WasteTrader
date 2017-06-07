@@ -68,6 +68,7 @@
     <Compile Include="Api\BlendingHandlers.cs" />
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Database\BuyWaste.cs" />
+    <Compile Include="MathUtils\ILocation.cs" />
     <Compile Include="Database\SellWaste.cs" />
     <Compile Include="Database\Waste.cs" />
     <Compile Include="Database\Location.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Matchmaking\Sorters\WeightedSorter.cs" />
     <Compile Include="MathUtils\GeographyMath.cs" />
     <Compile Include="MathUtils\LongMath.cs" />
+    <Compile Include="MathUtils\NoDBLocation.cs" />
     <Compile Include="Measurements\Area.cs" />
     <Compile Include="Measurements\IMeasurement.cs" />
     <Compile Include="Measurements\Length.cs" />
@@ -117,11 +119,17 @@
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MatchParametersPage.json.cs">
+      <DependentUpon>MatchParametersPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\SellPage.json.cs">
       <DependentUpon>SellPage.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\SellWasteJson.json.cs">
       <DependentUpon>SellWasteJson.json</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Sorters\DateSorterPage.json.cs">
+      <DependentUpon>DateSorterPage.json</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />
@@ -143,6 +151,12 @@
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <TypedJSON Include="ViewModels\Location.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\MatchParametersPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\Sorters\DateSorterPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\WasteTrader\scss\components\_header.scss" />

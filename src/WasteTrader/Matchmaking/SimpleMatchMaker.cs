@@ -47,7 +47,7 @@ namespace WasteTrader.Matchmaking
                 return true;
             });
 
-            return parameters.Sorter.Sort(filtered).Take(parameters.Matches).ToArray();
+            return parameters.Sorter.Sort(filtered).Take(parameters.MaxMatches).ToArray();
         }
     }
 }

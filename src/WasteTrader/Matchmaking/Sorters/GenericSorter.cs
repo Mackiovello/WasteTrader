@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WasteTrader.Database;
 
-namespace WasteTrader.Matchmaking
+namespace WasteTrader.Matchmaking.Sorters
 {
     public abstract class GenericSorter : IMatchSorter
     {

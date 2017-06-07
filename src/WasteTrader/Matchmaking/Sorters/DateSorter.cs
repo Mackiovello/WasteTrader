@@ -1,7 +1,7 @@
 ﻿using System;
 using WasteTrader.Database;
 
-namespace WasteTrader.Matchmaking
+namespace WasteTrader.Matchmaking.Sorters
 {
     public class DateSorter : GenericSorter
     {

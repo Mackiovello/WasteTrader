@@ -1,0 +1,16 @@
+{
+  "Parameters": {
+    "MaxDistance$": 0.0,
+    "MinDistance$": 0.0,
+    "MaxMatches$": 0,
+    "PricePerUnitLimit$": 0.0,
+    "MaxQuantity$": 0,
+    "MinQuantity$": 0,
+    "Oldest$": 0,
+    "Youngest$": 0,
+    "UnitType$": 0,
+    "LongitudeDD$": 0.0,
+    "LatitudeDD$": 0.0,
+    "Sorter": {}
+  }
+}

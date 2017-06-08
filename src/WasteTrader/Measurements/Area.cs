@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace WasteTrader.Measurements
 {
-    public class Area : Measurement<Area>
+    public class Area : Measurement
     {
         public Area(long Quantity, int UnitMetricPrefixPower)
         {

@@ -1,13 +1,17 @@
+using System;
+using System.Collections.Generic;
 using Starcounter;
+using WasteTrader.Database;
 using WasteTrader.Matchmaking.Sorters;
 
 namespace WasteTrader.ViewModels.Sorters
 {
-    partial class PricePerUnitSorterPage : Json
+    partial class PricePerUnitSorterPage : Json, IMatchSorter
     {
-        public static implicit operator PricePerUnitSorter(PricePerUnitSorterPage page)
+        public Waste[] Sort(IEnumerable<Waste> waste)
         {
-            return new PricePerUnitSorter(page.DescendingOrder);
+            PricePerUnitSorter sorter = new PricePerUnitSorter(DescendingOrder);
+            return sorter.Sort(waste);
         }
     }
 }

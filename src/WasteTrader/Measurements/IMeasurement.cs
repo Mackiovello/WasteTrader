@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace WasteTrader.Measurements
 {
-    public interface IMeasurement<T> : IComparable, IEquatable<T>, IEqualityComparer<T>
+    public interface IMeasurement
     {
         /// <summary>
         /// All generally accepted units for a specific measurement.

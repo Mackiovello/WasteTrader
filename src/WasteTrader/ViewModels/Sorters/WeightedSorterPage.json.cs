@@ -1,15 +1,19 @@
 using Starcounter;
 using WasteTrader.Matchmaking.Sorters;
 using System.Linq;
+using System;
+using System.Collections.Generic;
+using WasteTrader.Database;
 
 namespace WasteTrader.ViewModels.Sorters
 {
-    partial class WeightedSorterPage : Json
+    partial class WeightedSorterPage : Json, IMatchSorter
     {
-        public static implicit operator WeightedSorter(WeightedSorterPage page)
+        public Waste[] Sort(IEnumerable<Waste> waste)
         {
-            var sorters = page.Sorters.AsParallel().ToDictionary(s => (IMatchSorter) s.Sorter, s => (double) s.Weight);
-            return new WeightedSorter(page.DescendingOrder, sorters);
+            var sorters = Sorters.AsParallel().ToDictionary(s => (IMatchSorter)s.Sorter, s => (double) s.Weight);
+            WeightedSorter sorter = new WeightedSorter(DescendingOrder, sorters);
+            return sorter.Sort(waste);
         }
 
         void Handle(Input.AddSorter action)

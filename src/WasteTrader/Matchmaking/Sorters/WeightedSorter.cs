@@ -17,7 +17,7 @@ namespace WasteTrader.Matchmaking.Sorters
             this.SortersAndWeights = sortersAndWeights;
         }
 
-        protected IDictionary<Waste, double> getWeights(IMatchSorter sorter, double weight, IEnumerable<Waste> waste)
+        protected IDictionary<Waste, double> GetWeights(IMatchSorter sorter, double weight, IEnumerable<Waste> waste)
         {
             Waste[] sorted = sorter.Sort(waste);
             int maxPos = waste.Count() - 1;
@@ -25,7 +25,7 @@ namespace WasteTrader.Matchmaking.Sorters
             return weighted.ToDictionary(p => p.Item1, p => p.Item2);
         }
 
-        protected IDictionary<Waste, double> joiner(IDictionary<Waste, double> dic1, IDictionary<Waste, double> dic2)
+        protected IDictionary<Waste, double> Joiner(IDictionary<Waste, double> dic1, IDictionary<Waste, double> dic2)
         {
             IEnumerable<KeyValuePair<Waste, double>> joined = Enumerable.Join(dic1, dic2, pair => pair.Key, pair => pair.Key, (outer, inner) => new KeyValuePair<Waste, double>(outer.Key, outer.Value + inner.Value));
             return joined.ToDictionary(p => p.Key, p => p.Value);
@@ -33,8 +33,8 @@ namespace WasteTrader.Matchmaking.Sorters
 
         public Waste[] Sort(IEnumerable<Waste> waste)
         {
-            var subSorted = SortersAndWeights.AsParallel().Select(p => getWeights(p.Key, p.Value, waste));
-            IDictionary<Waste,double> accumulated = subSorted.Aggregate(joiner);
+            var subSorted = SortersAndWeights.Select(p => GetWeights(p.Key, p.Value, waste));
+            IDictionary<Waste,double> accumulated = subSorted.Aggregate(Joiner);
             var sorted = DescendingOrder ? accumulated.OrderByDescending(p => p.Value) : accumulated.OrderBy(p => p.Value);
             Waste[] cleaned = sorted.Select(p => p.Key).ToArray();
             return cleaned;

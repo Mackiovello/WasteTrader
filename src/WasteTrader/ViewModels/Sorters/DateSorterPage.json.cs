@@ -1,13 +1,17 @@
 using Starcounter;
 using WasteTrader.Matchmaking.Sorters;
+using System;
+using System.Collections.Generic;
+using WasteTrader.Database;
 
 namespace WasteTrader.ViewModels.Sorters
 {
-    partial class DateSorterPage : Json
+    partial class DateSorterPage : Json, IMatchSorter
     {
-        public static implicit operator DateSorter(DateSorterPage page)
+        public Waste[] Sort(IEnumerable<Waste> waste)
         {
-            return new DateSorter(page.DescendingOrder);
+            var sorter = new DateSorter(DescendingOrder);
+            return sorter.Sort(waste);
         }
     }
 }

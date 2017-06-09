@@ -2,7 +2,7 @@
   "Html": "/WasteTrader/views/MatchParametersPage.html",
   "MaxDistance$": 0.0,
   "MinDistance$": 0.0,
-  "MaxMatches$": 0,
+  "MaxMatches$": 100,
   "PricePerUnitLimit$": 0.0,
   "MaxQuantity$": 0,
   "MinQuantity$": 0,

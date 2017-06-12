@@ -53,7 +53,7 @@ namespace WasteTrader.ViewModels
 
         void Handle(Input.SelectedSorter action)
         {
-            var found = sorters.TryGetValue(action.Value, out Func<Json> function);
+            bool found = sorters.TryGetValue(action.Value, out Func<Json> function);
             if (found) Sorter = function.Invoke();
         }
     }

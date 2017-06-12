@@ -14,49 +14,39 @@ namespace WasteTrader.Matchmaking
         {
             if (time <= parameters.Youngest.ToUniversalTime())
                 return false;
-            else if (parameters.Oldest != null && time >= parameters.Oldest?.ToUniversalTime())
-                return false;
-            else return true;
+            else
+                return (parameters.Oldest == null || time <= parameters.Oldest?.ToUniversalTime());
         }
 
         protected bool UnitTypeFilter(UnitType type, IMatchParameters parameters)
         {
-            if (parameters.UnitType != 0 && type != parameters.UnitType)
-                return false;
-            else
-                return true;
+            return (parameters.UnitType == 0 || type == parameters.UnitType);
         }
 
         protected bool QuantityFilter(long quantity, IMatchParameters parameters)
         {
             if (quantity < parameters.MinQuantity)
                 return false;
-            else if (parameters.MaxQuantity != 0 && quantity > parameters.MaxQuantity)
-                return false;
             else
-                return true;
+                return (parameters.MaxQuantity == 0 || quantity < parameters.MaxQuantity);
         }
 
         protected bool PricePerUnitFilter(long quantity, long price, IMatchParameters parameters)
         {
-            if (parameters.PricePerUnitLimit != 0 && ((double)quantity) / price > parameters.PricePerUnitLimit)
-                return false;
-            else
-                return true;
+            return (parameters.PricePerUnitLimit == 0 || ((double)quantity) / price < parameters.PricePerUnitLimit);
         }
 
         protected bool DistanceFilter(ILocation location, IMatchParameters parameters)
         {
-            if (parameters.SearchFrom == null) return true;
+            if (parameters.SearchFrom == null)
+                return true;
 
             double distance = GeographyMath.RoughEarthDistance(parameters.SearchFrom, location);
 
             if (distance > parameters.MinDistance)
                 return false;
-            else if (parameters.MaxDistance != 0 && distance > parameters.MaxDistance)
-                return false;
             else
-                return true;
+                return (parameters.MaxDistance == 0 || distance < parameters.MaxDistance);
 
         }
 
@@ -64,15 +54,21 @@ namespace WasteTrader.Matchmaking
         {
             var filtered = searchspace.Where(waste =>
             {
-                if (DateFilter(waste.EntryTime, parameters) == false) return false;
-                else if (UnitTypeFilter(waste.Unit, parameters) == false) return false;
+                if (DateFilter(waste.EntryTime, parameters) == false)
+                    return false;
+                else if (UnitTypeFilter(waste.Unit, parameters) == false)
+                    return false;
 
                 IMeasurement measurement = waste.Measurement;
 
-                if (QuantityFilter(measurement.Quantity, parameters) == false) return false;
-                else if (PricePerUnitFilter(measurement.Quantity, waste.Price, parameters) == false) return false;
-                else if (DistanceFilter(waste.Location, parameters) == false) return false;
-                else return true;
+                if (QuantityFilter(measurement.Quantity, parameters) == false)
+                    return false;
+                else if (PricePerUnitFilter(measurement.Quantity, waste.Price, parameters) == false)
+                    return false;
+                else if (DistanceFilter(waste.Location, parameters) == false)
+                    return false;
+                else
+                    return true;
             });
 
             Waste[] sorted = parameters.Sorter.Sort(filtered).Take(parameters.MaxMatches).ToArray();

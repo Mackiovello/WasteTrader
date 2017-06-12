@@ -31,7 +31,7 @@ namespace WasteTrader.Database
         public DateTime EntryTime { get; }
         
         public int Category { get; set; }
-        public Location Location => Db.SQL<Location>($"SELECT w FROM {nameof(Location)} w WHERE w.Waste = ?", this).FirstOrDefault();
+        public Location Location => Db.SQL<Location>($"SELECT l FROM {nameof(Location)} l WHERE l.{nameof(Location.Waste)} = ?", this).FirstOrDefault();
         public long Price { get; set; }
         public string Name { get; set; }
     }

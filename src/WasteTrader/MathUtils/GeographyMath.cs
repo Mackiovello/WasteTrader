@@ -1,5 +1,4 @@
 ﻿using System;
-using WasteTrader.Database;
 
 namespace WasteTrader.MathUtils
 {

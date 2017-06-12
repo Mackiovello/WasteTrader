@@ -2,36 +2,42 @@
 
 <template>
     <template is="dom-bind">
-        Max Distance:
-        <input value="{{model.MaxDistance$::input}}" />
-        Min Distance:
-        <input value="{{model.MinDistance$::input}}" />
-        Max Matches:
-        <input value="{{model.MaxMatches$::input}}" />
-        Price per unit:
-        <input value="{{model.PricePerUnitLimit$::input}}" />
-        Max Quantity:
-        <input value="{{model.MaxQuantity$::input}}" />
-        Min Quantity:
-        <input value="{{model.MinQuantity$::input}}" />
-        <!-- Fix and fix for Firefox and IE
-        Oldest:
-        <input type="datetime-local" value="{{model.Oldest$::input}}" />
-        Youngest:
-        <input type="datetime-local" value="{{model.Youngest$::input}}" />
-        -->
-        <!--TODO: UnitType-->
-        <!--TODO: Long/Lati-tudeDD-->
-        Sort by:
-        <select value="{{model.SelectedSorter$::change}}">
-            <option value="DateSorter">Published date</option>
-            <option value="DistanceSorter">Distance</option>
-            <option value="PPUSorter">Price per unit</option>
-            <option value="PriceSorter">Price</option>
-            <option value="QuantitySorter">Quantity</option>
-            <option value="WeightedSorter">Weighted Advanced Sorter</option>
-        </select>
-        <starcounter-include partial="{{model.Sorter}}"></starcounter-include>
+        <label>
+            Max Distance:
+            <input value="{{model.MaxDistance$::input}}" />
+        </label>
+        <label>
+            Min Distance:
+            <input value="{{model.MinDistance$::input}}" />
+        </label>
+        <label>
+            Max Matches:
+            <input value="{{model.MaxMatches$::input}}" />
+        </label>
+        <label>
+            Price per unit:
+            <input value="{{model.PricePerUnitLimit$::input}}" />
+        </label>
+        <label>
+            Max Quantity:
+            <input value="{{model.MaxQuantity$::input}}" />
+        </label>
+        <label>
+            Min Quantity:
+            <input value="{{model.MinQuantity$::input}}" />
+        </label>
+        <label>
+            Sort by:
+            <select value="{{model.SelectedSorter$::change}}">
+                <option value="DateSorter">Published date</option>
+                <option value="DistanceSorter">Distance</option>
+                <option value="PPUSorter">Price per unit</option>
+                <option value="PriceSorter">Price</option>
+                <option value="QuantitySorter">Quantity</option>
+                <option value="WeightedSorter">Weighted Advanced Sorter</option>
+            </select>
+            <starcounter-include partial="{{model.Sorter}}"></starcounter-include>
+        </label>
         <button value="{{model.SubmitTrigger$::click}}" onmousedown="++this.value">Search</button>
     </template>
 </template>

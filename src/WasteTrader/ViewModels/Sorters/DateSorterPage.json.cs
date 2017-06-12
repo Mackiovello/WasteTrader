@@ -1,6 +1,5 @@
 using Starcounter;
 using WasteTrader.Matchmaking.Sorters;
-using System;
 using System.Collections.Generic;
 using WasteTrader.Database;
 

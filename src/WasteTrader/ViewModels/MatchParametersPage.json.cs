@@ -5,6 +5,7 @@ using WasteTrader.Matchmaking;
 using System;
 using WasteTrader.Database;
 using WasteTrader.MathUtils;
+using System.Collections.Generic;
 
 namespace WasteTrader.ViewModels
 {
@@ -21,7 +22,6 @@ namespace WasteTrader.ViewModels
 
         public Action<Waste[]> WasteDump { protected get; set; }
 
-        public Type SorterType { get; set; }
         void Handle(Input.SubmitTrigger action)
         {
             BasicMatchParameters matchParams = new BasicMatchParameters
@@ -41,36 +41,20 @@ namespace WasteTrader.ViewModels
             WasteDump(matches);
         }
 
+        protected readonly IDictionary<string, Func<Json>> sorters = new Dictionary<string, Func<Json>>
+        {
+            {"DateSorter",() => new DateSorterPage()},
+            {"DistanceSorter", () => new DistanceSorterPage() },
+            {"PPUSorter", () => new PricePerUnitSorterPage() },
+            {"PriceSorter", () => new PriceSorterPage() },
+            {"QuantitySorter", () => new QuantitySorterPage() },
+            {"WeightedSorter", () => new WeightedSorterPage() }
+        };
 
         void Handle(Input.SelectedSorter action)
         {
-            switch (action.Value)
-            {
-                case "DateSorter":
-                    Sorter = new DateSorterPage();
-                    SorterType = typeof(DateSorter);
-                    break;
-                case "DistanceSorter":
-                    Sorter = new DistanceSorterPage();
-                    SorterType = typeof(DistanceSorter);
-                    break;
-                case "PPUSorter":
-                    Sorter = new PricePerUnitSorterPage();
-                    SorterType = typeof(PricePerUnitSorter);
-                    break;
-                case "PriceSorter":
-                    Sorter = new PriceSorterPage();
-                    SorterType = typeof(PriceSorterPage);
-                    break;
-                case "QuantitySorter":
-                    Sorter = new QuantitySorterPage();
-                    SorterType = typeof(QuantitySorter);
-                    break;
-                case "WeightedSorter":
-                    Sorter = new WeightedSorterPage();
-                    SorterType = typeof(WeightedSorter);
-                    break;
-            }
+            var found = sorters.TryGetValue(action.Value, out Func<Json> function);
+            if (found) Sorter = function.Invoke();
         }
     }
 }

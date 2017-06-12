@@ -34,7 +34,7 @@ namespace WasteTrader.Matchmaking
         /// <summary>
         /// Oldest allowed post date, null is infinite.
         /// </summary>
-        DateTime Oldest { get; }
+        DateTime? Oldest { get; }
         /// <summary>
         /// Youngest allowed post date
         /// </summary>

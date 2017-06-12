@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace WasteTrader.Measurements
 {
-    public class Length : Measurement<Length>
+    public class Length : Measurement
     {
         public Length(long Quantity, int UnitMetricPrefixPower)
         {

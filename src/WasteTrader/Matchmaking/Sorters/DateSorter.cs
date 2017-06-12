@@ -7,7 +7,7 @@ namespace WasteTrader.Matchmaking.Sorters
     {
         public DateSorter(bool descendingOrder)
         {
-            this.DescendingOrder = descendingOrder;
+            this.DescendingOrder = !descendingOrder;
         }
         protected override IComparable Valuer(Waste waste)
         {

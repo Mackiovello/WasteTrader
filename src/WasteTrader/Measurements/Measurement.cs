@@ -4,48 +4,12 @@ using WasteTrader.MathUtils;
 
 namespace WasteTrader.Measurements
 {
-    public abstract class Measurement<T> : IMeasurement<T> where T : Measurement<T>
+    public abstract class Measurement : IMeasurement
     {
         public long Quantity { get; set; }
         public int UnitMetricPrefixPower { get; set; }
         public abstract Dictionary<int, Unit> Symbols { get; }
         public long Value => this.Quantity * LongMath.Pow(10, UnitMetricPrefixPower);
-
-        public int CompareTo(object obj)
-        {
-            if (obj == null)
-                return 1;
-
-            if (obj is T other)
-                return Value.CompareTo(other.Value);
-
-            else
-                throw new ArgumentException("Object is not of type " + typeof(T).FullName);
-        }
-
-        public bool Equals(T other)
-        {
-            return Equals(this, other);
-        }
-
-        public virtual bool Equals(T x, T y)
-        {
-            if (x == null && y == null)
-                return true;
-            else if (x == null | y == null)
-                return false;
-            else if (x.GetType() != y.GetType())
-                return false;
-            else if (x.Value.Equals(y.Value))
-                return true;
-            else
-                return false;
-        }
-
-        public virtual int GetHashCode(T obj)
-        {
-            return (obj.Value ^ obj.GetType().GetHashCode()).GetHashCode();
-        }
 
         public override string ToString()
         {

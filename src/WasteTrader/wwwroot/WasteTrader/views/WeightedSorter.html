@@ -1,0 +1,28 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <template is="dom-bind">
+        <label>
+            Reverse weights:
+            <input type="checkbox" value="{{model.DescendingOrder$::change}}" />
+        </label>
+        <label> Add new sorter
+            <select value="{{model.AddSorter$::change}}">
+                <option value="DateSorter">Published date</option>
+                <option value="DistanceSorter">Distance</option>
+                <option value="PPUSorter">Price per unit</option>
+                <option value="PriceSorter">Price</option>
+                <option value="QuantitySorter">Quantity</option>
+            </select>
+        </label>
+        <ul>
+            <template is="dom-repeat" items="{{model.Sorters}}">
+                <li>
+                    <h6>{{item.Name}}</h6>
+                    <input type="range" value="{{item.Weight$::change}}" />
+                    <starcounter-include partial="{{item.Sorter}}"></starcounter-include>
+                </li>
+            </template>
+        </ul>
+    </template>
+</template>

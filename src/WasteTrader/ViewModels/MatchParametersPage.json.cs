@@ -1,47 +1,60 @@
-using System;
 using Starcounter;
-using WasteTrader.Database;
-using WasteTrader.Matchmaking;
+using WasteTrader.ViewModels.Sorters;
 using WasteTrader.Matchmaking.Sorters;
+using WasteTrader.Matchmaking;
+using System;
+using WasteTrader.Database;
 using WasteTrader.MathUtils;
+using System.Collections.Generic;
 
 namespace WasteTrader.ViewModels
 {
-    partial class MatchParametersPage : Json, IMatchParameters
+    partial class MatchParametersPage : Json
     {
         static MatchParametersPage()
         {
-            DefaultTemplate.Parameters.MaxDistance.Bind = "MaxDistance";
-            DefaultTemplate.Parameters.MinDistance.Bind = "MinDistance";
-            DefaultTemplate.Parameters.MaxMatches.Bind = "MaxMatches";
-            DefaultTemplate.Parameters.PricePerUnitLimit.Bind = "PricePerUnitLimit";
-            DefaultTemplate.Parameters.MaxQuantity.Bind = "MaxQuantity";
-            DefaultTemplate.Parameters.MinQuantity.Bind = "MinQuantity";
-            DefaultTemplate.Parameters.Oldest.Bind = "Oldest";
-            DefaultTemplate.Parameters.Youngest.Bind = "Youngest";
-            DefaultTemplate.Parameters.UnitType.Bind = "UnitType";
+            DefaultTemplate.MaxDistance.InstanceType = typeof(double);
+            DefaultTemplate.MinDistance.InstanceType = typeof(double);
+            DefaultTemplate.PricePerUnitLimit.InstanceType = typeof(double);
+            DefaultTemplate.LongitudeDD.InstanceType = typeof(double);
+            DefaultTemplate.LatitudeDD.InstanceType = typeof(double);
         }
 
-        public double MaxDistance { get; }
+        public Action<Waste[]> WasteDump { protected get; set; }
 
-        public double MinDistance { get; }
+        void Handle(Input.SubmitTrigger action)
+        {
+            BasicMatchParameters matchParams = new BasicMatchParameters
+            {
+                MaxDistance = MaxDistance,
+                MinDistance = MinDistance,
+                MaxMatches = (int)MaxMatches,
+                PricePerUnitLimit = PricePerUnitLimit,
+                MaxQuantity = MaxQuantity,
+                MinQuantity = MinQuantity,
+                UnitType = 0,
+                SearchFrom = new NoDBLocation(LongitudeDD, LatitudeDD),
+                Sorter = (IMatchSorter)Sorter,
+            };
+            SimpleMatchMaker matchMaker = new SimpleMatchMaker();
+            Waste[] matches = matchMaker.Match(matchParams, Db.SQL<Waste>($"SELECT i FROM {typeof(Waste)} i"));
+            WasteDump(matches);
+        }
 
-        public int MaxMatches { get; }
+        protected readonly IDictionary<string, Func<Json>> sorters = new Dictionary<string, Func<Json>>
+        {
+            {"DateSorter",() => new DateSorterPage()},
+            {"DistanceSorter", () => new DistanceSorterPage() },
+            {"PPUSorter", () => new PricePerUnitSorterPage() },
+            {"PriceSorter", () => new PriceSorterPage() },
+            {"QuantitySorter", () => new QuantitySorterPage() },
+            {"WeightedSorter", () => new WeightedSorterPage() }
+        };
 
-        public double PricePerUnitLimit { get; }
-
-        public long MaxQuantity { get; }
-
-        public long MinQuantity { get; }
-
-        public DateTime Oldest { get; }
-
-        public DateTime Youngest { get; }
-
-        public UnitType UnitType { get; }
-
-        public ILocation SearchFrom => new NoDBLocation((double) Parameters.LongitudeDD, (double) Parameters.LatitudeDD);
-
-        public IMatchSorter Sorter => throw new NotImplementedException();
+        void Handle(Input.SelectedSorter action)
+        {
+            bool found = sorters.TryGetValue(action.Value, out Func<Json> function);
+            if (found) Sorter = function.Invoke();
+        }
     }
 }

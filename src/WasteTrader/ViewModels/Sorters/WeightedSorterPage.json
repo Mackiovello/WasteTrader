@@ -1,8 +1,11 @@
 {
+  "Html": "/WasteTrader/views/WeightedSorter.html",
   "DescendingOrder$": false,
+  "AddSorter$": "",
   "Sorters": [
     {
-      "Weight": 1.0,
+      "Name": "",
+      "Weight$": 50,
       "Sorter": {}
     }
   ]

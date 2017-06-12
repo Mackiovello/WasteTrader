@@ -9,45 +9,70 @@ namespace WasteTrader.Matchmaking
 {
     class SimpleMatchMaker : RoughMatchMaker
     {
+
+        protected bool DateFilter(DateTime time, IMatchParameters parameters)
+        {
+            if (time <= parameters.Youngest.ToUniversalTime())
+                return false;
+            else
+                return (parameters.Oldest == null || time <= parameters.Oldest?.ToUniversalTime());
+        }
+
+        protected bool UnitTypeFilter(UnitType type, IMatchParameters parameters)
+        {
+            return (parameters.UnitType == 0 || type == parameters.UnitType);
+        }
+
+        protected bool QuantityFilter(long quantity, IMatchParameters parameters)
+        {
+            if (quantity < parameters.MinQuantity)
+                return false;
+            else
+                return (parameters.MaxQuantity == 0 || quantity < parameters.MaxQuantity);
+        }
+
+        protected bool PricePerUnitFilter(long quantity, long price, IMatchParameters parameters)
+        {
+            return (parameters.PricePerUnitLimit == 0 || ((double)quantity) / price < parameters.PricePerUnitLimit);
+        }
+
+        protected bool DistanceFilter(ILocation location, IMatchParameters parameters)
+        {
+            if (parameters.SearchFrom == null)
+                return true;
+
+            double distance = GeographyMath.RoughEarthDistance(parameters.SearchFrom, location);
+
+            if (distance > parameters.MinDistance)
+                return false;
+            else
+                return (parameters.MaxDistance == 0 || distance < parameters.MaxDistance);
+
+        }
+
         public override Waste[] Match(IMatchParameters parameters, IEnumerable<Waste> searchspace)
         {
-            var filtered = searchspace.AsParallel().Where(w =>
+            var filtered = searchspace.Where(waste =>
             {
-                //Filter by date
-                DateTime univ = w.EntryTime.ToUniversalTime();
-                if (univ <= parameters.Youngest.ToUniversalTime())
+                if (DateFilter(waste.EntryTime, parameters) == false)
                     return false;
-                else if (parameters.Oldest != null && univ >= parameters.Oldest.ToUniversalTime())
+                else if (UnitTypeFilter(waste.Unit, parameters) == false)
                     return false;
 
-                //Filter by UnitType
-                if (parameters.UnitType != 0 && w.Unit != parameters.UnitType)
-                    return false;
+                IMeasurement measurement = waste.Measurement;
 
-                IMeasurement<object> measurement = w.Measurement;
-
-                //Filter by Quantity
-                if (measurement.Value < parameters.MinQuantity)
+                if (QuantityFilter(measurement.Quantity, parameters) == false)
                     return false;
-                else if (parameters.MaxQuantity != 0 && measurement.Value > parameters.MaxQuantity)
+                else if (PricePerUnitFilter(measurement.Quantity, waste.Price, parameters) == false)
                     return false;
-
-                //Filter by PricePerUnit
-                if (parameters.PricePerUnitLimit != 0 && ((double)measurement.Value) / w.Price > parameters.PricePerUnitLimit)
+                else if (DistanceFilter(waste.Location, parameters) == false)
                     return false;
-
-                //Filter by Distance
-                double distance = GeographyMath.RoughEarthDistance(parameters.SearchFrom, w.Location);
-
-                if (distance > parameters.MinDistance)
-                    return false;
-                else if (parameters.MaxDistance != 0 && distance > parameters.MaxDistance)
-                    return false;
-
-                return true;
+                else
+                    return true;
             });
 
-            return parameters.Sorter.Sort(filtered).Take(parameters.MaxMatches).ToArray();
+            Waste[] sorted = parameters.Sorter.Sort(filtered).Take(parameters.MaxMatches).ToArray();
+            return sorted;
         }
     }
 }

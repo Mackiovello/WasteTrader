@@ -1,6 +1,8 @@
 ﻿using Starcounter;
 using WasteTrader.Database;
 using WasteTrader.ViewModels;
+using WasteTrader.ViewModels.Sorters;
+using WasteTrader.Matchmaking.Sorters;
 
 namespace WasteTrader.Api
 {
@@ -11,6 +13,12 @@ namespace WasteTrader.Api
             Handle.GET("/Waste2Value/partial/Hitta", () =>
             {
                 var page = new FindPage();
+                page.Filter = new MatchParametersPage
+                {
+                    Sorter = new DateSorterPage(),
+                    SelectedSorter = "DateSorter",
+                    WasteDump = (Waste[] w) => { page.Waste.Data = w; }
+                };
                 page.Waste.Data = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC");
                 return page;
             });

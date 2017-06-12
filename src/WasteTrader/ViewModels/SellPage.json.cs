@@ -5,11 +5,17 @@ namespace WasteTrader.ViewModels
 {
     partial class SellPage : Json
     {
+        static SellPage()
+        {
+            DefaultTemplate.Waste.LatitudeDD.InstanceType = typeof(double);
+            DefaultTemplate.Waste.LongitudeDD.InstanceType = typeof(double);
+        }
+
         void Handle(Input.SubmitTrigger action)
         {
             Db.Transact(() =>
             {
-                new SellWaste
+                SellWaste sellWaste = new SellWaste(new MathUtils.NoDBLocation(this.Waste.LongitudeDD, this.Waste.LatitudeDD))
                 {
                     Description = this.Waste.Description,
                     Quantity = (long)this.Waste.Quantity,

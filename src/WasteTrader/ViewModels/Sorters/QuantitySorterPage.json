@@ -1,3 +1,5 @@
 {
-  "DescendingOrder$": false
+  "Html": "/WasteTrader/views/DescendingSorter.html",
+  "DescendingOrder$": false,
+  "Label": "Highest quantity first:"
 }

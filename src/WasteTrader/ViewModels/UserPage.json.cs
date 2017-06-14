@@ -11,6 +11,5 @@ namespace WasteTrader.ViewModels
             DefaultTemplate.SellWastes.ElementType.InstanceType = typeof(SellWasteJson);
             DefaultTemplate.BuyWastes.ElementType.InstanceType = typeof(BuyWasteJson);
         }
-        public string Html => "/WasteTrader/views/UserPage.html";
     }
 }

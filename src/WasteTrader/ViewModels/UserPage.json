@@ -1,6 +1,6 @@
 {
+  "Html": "/WasteTrader/views/UserPage.html",
   "Name": "",
-  "Html": "",
   "SellWastes": [ {} ],
   "BuyWastes": [ {} ]
 }

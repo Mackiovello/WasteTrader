@@ -44,6 +44,9 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Simplified.Data.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -117,6 +120,9 @@
     <Compile Include="ViewModels\Location.json.cs">
       <DependentUpon>Location.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\LogonPage.json.cs">
+      <DependentUpon>LogonPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
     </Compile>
@@ -158,6 +164,10 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <TypedJSON Include="ViewModels\LogonPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <None Include="wwwroot\WasteTrader\views\LogOn.html" />
     <None Include="wwwroot\WasteTrader\views\WeightedSorter.html" />
     <None Include="wwwroot\WasteTrader\views\DescendingSorter.html" />
     <None Include="wwwroot\WasteTrader\views\MatchParametersPage.html" />

@@ -1,10 +1,12 @@
 ﻿using Starcounter;
 using WasteTrader.ViewModels;
+using Simplified.Ring3;
 
 namespace WasteTrader.Api
 {
     class MainHandlers : IHandler
     {
+
         public void Register()
         {
             var html = @"<!DOCTYPE html>
@@ -32,7 +34,8 @@ namespace WasteTrader.Api
             Application.Current.Use(new HtmlFromJsonProvider());
             Application.Current.Use(new PartialToStandaloneHtmlProvider(html));
 
-            Handle.GET("/WasteTrader", () => {
+            Handle.GET("/WasteTrader", () =>
+            {
                 return Self.GET("/Waste2Value");
             });
 
@@ -45,8 +48,20 @@ namespace WasteTrader.Api
                 return master;
             });
 
+            Handle.GET("/Waste2Value/logon", () =>
+            {
+                var master = GetMasterPage();
+
+                master.CurrentPage = Self.GET("/Waste2Value/partial/logon");
+
+                return master;
+            });
+
             Handle.GET("/Waste2Value/Salj", () =>
             {
+                if (NoUser())
+                    return Self.GET("/Waste2Value/logon");
+
                 var master = GetMasterPage();
 
                 master.CurrentPage = new SellPage();
@@ -56,12 +71,21 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/Hitta", () =>
             {
+                if (NoUser())
+                    return Self.GET("/Waste2Value/logon");
+
                 var master = GetMasterPage();
 
                 master.CurrentPage = Self.GET("/Waste2Value/partial/Hitta");
 
                 return master;
             });
+        }
+
+        public bool NoUser()
+        {
+            SystemUser user = SystemUser.GetCurrentSystemUser();
+            return user == null;
         }
 
         private MasterPage GetMasterPage()

@@ -1,0 +1,30 @@
+﻿<link rel="import" href="/sys/polymer/polymer.html">
+
+<template>
+    <template is="dom-bind">
+        <div class="mdc-card wastetrader-card">
+            <section class="mdc-card__primary">
+                <h2 class="mdc-card__title mdc-card__title--large">{{item.Description}}</h2>
+            </section>
+            <section class="mdc-card__supporting-text">
+                <p>Mängd: {{model.Quantity}} {{model.Unit}}</p>
+                <p>Pris: {{model.Price}}</p>
+                <p>Inlagd: {{model.FormattedEntryTime}}</p>
+                <p>Försäljare: <a href="{{model.UserURI}}">{{model.UserName}}</a></p>
+            </section>
+            <section class="mdc-card__actions">
+                <button class="mdc-button">Läs mer</button>
+            </section>
+        </div>
+        <script>
+                    (function () {
+                        const template = (document._currentScript || document.currentScript).previousElementSibling;
+                        const buttons = template.getElementsByClassName('mdc-button');
+
+                        for (var i = 0, btn; btn = buttons[i]; i++) {
+                            mdc.ripple.MDCRipple.attachTo(btn);
+                        }
+                    })();
+        </script>
+    </template>
+</template>

@@ -37,7 +37,10 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/partial/user/{?}", (string username) => {
                 var page = new UserPage();
-                page.Data = Db.SQL<SystemUser>($"SELECT u FROM {typeof(SystemUser)} u WHERE u.{nameof(SystemUser.Name)} = ?", username).FirstOrDefault();
+                SystemUser user = Db.SQL<SystemUser>($"SELECT u FROM {typeof(SystemUser)} u WHERE u.{nameof(SystemUser.Name)} = ?", username).FirstOrDefault();
+                page.Data = user;
+                page.SellWastes.Data = Db.SQL<SellWaste>($"SELECT w FROM {typeof(SellWaste)} w WHERE w.{nameof(SellWaste.User)} = ?", user);
+                page.BuyWastes.Data = Db.SQL<BuyWaste>($"SELECT w FROM {typeof(BuyWaste)} w WHERE w.{nameof(BuyWaste.User)} = ?", user);
                 return page;
             }, internalOption);
         }

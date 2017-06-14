@@ -5,7 +5,8 @@
   "UnitMetricPrefixPower": 0,
   "Unit": 0,
   "Price": 0,
-  "FormattedEntryTime": "",
-  "NamedCategory": "",
-  "Location": {}
+  "Location": {},
+  "UserName": "",
+  "UserURI": "",
+  "FormattedEntryTime": ""
 }

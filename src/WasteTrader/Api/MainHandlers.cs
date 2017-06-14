@@ -80,6 +80,15 @@ namespace WasteTrader.Api
 
                 return master;
             });
+
+            Handle.GET("/Waste2Value/user/{?}", (string username) =>
+            {
+                if (NoUser())
+                    return Self.GET("/Waste2Value/logon");
+                var master = GetMasterPage();
+                master.CurrentPage = Self.GET("/Waste2Value/partial/user/" + username);
+                return master;
+            });
         }
 
         public bool NoUser()

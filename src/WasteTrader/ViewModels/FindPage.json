@@ -1,12 +1,6 @@
 {
   "Html": "/WasteTrader/views/FindPage.html",
   "Filter": {},
-  "Waste": [
-    {
-      "Description": "",
-      "Quantity": 0.0,
-      "Unit": "",
-      "FormattedDate": ""  
-    }
-  ]
+  "BuyWaste": [ {} ],
+  "SellWaste": [ {} ]
 }

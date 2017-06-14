@@ -2,6 +2,8 @@
 using WasteTrader.Database;
 using WasteTrader.ViewModels;
 using WasteTrader.ViewModels.Sorters;
+using Simplified.Ring3;
+using System.Linq;
 
 namespace WasteTrader.Api
 {
@@ -19,9 +21,9 @@ namespace WasteTrader.Api
                 {
                     Sorter = new DateSorterPage(),
                     SelectedSorter = "DateSorter",
-                    WasteDump = (Waste[] w) => { page.Waste.Data = w; }
+                    WasteDump = (Waste[] w) => { page.SellWaste.Data = w; }
                 };
-                page.Waste.Data = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC");
+                page.SellWaste.Data = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC");
                 return page;
             }, internalOption);
 
@@ -32,6 +34,12 @@ namespace WasteTrader.Api
             Handle.GET("/Waste2Value/partial/header", () => new Header(), internalOption);
 
             Handle.GET("/Waste2Value/partial/logon", () => new LogonPage(), internalOption);
+
+            Handle.GET("/Waste2Value/partial/user/{?}", (string username) => {
+                var page = new UserPage();
+                page.Data = Db.SQL<SystemUser>($"SELECT u FROM {typeof(SystemUser)} u WHERE u.{nameof(SystemUser.Name)} = ?", username).FirstOrDefault();
+                return page;
+            }, internalOption);
         }
     }
 }

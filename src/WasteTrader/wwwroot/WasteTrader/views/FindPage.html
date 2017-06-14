@@ -5,19 +5,20 @@
         <div class="wastetrader-wrapper">
             <h1 class="mdc-typography--display2 wastetrader-main-headline">Hitta annons</h1>
             <starcounter-include partial="{{model.Filter}}"></starcounter-include>
-            <template is="dom-repeat" items="{{model.Waste}}">
+            <template is="dom-repeat" items="{{model.SellWaste}}">
                 <div class="mdc-card wastetrader-card">
                     <section class="mdc-card__primary">
                         <h2 class="mdc-card__title mdc-card__title--large">{{item.Description}}</h2>
                     </section>
                     <section class="mdc-card__supporting-text">
                         <p>Mängd: {{item.Quantity}} {{item.Unit}}</p>
-                        <p>Inlagd: {{item.FormattedDate}}</p>
+                        <p>Inlagd: {{item.FormattedEntryTime}}</p>
+                        <p>Försäljare: <a href="{{item.UserURI}}">{{item.UserName}}</a></p>
                     </section>
                     <section class="mdc-card__actions">
                         <button class="mdc-button">Läs mer</button>
                     </section>
-                </div>       
+                </div>
                 <script>
                     (function () {
                         const template = (document._currentScript || document.currentScript).previousElementSibling;

@@ -3,6 +3,7 @@ using Starcounter;
 using System.Linq;
 using WasteTrader.Measurements;
 using WasteTrader.MathUtils;
+using Simplified.Ring3;
 
 namespace WasteTrader.Database
 {
@@ -34,5 +35,8 @@ namespace WasteTrader.Database
         public Location Location => Db.SQL<Location>($"SELECT l FROM {nameof(Location)} l WHERE l.{nameof(Location.Waste)} = ?", this).FirstOrDefault();
         public long Price { get; set; }
         public string Name { get; set; }
+        public SystemUser User { get; set; }
+        public string UserName => User.Name;
+        public string UserURI => "/Waste2Value/user/" + UserName;
     }
 }

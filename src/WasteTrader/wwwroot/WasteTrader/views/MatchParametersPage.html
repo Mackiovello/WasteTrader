@@ -4,9 +4,9 @@
     <template is="dom-bind">
         <div class="mdc-card wastetrader-card">
             <section class="mdc-card__primary">
-                <h2 class="mdc-card__title mdc-card__title--large">Filtrera<i class="wastetrader__expand-icon" on-click="toggleFilters">expand_more</i></h2>
+                <h2 class="mdc-card__title mdc-card__title--large">Filtrera<i class="wastetrader__expand-icon" on-click="toggleFilters">expand_less</i></h2>
             </section>
-            <div>
+            <div class="wastetrader--hidden">
                 <section class="mdc-card__supporting-text">
                     <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
                         <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-distance" value="{{model.MaxDistance$::input}}">
@@ -50,12 +50,9 @@
 
                 template.toggleFilters = function(event) {
                     const filters = event.target.parentNode.parentNode.nextElementSibling;
+                    filters.classList.toggle("wastetrader--hidden");
+
                     const icon = event.target;
-                    if (filters.style.display == "none") {
-                        filters.style.display = "block";
-                    } else {
-                        filters.style.display = "none";
-                    }
                     icon.classList.toggle("wastetrader__expand-icon--rotated");
                 }
             })();

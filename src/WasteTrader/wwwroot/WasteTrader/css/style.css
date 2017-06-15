@@ -48,3 +48,7 @@ body {
 .wastetrader__expand-icon--rotated {
     transform: rotate(180deg);
 }
+
+.wastetrader--hidden {
+    display: none;
+}

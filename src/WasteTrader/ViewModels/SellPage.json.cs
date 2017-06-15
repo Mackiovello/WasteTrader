@@ -1,6 +1,7 @@
 using Starcounter;
 using WasteTrader.Database;
 using Simplified.Ring3;
+using System.Linq;
 
 namespace WasteTrader.ViewModels
 {
@@ -21,7 +22,7 @@ namespace WasteTrader.ViewModels
                     Description = this.Waste.Description,
                     Quantity = this.Waste.Quantity,
                     Unit = (UnitType)this.Waste.Unit,
-                    User = SystemUser.GetCurrentSystemUser()
+                    User = Db.SQL<Client>($"SELECT c FROM {typeof(Client)} c WHERE c.{nameof(Client.SystemUser)} = ?", SystemUser.GetCurrentSystemUser()).FirstOrDefault()
                 };
             });
 

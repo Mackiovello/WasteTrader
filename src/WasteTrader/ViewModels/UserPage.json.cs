@@ -1,10 +1,8 @@
 using Starcounter;
-using Simplified.Ring3;
-using System.Linq;
 
 namespace WasteTrader.ViewModels
 {
-    partial class UserPage : Json, IBound<SystemUser>
+    partial class UserPage : Json, IBound<Database.Client>
     {
         static UserPage()
         {

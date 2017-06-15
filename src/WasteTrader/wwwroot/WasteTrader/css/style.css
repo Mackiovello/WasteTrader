@@ -11,6 +11,10 @@ body {
     display: flex;
 }
 
+.wastetrader--block {
+    display: block;
+}
+
 .wastetrader-wrapper {
     max-width: 800px;
     margin: 0 auto;
@@ -30,4 +34,17 @@ body {
 
 .wastetrader-input--fullwidth {
     width: 100%;
+}
+
+.wastetrader__expand-icon {
+    font-family: 'Material Icons';
+    font-style: normal;
+    float: right;
+    font-size: 2.8rem;
+    cursor: pointer;
+    transition: transform .2s cubic-bezier(.19,0,.9,1);
+}
+
+.wastetrader__expand-icon--rotated {
+    transform: rotate(180deg);
 }

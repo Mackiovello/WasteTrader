@@ -3,31 +3,38 @@
 <template>
     <template is="dom-bind">
         <div class="mdc-card wastetrader-card">
-            <label>
-                Max avstånd:
-                <input value="{{model.MaxDistance$::input}}" />
-            </label>
-            <label>
-                Min anstånd:
-                <input value="{{model.MinDistance$::input}}" />
-            </label>
-            <label>
-                Max träffar:
-                <input value="{{model.MaxMatches$::input}}" />
-            </label>
-            <label>
-                Pris per enhet:
-                <input value="{{model.PricePerUnitLimit$::input}}" />
-            </label>
-            <label>
-                Max kvantitet:
-                <input value="{{model.MaxQuantity$::input}}" />
-            </label>
-            <label>
-                Min kvantitet:
-                <input value="{{model.MinQuantity$::input}}" />
-            </label>
-            <button value="{{model.SubmitTrigger$::click}}" onmousedown="++this.value">Sök</button>
+            <section class="mdc-card__primary">
+                <h2 class="mdc-card__title mdc-card__title--large">Filtrera</h2>
+            </section>
+            <section class="mdc-card__supporting-text">
+                <label>
+                    Max avstånd:
+                    <input value="{{model.MaxDistance$::input}}" />
+                </label>
+                <label>
+                    Min anstånd:
+                    <input value="{{model.MinDistance$::input}}" />
+                </label>
+                <label>
+                    Max träffar:
+                    <input value="{{model.MaxMatches$::input}}" />
+                </label>
+                <label>
+                    Pris per enhet:
+                    <input value="{{model.PricePerUnitLimit$::input}}" />
+                </label>
+                <label>
+                    Max kvantitet:
+                    <input value="{{model.MaxQuantity$::input}}" />
+                </label>
+                <label>
+                    Min kvantitet:
+                    <input value="{{model.MinQuantity$::input}}" />
+                </label>
+            </section>
+            <section class="mdc-card__actions">
+                <button class="mdc-button mdc-card__action" value="{{model.SubmitTrigger$::click}}" onclick="++this.value">Sök</button>
+            </section>
         </div>
     </template>
 </template>

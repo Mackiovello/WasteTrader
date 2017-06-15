@@ -4,41 +4,60 @@
     <template is="dom-bind">
         <div class="mdc-card wastetrader-card">
             <section class="mdc-card__primary">
-                <h2 class="mdc-card__title mdc-card__title--large">Filtrera</h2>
+                <h2 class="mdc-card__title mdc-card__title--large">Filtrera<i class="wastetrader__expand-icon" on-click="toggleFilters">expand_more</i></h2>
             </section>
-            <section class="mdc-card__supporting-text">
-                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
-                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-distance" value="{{model.MaxDistance$::input}}">
-                    <label class="mdc-textfield__label" for="wastetrader-filter__max-distance">Längst avstånd</label>
-                </div>
-                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
-                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__min-distance" value="{{model.MinDistance$::input}}">
-                    <label class="mdc-textfield__label" for="wastetrader-filter__min-distance">Kortast avstånd</label>
-                </div>
-                <br>
-                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
-                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-hits" value="{{model.MaxMatches$::input}}">
-                    <label class="mdc-textfield__label" for="wastetrader-filter__max-hits">Max antal träffar</label>
-                </div>
-                <br>
-                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
-                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__price-per-unit" value="{{model.PricePerUnitLimit$::input}}">
-                    <label class="mdc-textfield__label" for="wastetrader-filter__price-per-unit">Pris per enhet</label>
-                </div>
-                <br>
-                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
-                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-quantity" value="{{model.MaxQuantity$::input}}">
-                    <label class="mdc-textfield__label" for="wastetrader-filter__max-quantity">Max kvantitet</label>
-                </div>
-                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
-                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__min-quantity" value="{{model.MinQuantity$::input}}">
-                    <label class="mdc-textfield__label" for="wastetrader-filter__min-quantity">Min kvantitet</label>
-                </div>
-            </section>
-            <section class="mdc-card__actions">
-                <button class="mdc-button mdc-card__action" value="{{model.SubmitTrigger$::click}}" onclick="++this.value">Sök</button>
-            </section>
+            <div>
+                <section class="mdc-card__supporting-text">
+                    <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                        <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-distance" value="{{model.MaxDistance$::input}}">
+                        <label class="mdc-textfield__label" for="wastetrader-filter__max-distance">Längst avstånd</label>
+                    </div>
+                    <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                        <input type="number" class="mdc-textfield__input" id="wastetrader-filter__min-distance" value="{{model.MinDistance$::input}}">
+                        <label class="mdc-textfield__label" for="wastetrader-filter__min-distance">Kortast avstånd</label>
+                    </div>
+                    <br>
+                    <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                        <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-hits" value="{{model.MaxMatches$::input}}">
+                        <label class="mdc-textfield__label" for="wastetrader-filter__max-hits">Max antal träffar</label>
+                    </div>
+                    <br>
+                    <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                        <input type="number" class="mdc-textfield__input" id="wastetrader-filter__price-per-unit" value="{{model.PricePerUnitLimit$::input}}">
+                        <label class="mdc-textfield__label" for="wastetrader-filter__price-per-unit">Pris per enhet</label>
+                    </div>
+                    <br>
+                    <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                        <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-quantity" value="{{model.MaxQuantity$::input}}">
+                        <label class="mdc-textfield__label" for="wastetrader-filter__max-quantity">Max kvantitet</label>
+                    </div>
+                    <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                        <input type="number" class="mdc-textfield__input" id="wastetrader-filter__min-quantity" value="{{model.MinQuantity$::input}}">
+                        <label class="mdc-textfield__label" for="wastetrader-filter__min-quantity">Min kvantitet</label>
+                    </div>
+                </section>
+                <section class="mdc-card__actions">
+                    <button class="mdc-button mdc-card__action" value="{{model.SubmitTrigger$::click}}" onclick="++this.value" data-mdc-auto-init="MDCRipple">Sök</button>
+                </section>
+            </div>
         </div>
-        <script>mdc.autoInit();</script>
+        <script>mdc.autoInit()</script>
     </template>
+        <script>
+            (function() {
+                const script = document._currentScript || document.currentScript;
+                const template = script.previousElementSibling;
+
+                template.toggleFilters = function(event) {
+                    const filters = event.target.parentNode.parentNode.nextElementSibling;
+                    const icon = event.target;
+                    if (filters.style.display == "none") {
+                        filters.style.display = "block";
+                    } else {
+                        filters.style.display = "none";
+                    }
+                    icon.classList.toggle("wastetrader__expand-icon--rotated");
+                }
+            })();
+        </script>
 </template>

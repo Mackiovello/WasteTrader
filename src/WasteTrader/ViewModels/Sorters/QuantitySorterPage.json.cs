@@ -12,5 +12,7 @@ namespace WasteTrader.ViewModels.Sorters
             QuantitySorter sorter = new QuantitySorter(DescendingOrder);
             return sorter.Sort(waste);
         }
+
+        public string Label => "Högst kvantitet först:";
     }
 }

@@ -12,5 +12,7 @@ namespace WasteTrader.ViewModels.Sorters
             var sorter = new DateSorter(DescendingOrder);
             return sorter.Sort(waste);
         }
+
+        public string Label => "Äldst först:";
     }
 }

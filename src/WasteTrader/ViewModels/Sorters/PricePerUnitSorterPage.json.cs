@@ -12,5 +12,7 @@ namespace WasteTrader.ViewModels.Sorters
             PricePerUnitSorter sorter = new PricePerUnitSorter(DescendingOrder);
             return sorter.Sort(waste);
         }
+
+        public string Label => "Dyrast först:";
     }
 }

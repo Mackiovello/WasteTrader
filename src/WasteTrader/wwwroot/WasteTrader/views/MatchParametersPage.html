@@ -7,34 +7,38 @@
                 <h2 class="mdc-card__title mdc-card__title--large">Filtrera</h2>
             </section>
             <section class="mdc-card__supporting-text">
-                <label>
-                    Max avstånd:
-                    <input value="{{model.MaxDistance$::input}}" />
-                </label>
-                <label>
-                    Min anstånd:
-                    <input value="{{model.MinDistance$::input}}" />
-                </label>
-                <label>
-                    Max träffar:
-                    <input value="{{model.MaxMatches$::input}}" />
-                </label>
-                <label>
-                    Pris per enhet:
-                    <input value="{{model.PricePerUnitLimit$::input}}" />
-                </label>
-                <label>
-                    Max kvantitet:
-                    <input value="{{model.MaxQuantity$::input}}" />
-                </label>
-                <label>
-                    Min kvantitet:
-                    <input value="{{model.MinQuantity$::input}}" />
-                </label>
+                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-distance" value="{{model.MaxDistance$::input}}">
+                    <label class="mdc-textfield__label" for="wastetrader-filter__max-distance">Längst avstånd</label>
+                </div>
+                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__min-distance" value="{{model.MinDistance$::input}}">
+                    <label class="mdc-textfield__label" for="wastetrader-filter__min-distance">Kortast avstånd</label>
+                </div>
+                <br>
+                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-hits" value="{{model.MaxMatches$::input}}">
+                    <label class="mdc-textfield__label" for="wastetrader-filter__max-hits">Max antal träffar</label>
+                </div>
+                <br>
+                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__price-per-unit" value="{{model.PricePerUnitLimit$::input}}">
+                    <label class="mdc-textfield__label" for="wastetrader-filter__price-per-unit">Pris per enhet</label>
+                </div>
+                <br>
+                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__max-quantity" value="{{model.MaxQuantity$::input}}">
+                    <label class="mdc-textfield__label" for="wastetrader-filter__max-quantity">Max kvantitet</label>
+                </div>
+                <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+                    <input type="number" class="mdc-textfield__input" id="wastetrader-filter__min-quantity" value="{{model.MinQuantity$::input}}">
+                    <label class="mdc-textfield__label" for="wastetrader-filter__min-quantity">Min kvantitet</label>
+                </div>
             </section>
             <section class="mdc-card__actions">
                 <button class="mdc-button mdc-card__action" value="{{model.SubmitTrigger$::click}}" onclick="++this.value">Sök</button>
             </section>
         </div>
+        <script>mdc.autoInit();</script>
     </template>
 </template>

@@ -11,6 +11,10 @@ body {
     display: flex;
 }
 
+.wastetrader--block {
+    display: block;
+}
+
 .wastetrader-wrapper {
     max-width: 800px;
     margin: 0 auto;

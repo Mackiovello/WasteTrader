@@ -8,10 +8,10 @@ namespace WasteTrader.Database
 {
     public enum UnitType
     {
-        Mass = 1,
-        Length = 2,
-        Area = 3,
-        Volume = 4
+        Mass,
+        Length,
+        Area,
+        Volume
     }
 
     [Database]

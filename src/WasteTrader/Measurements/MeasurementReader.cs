@@ -22,7 +22,7 @@ namespace WasteTrader.Measurements
 
         public static IMeasurement Read(UnitType unit, long quantity, int unitMetricPrefixPower)
         {
-            return Types[unit].Invoke(quantity, unitMetricPrefixPower);
+            return Types[unit](quantity, unitMetricPrefixPower);
         }
     }
 }

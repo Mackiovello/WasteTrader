@@ -1,3 +1,9 @@
 {
-  "Html": "/WasteTrader/views/LogOn.html"
+  "Html": "/WasteTrader/views/LogOn.html",
+  "Name$": "",
+  "Username$": "",
+  "Email$": "",
+  "PasswordOne$": "",
+  "PasswordTwo$": "",
+  "SubmitTrigger$": 0
 }

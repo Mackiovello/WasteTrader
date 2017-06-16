@@ -3,6 +3,7 @@ using WasteTrader.Database;
 using WasteTrader.ViewModels;
 using WasteTrader.ViewModels.Sorters;
 using System.Linq;
+using Simplified.Ring3;
 
 namespace WasteTrader.Api
 {
@@ -32,11 +33,22 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/partial/header", () => new Header(), internalOption);
 
-            Handle.GET("/Waste2Value/partial/logon", () => new LogonPage(), internalOption);
+            Handle.GET("/Waste2Value/partial/logon", () => {
+                LogonPage page = new LogonPage();
+                Client user = SystemUser.GetCurrentSystemUser();
+                if(user != null)
+                {
+                    page.Client = user;
+                    page.Name = user.Name;
+                    page.Username = user.Username;
+                    page.Email = user.EmailAddress;
+                }
+                return page;
+            }, internalOption);
 
             Handle.GET("/Waste2Value/partial/user/{?}", (string username) => {
-                var page = new UserPage();
-                Client user = Db.SQL<Client>($"SELECT u FROM {typeof(Client)} u WHERE u.{nameof(Client.Username)} = ?", username).FirstOrDefault();
+                UserPage page = new UserPage();
+                Client user = Client.GetClientFromUsername(username);
                 page.Data = user;
                 page.SellWastes.Data = user.SellWastes;
                 page.BuyWastes.Data = user.BuyWastes;

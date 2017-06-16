@@ -22,7 +22,7 @@ namespace WasteTrader.ViewModels
                     Description = this.Waste.Description,
                     Quantity = this.Waste.Quantity,
                     Unit = (UnitType)this.Waste.Unit,
-                    User = Db.SQL<Client>($"SELECT c FROM {typeof(Client)} c WHERE c.{nameof(Client.SystemUser)} = ?", SystemUser.GetCurrentSystemUser()).FirstOrDefault()
+                    User = SystemUser.GetCurrentSystemUser()
                 };
             });
 

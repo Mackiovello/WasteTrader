@@ -71,6 +71,7 @@
     <Compile Include="Api\BlendingHandlers.cs" />
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Database\BuyWaste.cs" />
+    <Compile Include="Database\Client.cs" />
     <Compile Include="Matchmaking\BasicMatchParameters.cs" />
     <Compile Include="MathUtils\ILocation.cs" />
     <Compile Include="Database\SellWaste.cs" />
@@ -167,6 +168,7 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <TypedJSON Include="ViewModels\UserPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
@@ -174,7 +176,6 @@
     <TypedJSON Include="ViewModels\LogonPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
-    <None Include="wwwroot\WasteTrader\views\LogOn.html" />
     <None Include="wwwroot\WasteTrader\views\WeightedSorter.html" />
     <None Include="wwwroot\WasteTrader\views\DescendingSorter.html" />
     <None Include="wwwroot\WasteTrader\views\MatchParametersPage.html" />

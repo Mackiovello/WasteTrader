@@ -1,12 +1,13 @@
 {
-  "Name": "",
+  "Html": "/WasteTrader/views/WastePage.html",
   "Description": "",
   "Quantity": 0,
   "UnitMetricPrefixPower": 0,
   "Unit": 0,
   "Price": 0,
   "Location": {},
-  "UserName": "",
+  "Name": "",
+  "Username": "",
   "UserURI": "",
   "FormattedEntryTime": ""
 }

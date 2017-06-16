@@ -2,7 +2,7 @@ using Starcounter;
 
 namespace WasteTrader.ViewModels
 {
-    partial class SellWasteJson : Json, IExplicitBound<Database.SellWaste>
+    partial class SellWasteJson : Json, IBound<Database.SellWaste>
     {
         public string FormattedEntryTime => Data.EntryTime.Date.ToString("d");
     }

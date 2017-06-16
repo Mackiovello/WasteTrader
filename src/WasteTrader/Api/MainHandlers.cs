@@ -1,6 +1,8 @@
 ﻿using Starcounter;
 using WasteTrader.ViewModels;
 using Simplified.Ring3;
+using WasteTrader.Database;
+using System.Linq;
 
 namespace WasteTrader.Api
 {
@@ -93,8 +95,7 @@ namespace WasteTrader.Api
 
         public bool NoUser()
         {
-            SystemUser user = SystemUser.GetCurrentSystemUser();
-            return user == null;
+            return SystemUser.GetCurrentSystemUser() == null;
         }
 
         private MasterPage GetMasterPage()

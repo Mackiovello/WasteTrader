@@ -35,14 +35,6 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/partial/logon", () => {
                 LogonPage page = new LogonPage();
-                Client user = SystemUser.GetCurrentSystemUser();
-                if(user != null)
-                {
-                    page.Client = user;
-                    page.Name = user.Name;
-                    page.Username = user.Username;
-                    page.Email = user.EmailAddress;
-                }
                 return page;
             }, internalOption);
 

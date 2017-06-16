@@ -43,15 +43,10 @@ namespace WasteTrader.Database
                 EmailAddressRelation relation = Db.SQL<EmailAddressRelation>($"SELECT r FROM {typeof(EmailAddressRelation)} r WHERE r.{nameof(EmailAddressRelation.Somebody)} = ?", User).First;
                 return relation.EmailAddress.EMail;
             }
-            set
-            {
-                EmailAddressRelation relation = Db.SQL<EmailAddressRelation>($"SELECT r FROM {typeof(EmailAddressRelation)} r WHERE r.{nameof(EmailAddressRelation.Somebody)} = ?", User).First;
-                Db.Transact(() => relation.EmailAddress.EMail = value);
-            }
         }
-        public string Username { get => User.Username; set => Db.Transact(() => User.Username = value); }
-        public string Name { get => User.Name; set => Db.Transact(() => User.Name = value); }
-        public string Description { get => User.Description; set => Db.Transact(() => User.Description = value); }
+        public string Username { get => User.Username; }
+        public string Name { get => User.Name; }
+        public string Description { get => User.Description; }
         public IEnumerable<SellWaste> SellWastes => Db.SQL<SellWaste>($"SELECT w FROM {typeof(SellWaste)} w WHERE w.{nameof(SellWaste.User)} = ?", this);
         public IEnumerable<BuyWaste> BuyWastes => Db.SQL<BuyWaste>($"SELECT w FROM {typeof(BuyWaste)} w WHERE w.{nameof(BuyWaste.User)} = ?", this);
         public IEnumerable<Waste> Wastes => Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w WHERE w.{nameof(Waste.User)} = ?", this);

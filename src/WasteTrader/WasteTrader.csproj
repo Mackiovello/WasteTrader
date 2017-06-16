@@ -176,7 +176,6 @@
     <TypedJSON Include="ViewModels\LogonPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
-    <None Include="wwwroot\WasteTrader\views\LogOn.html" />
     <None Include="wwwroot\WasteTrader\views\WeightedSorter.html" />
     <None Include="wwwroot\WasteTrader\views\DescendingSorter.html" />
     <None Include="wwwroot\WasteTrader\views\MatchParametersPage.html" />

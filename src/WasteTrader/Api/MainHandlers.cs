@@ -17,6 +17,7 @@ namespace WasteTrader.Api
     <link rel=""import"" href=""/sys/starcounter.html"">
     <link rel=""import"" href=""/sys/starcounter-include/starcounter-include.html"">
     <link rel=""import"" href=""/sys/starcounter-debug-aid/src/starcounter-debug-aid.html"">
+    <script src=""/sys/material-components-web.min.js""></script>
 </head>
 <body>
     <template is=""dom-bind"" id=""puppet-root"">

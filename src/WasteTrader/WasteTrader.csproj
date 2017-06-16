@@ -168,6 +168,7 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\views\LogOnPage.html" />
     <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <TypedJSON Include="ViewModels\UserPage.json">
       <Generator>MsBuild:Compile</Generator>
@@ -211,7 +212,6 @@
     <TypedJSON Include="ViewModels\Sorters\WeightedSorterPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
-    <None Include="wwwroot\WasteTrader\scss\components\_header.scss" />
     <TypedJSON Include="ViewModels\Header.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>

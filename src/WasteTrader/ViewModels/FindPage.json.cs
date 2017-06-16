@@ -4,10 +4,10 @@ namespace WasteTrader.ViewModels
 {
     partial class FindPage : Json
     {
-        [FindPage_json.Waste]
-        partial class FindWastePartial : Json, IExplicitBound<Database.Waste>
+        static FindPage()
         {
-            public string FormattedDate => this.Data.EntryTime.Date.ToString("d");
+            DefaultTemplate.BuyWaste.ElementType.InstanceType = typeof(BuyWasteJson);
+            DefaultTemplate.SellWaste.ElementType.InstanceType = typeof(SellWasteJson);
         }
     }
 }

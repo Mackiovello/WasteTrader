@@ -1,5 +1,7 @@
 using Starcounter;
 using WasteTrader.Database;
+using Simplified.Ring3;
+using System.Linq;
 
 namespace WasteTrader.ViewModels
 {
@@ -18,8 +20,9 @@ namespace WasteTrader.ViewModels
                 SellWaste sellWaste = new SellWaste(new MathUtils.NoDBLocation(this.Waste.LongitudeDD, this.Waste.LatitudeDD))
                 {
                     Description = this.Waste.Description,
-                    Quantity = (long)this.Waste.Quantity,
-                    Unit = (UnitType)this.Waste.Unit
+                    Quantity = this.Waste.Quantity,
+                    Unit = (UnitType)this.Waste.Unit,
+                    User = SystemUser.GetCurrentSystemUser()
                 };
             });
 

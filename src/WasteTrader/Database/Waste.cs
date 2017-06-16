@@ -33,6 +33,9 @@ namespace WasteTrader.Database
         public int Category { get; set; }
         public Location Location => Db.SQL<Location>($"SELECT l FROM {nameof(Location)} l WHERE l.{nameof(Location.Waste)} = ?", this).FirstOrDefault();
         public long Price { get; set; }
-        public string Name { get; set; }
+        public Client User { get; set; }
+        public string Name => User.Name;
+        public string Username => User.Username;
+        public string UserURI => "/Waste2Value/user/" + User.Username;
     }
 }

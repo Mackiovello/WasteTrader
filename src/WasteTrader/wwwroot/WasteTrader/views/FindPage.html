@@ -5,7 +5,7 @@
         <div class="wastetrader-wrapper">
             <h1 class="mdc-typography--display2 wastetrader-main-headline">Hitta annons</h1>
             <starcounter-include partial="{{model.Filter}}"></starcounter-include>
-            <template is="dom-repeat" items="{{model.SellWaste}}">
+            <template is="dom-repeat" items="{{model.WasteEntries}}">
                 <starcounter-include partial="{{item}}"></starcounter-include>
             </template>
         </div>

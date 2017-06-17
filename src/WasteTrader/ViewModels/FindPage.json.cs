@@ -6,8 +6,7 @@ namespace WasteTrader.ViewModels
     {
         static FindPage()
         {
-            DefaultTemplate.BuyWaste.ElementType.InstanceType = typeof(BuyWasteJson);
-            DefaultTemplate.SellWaste.ElementType.InstanceType = typeof(SellWasteJson);
+            DefaultTemplate.WasteEntries.ElementType.InstanceType = typeof(WasteEntry);
         }
     }
 }

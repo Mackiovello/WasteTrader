@@ -21,9 +21,9 @@ namespace WasteTrader.Api
                 {
                     Sorter = new DateSorterPage(),
                     SelectedSorter = "DateSorter",
-                    WasteDump = (Waste[] w) => { page.SellWaste.Data = w; }
+                    WasteDump = (Waste[] w) => { page.WasteEntries.Data = w; }
                 };
-                page.SellWaste.Data = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC");
+                page.WasteEntries.Data = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC");
                 return page;
             }, internalOption);
 
@@ -33,17 +33,18 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/partial/header", () => new Header(), internalOption);
 
-            Handle.GET("/Waste2Value/partial/logon", () => {
+            Handle.GET("/Waste2Value/partial/logon", () => 
+            {
                 LogonPage page = new LogonPage();
                 return page;
             }, internalOption);
 
-            Handle.GET("/Waste2Value/partial/user/{?}", (string username) => {
+            Handle.GET("/Waste2Value/partial/user/{?}", (string username) => 
+            {
                 UserPage page = new UserPage();
                 Client user = Client.GetClientFromUsername(username);
                 page.Data = user;
-                page.SellWastes.Data = user.SellWastes;
-                page.BuyWastes.Data = user.BuyWastes;
+                page.WasteEntries.Data = user.Wastes;
                 return page;
             }, internalOption);
         }

@@ -103,9 +103,6 @@
     <Compile Include="Measurements\Volume.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\BuyWasteJson.json.cs">
-      <DependentUpon>BuyWasteJson.json</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\Drawer.json.cs">
       <DependentUpon>Drawer.json</DependentUpon>
     </Compile>
@@ -133,9 +130,6 @@
     <Compile Include="ViewModels\SellPage.json.cs">
       <DependentUpon>SellPage.json</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\SellWasteJson.json.cs">
-      <DependentUpon>SellWasteJson.json</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\Sorters\DateSorterPage.json.cs">
       <DependentUpon>DateSorterPage.json</DependentUpon>
     </Compile>
@@ -157,6 +151,9 @@
     <Compile Include="ViewModels\UserPage.json.cs">
       <DependentUpon>UserPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\WasteEntry.json.cs">
+      <DependentUpon>WasteEntry.json</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -168,6 +165,9 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <TypedJSON Include="ViewModels\WasteEntry.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <TypedJSON Include="ViewModels\UserPage.json">
       <Generator>MsBuild:Compile</Generator>
@@ -181,12 +181,6 @@
     <None Include="wwwroot\WasteTrader\views\MatchParametersPage.html" />
     <None Include="app.config" />
     <None Include="packages.config" />
-    <TypedJSON Include="ViewModels\SellWasteJson.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <TypedJSON Include="ViewModels\BuyWasteJson.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
     <TypedJSON Include="ViewModels\Location.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>

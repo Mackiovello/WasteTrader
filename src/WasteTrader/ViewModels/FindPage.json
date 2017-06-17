@@ -1,6 +1,5 @@
 {
   "Html": "/WasteTrader/views/FindPage.html",
   "Filter": {},
-  "BuyWaste": [ {} ],
-  "SellWaste": [ {} ]
+  "WasteEntries": [ {} ]
 }

@@ -49,6 +49,6 @@ namespace WasteTrader.Database
         public string Description { get => User.Description; }
         public IEnumerable<SellWaste> SellWastes => Db.SQL<SellWaste>($"SELECT w FROM {typeof(SellWaste)} w WHERE w.{nameof(SellWaste.User)} = ?", this);
         public IEnumerable<BuyWaste> BuyWastes => Db.SQL<BuyWaste>($"SELECT w FROM {typeof(BuyWaste)} w WHERE w.{nameof(BuyWaste.User)} = ?", this);
-        public IEnumerable<Waste> Wastes => Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w WHERE w.{nameof(Waste.User)} = ?", this);
+        public IEnumerable<Waste> WasteEntries => Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w WHERE w.{nameof(Waste.User)} = ?", this);
     }
 }

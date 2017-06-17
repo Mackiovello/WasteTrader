@@ -4,10 +4,7 @@
     <template is="dom-bind">
         <div class="wastetrader-wrapper">
             <h1>{{model.Name}}'s page</h1>
-            <template is="dom-repeat" items="{{model.SellWastes}}">
-                <starcounter-include partial="{{item}}"></starcounter-include>
-            </template>
-            <template is="dom-repeat" items="{{model.BuyWastes}}">
+            <template is="dom-repeat" items="{{model.WasteEntries}}">
                 <starcounter-include partial="{{item}}"></starcounter-include>
             </template>
         </div>

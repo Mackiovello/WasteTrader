@@ -33,19 +33,14 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/partial/header", () => new Header(), internalOption);
 
-            Handle.GET("/Waste2Value/partial/logon", () => 
-            {
-                LogonPage page = new LogonPage();
-                return page;
-            }, internalOption);
+            Handle.GET("/Waste2Value/partial/logon", () =>  new LogonPage(), internalOption);
 
             Handle.GET("/Waste2Value/partial/user/{?}", (string username) => 
             {
-                UserPage page = new UserPage();
-                Client user = Client.GetClientFromUsername(username);
-                page.Data = user;
-                page.WasteEntries.Data = user.Wastes;
-                return page;
+                return new UserPage()
+                {
+                    Data = Client.GetClientFromUsername(username)
+                };
             }, internalOption);
         }
     }

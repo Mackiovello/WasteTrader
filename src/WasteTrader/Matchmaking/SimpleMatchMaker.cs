@@ -9,6 +9,26 @@ namespace WasteTrader.Matchmaking
 {
     class SimpleMatchMaker : RoughMatchMaker
     {
+        public override Waste[] Match(IMatchParameters parameters, IEnumerable<Waste> searchspace)
+        {
+            List<Waste> filteredResult = new List<Waste>();
+
+            foreach (Waste waste in searchspace)
+            {
+                IMeasurement measurement = waste.Measurement;
+
+                if (DateFilter(waste.EntryTime, parameters) &&
+                    UnitTypeFilter(waste.Unit, parameters) &&
+                    QuantityFilter(measurement.Quantity, parameters) &&
+                    PricePerUnitFilter(measurement.Quantity, waste.Price, parameters) &&
+                    DistanceFilter(waste.Location, parameters))
+                {
+                    filteredResult.Add(waste);
+                }
+            }
+
+            return parameters.Sorter.Sort(filteredResult).Take(parameters.MaxMatches).ToArray();
+        }
 
         protected bool DateFilter(DateTime time, IMatchParameters parameters)
         {
@@ -48,31 +68,6 @@ namespace WasteTrader.Matchmaking
             else
                 return (parameters.MaxDistance == 0 || distance < parameters.MaxDistance);
 
-        }
-
-        public override Waste[] Match(IMatchParameters parameters, IEnumerable<Waste> searchspace)
-        {
-            var filtered = searchspace.Where(waste =>
-            {
-                if (DateFilter(waste.EntryTime, parameters) == false)
-                    return false;
-                else if (UnitTypeFilter(waste.Unit, parameters) == false)
-                    return false;
-
-                IMeasurement measurement = waste.Measurement;
-
-                if (QuantityFilter(measurement.Quantity, parameters) == false)
-                    return false;
-                else if (PricePerUnitFilter(measurement.Quantity, waste.Price, parameters) == false)
-                    return false;
-                else if (DistanceFilter(waste.Location, parameters) == false)
-                    return false;
-                else
-                    return true;
-            });
-
-            Waste[] sorted = parameters.Sorter.Sort(filtered).Take(parameters.MaxMatches).ToArray();
-            return sorted;
         }
     }
 }

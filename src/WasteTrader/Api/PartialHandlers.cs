@@ -21,7 +21,7 @@ namespace WasteTrader.Api
                 {
                     Sorter = new DateSorterPage(),
                     SelectedSorter = "DateSorter",
-                    WasteDump = (Waste[] w) => { page.WasteEntries.Data = w; }
+                    WasteDump = (Waste[] waste) => page.WasteEntries.Data = waste
                 };
                 page.WasteEntries.Data = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC");
                 return page;

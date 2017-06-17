@@ -7,26 +7,14 @@
 
             <form class="mdc-card wastetrader-card">
                 <section class="mdc-card__primary">
-                    <h2 class="mdc-card__title mdc-card__title--large">Kontaktinformation</h2>
-                </section>
-                <section class="mdc-card__supporting-text">
-                    <div class="mdc-textfield wastetrader-input--fullwidth">
-                        <input type="text" class="mdc-textfield__input" id="wastetrader-sell-form__name" value="{{model.Person.Name$::change}}">
-                        <label class="mdc-textfield__label" for="wastetrader-sell-form__name">Namn</label>
-                    </div>
-
-                    <div class="mdc-textfield wastetrader-input--fullwidth">
-                        <input type="email" class="mdc-textfield__input" id="wastetrader-sell-form__email" value="{{model.Person.Email$::change}}">
-                        <label class="mdc-textfield__label" for="wastetrader-sell-form__email">Mail address</label>
-                    </div>
-                </section>
-            </form>
-
-            <form class="mdc-card wastetrader-card">
-                <section class="mdc-card__primary">
                     <h2 class="mdc-card__title mdc-card__title--large">Beskriv ditt avfall</h2>
                 </section>
                 <section class="mdc-card__supporting-text">
+                    <div class="mdc-textfield wastetrader-input--fullwidth">
+                        <input class="mdc-textfield__input" type="text" id="wastetrader-sell-form__title" value="{{model.Waste.Title$::change}}" />
+                        <label class="mdc-textfield__label" for="wastetrader-sell-form__title">Titel</label>
+                    </div>
+
                     <div class="mdc-textfield wastetrader-input--fullwidth">
                         <input class="mdc-textfield__input" type="text" id="wastetrader-sell-form__description" value="{{model.Waste.Description$::change}}" />
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__description">Beskrivning</label>
@@ -41,8 +29,12 @@
                         <input class="mdc-textfield__input" type="text" id="wastetrader-sell-form__unit" value="{{model.Waste.Unit$::change}}">
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__unit">Enhet</label>
                     </div>
+                    <br />
+                    <div class="mdc-textfield">
+                        <input class="mdc-textfield__input" type="number" id="wastetrader-sell-form__price" value="{{model.Waste.Price$::change}}" />
+                        <label class="mdc-textfield__label" for="wastetrader-sell-form__price">Pris</label>
+                    </div>
                 </section>
-                
             </form>
 
             <button class="mdc-button mdc-button--raised mdc-button--accent" onclick="++this.value" value="{{model.SubmitTrigger$::click}}" data-mdc-auto-init="MDCRipple">Skapa</button>

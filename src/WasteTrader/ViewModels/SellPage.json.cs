@@ -37,6 +37,8 @@ namespace WasteTrader.ViewModels
             this.Waste.Description = "";
             this.Waste.Quantity = 0;
             this.Waste.Unit = 0;
+            this.Waste.Title = "";
+            this.Waste.Price = 0;
         }
     }
 }

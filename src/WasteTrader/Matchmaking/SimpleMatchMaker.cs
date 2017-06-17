@@ -11,7 +11,9 @@ namespace WasteTrader.Matchmaking
     {
         public override Waste[] Match(IMatchParameters parameters, IEnumerable<Waste> searchspace)
         {
-            IEnumerable<Waste> filtered = searchspace.Where(waste =>
+            List<Waste> filteredResult = new List<Waste>();
+
+            foreach (Waste waste in searchspace)
             {
                 IMeasurement measurement = waste.Measurement;
 
@@ -20,13 +22,12 @@ namespace WasteTrader.Matchmaking
                     QuantityFilter(measurement.Quantity, parameters) &&
                     PricePerUnitFilter(measurement.Quantity, waste.Price, parameters) &&
                     DistanceFilter(waste.Location, parameters))
-                    return true;
+                {
+                    filteredResult.Add(waste);
+                }
+            }
 
-                return false;
-            });
-
-            Waste[] sorted = parameters.Sorter.Sort(filtered).Take(parameters.MaxMatches).ToArray();
-            return sorted;
+            return parameters.Sorter.Sort(filteredResult).Take(parameters.MaxMatches).ToArray();
         }
 
         protected bool DateFilter(DateTime time, IMatchParameters parameters)

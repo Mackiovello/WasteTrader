@@ -168,7 +168,6 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
-    <None Include="wwwroot\WasteTrader\views\LogOnPage.html" />
     <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <TypedJSON Include="ViewModels\UserPage.json">
       <Generator>MsBuild:Compile</Generator>

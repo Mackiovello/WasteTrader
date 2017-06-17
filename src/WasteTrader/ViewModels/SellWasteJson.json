@@ -6,8 +6,9 @@
   "Unit": 0,
   "Price": 0,
   "Location": {},
-  "Name": "",
-  "Username": "",
-  "UserURI": "",
+  "User": {
+    "Name": "",
+    "Username": ""
+  },
   "FormattedEntryTime": ""
 }

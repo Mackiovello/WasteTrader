@@ -10,21 +10,21 @@
                 <p>Mängd: {{model.Quantity}} {{model.Unit}}</p>
                 <p>Pris: {{model.Price}}</p>
                 <p>Inlagd: {{model.FormattedEntryTime}}</p>
-                <p>Försäljare: <a href="{{model.UserURI}}">{{model.Name}} ({{model.Username}})</a></p>
+                <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>
             </section>
             <section class="mdc-card__actions">
                 <button class="mdc-button">Läs mer</button>
             </section>
         </div>
         <script>
-                    (function () {
-                        const template = (document._currentScript || document.currentScript).previousElementSibling;
-                        const buttons = template.getElementsByClassName('mdc-button');
+            (function () {
+                const template = (document._currentScript || document.currentScript).previousElementSibling;
+                const buttons = template.getElementsByClassName('mdc-button');
 
-                        for (var i = 0, btn; btn = buttons[i]; i++) {
-                            mdc.ripple.MDCRipple.attachTo(btn);
-                        }
-                    })();
+                for (var i = 0, btn; btn = buttons[i]; i++) {
+                    mdc.ripple.MDCRipple.attachTo(btn);
+                }
+            })();
         </script>
     </template>
 </template>

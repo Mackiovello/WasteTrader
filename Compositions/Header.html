@@ -1,52 +1,20 @@
+<!--
+[partial-id="/sc/htmlmerger?WasteTrader=/WasteTrader/views/Header.html&CompositionEditor=/CompositionEditor/Master.html&SignIn=/SignIn/viewmodels/SignInPage.html"]
+-->
 
-        <link rel="stylesheet" href="/sys/material-components-web.min.css"> 
-         
+<link rel="stylesheet" href="/sys/material-components-web.min.css">  
 
-        <header class="mdc-toolbar mdc-toolbar--waterfall mdc-toolbar--flexible-space-maximized">
-            <div class="mdc-toolbar__row">
-                <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                    <slot name="wastetrader/header-title"></slot>
-                </section>
-                <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
-                    <slot name="SignIn/current-user"></slot>
-                </section>
-            </div>
-        </header>
-    
-        <style>
-            .icon-holder {
-                width: 24px;
-                height: 24px;
-                background: #FFFFFF;
-                font-size: 0;
-                padding: 3px;
-                box-sizing: border-box;
-                fill: #000000;
-            }
-
-            .icon-holder ::slotted(button)/* FIXME V1 matches only direct children;*/ {
-                width: 100%;
-                height: 100%;
-            }
-
-            .compositioneditor-shadowcss-fix > .icon-holder button {
-                width: 100%;
-                height: 100%;
-            }
-
-            .icon-holder ::slotted([active])/* FIXME V1 matches only direct children;*/,
-            .icon-holder:hover {
-                cursor: pointer;
-                fill: #E0115F;
-            }
-
-            .compositioneditor-shadowcss-fix > .icon-holder [active],
-            .compositioneditor-shadowcss-fix > .icon-holder:hover {
-                cursor: pointer;
-                fill: #E0115F;
-            }
-        </style>
-        <div class="icon-holder">
-            <slot select="[slot='CompositionEditor/icon']" name="CompositionEditor/icon"></slot>
-        </div>
-        <slot name="CompositionEditor/inserter"></slot>
+<header class="mdc-toolbar mdc-toolbar--waterfall mdc-toolbar--flexible-space-maximized">
+    <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+            <slot name="wastetrader/header-title"></slot>
+        </section>
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+        	<slot name="SignIn/current-user"></slot>
+        </section>
+    </div>
+</header>
+<div style="display: none">
+	<slot name="CompositionEditor/icon"></slot>
+	<slot name="CompositionEditor/inserter"></slot>
+</div>

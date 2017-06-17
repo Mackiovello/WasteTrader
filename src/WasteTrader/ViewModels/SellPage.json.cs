@@ -19,8 +19,10 @@ namespace WasteTrader.ViewModels
             {
                 SellWaste sellWaste = new SellWaste(new MathUtils.NoDBLocation(this.Waste.LongitudeDD, this.Waste.LatitudeDD))
                 {
+                    Title = this.Waste.Title,
                     Description = this.Waste.Description,
                     Quantity = this.Waste.Quantity,
+                    Price = this.Waste.Price,
                     Unit = (UnitType)this.Waste.Unit,
                     User = SystemUser.GetCurrentSystemUser()
                 };
@@ -32,8 +34,6 @@ namespace WasteTrader.ViewModels
 
         private void ClearViewModel()
         {
-            this.Person.Name = "";
-            this.Person.Email = "";
             this.Waste.Description = "";
             this.Waste.Quantity = 0;
             this.Waste.Unit = 0;

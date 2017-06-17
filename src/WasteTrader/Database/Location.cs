@@ -11,12 +11,15 @@ namespace WasteTrader.Database
         {
             this.LongitudeDD = location.LongitudeDD;
             this.LatitudeDD = location.LatitudeDD;
+            this.LongitudeRadians = location.LongitudeRadians;
+            this.LatitudeRadians = location.LatitudeRadians;
             this.Waste = waste;
         }
+
         public Waste Waste { get; }
         public double LongitudeDD { get; set; }
         public double LatitudeDD { get; set; }
-        public double LongitudeRadians => GeographyMath.DegreesToRadians(LongitudeDD);
-        public double LatitudeRadians => GeographyMath.DegreesToRadians(LatitudeDD);
+        public double LongitudeRadians { get; }
+        public double LatitudeRadians { get; }
     }
 }

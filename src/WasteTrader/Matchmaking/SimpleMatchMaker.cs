@@ -38,7 +38,7 @@ namespace WasteTrader.Matchmaking
 
         protected bool DistanceFilter(ILocation location, IMatchParameters parameters)
         {
-            if (parameters.SearchFrom == null)
+            if (parameters.SearchFrom == null || location == null)
                 return true;
 
             double distance = GeographyMath.RoughEarthDistance(parameters.SearchFrom, location);

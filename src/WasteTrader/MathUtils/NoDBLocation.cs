@@ -6,11 +6,13 @@
         {
             this.LongitudeDD = longitudeDD;
             this.LatitudeDD = latitudeDD;
+            this.LongitudeRadians = GeographyMath.DegreesToRadians(LongitudeDD);
+            this.LatitudeRadians = GeographyMath.DegreesToRadians(LatitudeDD);
         }
 
         public double LongitudeDD { get; set; }
         public double LatitudeDD { get; set; }
-        public double LongitudeRadians => GeographyMath.DegreesToRadians(LongitudeDD);
-        public double LatitudeRadians => GeographyMath.DegreesToRadians(LatitudeDD);
+        public double LongitudeRadians { get; }
+        public double LatitudeRadians { get; }
     }
 }

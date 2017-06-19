@@ -6,6 +6,7 @@
   "UnitMetricPrefixPower": 0,
   "Unit": 0,
   "Amount": "",
+  "RawAmount": 0.0,
   "Price": 0,
   "Location": {},
   "User": {

@@ -8,7 +8,7 @@
             </section>
             <section class="mdc-card__supporting-text">
                 <p>Beskrivning: {{model.Description}}</p>
-                <p>Mängd: {{model.Amount}}</p>
+                <p>Mängd: {{model.Amount}} ({{model.RawAmount}})</p>
                 <p>Pris: {{model.Price}} SEK</p>
                 <p>Inlagd: {{model.FormattedEntryTime}}</p>
                 <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>

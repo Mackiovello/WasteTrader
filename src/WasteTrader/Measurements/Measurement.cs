@@ -9,7 +9,7 @@ namespace WasteTrader.Measurements
         public long Quantity { get; set; }
         public int UnitMetricPrefixPower { get; set; }
         public abstract Dictionary<int, Unit> Symbols { get; }
-        public long Value => this.Quantity * LongMath.Pow(10, UnitMetricPrefixPower);
+        public decimal Value => (decimal)this.Quantity * (decimal)Math.Pow(10, UnitMetricPrefixPower);
 
         public override string ToString()
         {
@@ -41,9 +41,9 @@ namespace WasteTrader.Measurements
             }
         }
 
-        public long CalcValue(Unit unit)
+        public decimal CalcValue(Unit unit)
         {
-            long mult = LongMath.Pow(10, UnitMetricPrefixPower + unit.Offset);
+            decimal mult = LongMath.Pow(10, UnitMetricPrefixPower + unit.Offset);
             return Quantity * mult;
         }
     }

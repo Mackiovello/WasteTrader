@@ -13,14 +13,14 @@ namespace WasteTrader.Measurements
         /// <summary>
         /// The value in the baseunit
         /// </summary>
-        long Value { get; }
+        decimal Value { get; }
 
         /// <summary>
         /// The value in specified unit
         /// </summary>
         /// <param name="unit"></param>
         /// <returns></returns>
-        long CalcValue(Unit unit);
+        decimal CalcValue(Unit unit);
         /// <summary>
         /// The power to use, i.e. 10^x
         /// </summary>

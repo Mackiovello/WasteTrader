@@ -4,11 +4,12 @@
     <template is="dom-bind">
         <div class="mdc-card wastetrader-card">
             <section class="mdc-card__primary">
-                <h2 class="mdc-card__title mdc-card__title--large">{{item.Description}}</h2>
+                <h2 class="mdc-card__title mdc-card__title--large">{{model.Title}}</h2>
             </section>
             <section class="mdc-card__supporting-text">
+                <p>Beskrivning: {{model.Description}}</p>
                 <p>Mängd: {{model.Quantity}} {{model.Unit}}</p>
-                <p>Pris: {{model.Price}}</p>
+                <p>Pris: {{model.Price}} SEK</p>
                 <p>Inlagd: {{model.FormattedEntryTime}}</p>
                 <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>
             </section>

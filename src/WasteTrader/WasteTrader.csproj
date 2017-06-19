@@ -169,7 +169,7 @@
     <TypedJSON Include="ViewModels\WasteEntry.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
-    <None Include="wwwroot\WasteTrader\views\WastePage.html" />
+    <None Include="wwwroot\WasteTrader\views\WasteEntry.html" />
     <TypedJSON Include="ViewModels\UserPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>

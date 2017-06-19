@@ -1,8 +1,6 @@
 ﻿using Starcounter;
 using WasteTrader.ViewModels;
 using Simplified.Ring3;
-using WasteTrader.Database;
-using System.Linq;
 
 namespace WasteTrader.Api
 {

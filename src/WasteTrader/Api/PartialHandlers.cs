@@ -2,8 +2,6 @@
 using WasteTrader.Database;
 using WasteTrader.ViewModels;
 using WasteTrader.ViewModels.Sorters;
-using System.Linq;
-using Simplified.Ring3;
 
 namespace WasteTrader.Api
 {

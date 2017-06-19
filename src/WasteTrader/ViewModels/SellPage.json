@@ -1,15 +1,13 @@
 {
   "Html": "/WasteTrader/views/SellPage.html",
   "Waste": {
+    "Title$": "",
     "Description$": "",
     "Quantity$": 0,
     "Unit$": 0,
     "LatitudeDD$": 0,
-    "LongitudeDD$": 0
-  },
-  "Person": {
-    "Name$": "",
-    "Email$": ""
+    "LongitudeDD$": 0,
+    "Price$": 0
   },
   "SubmitTrigger$": 0,
   "ShowSuccessMessage": false

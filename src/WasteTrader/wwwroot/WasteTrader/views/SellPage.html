@@ -25,10 +25,17 @@
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__quantity">Mängd</label>
                     </div>
 
-                    <div class="mdc-textfield">
-                        <input class="mdc-textfield__input" type="text" id="wastetrader-sell-form__unit" value="{{model.Waste.Unit$::change}}">
-                        <label class="mdc-textfield__label" for="wastetrader-sell-form__unit">Enhet</label>
-                    </div>
+                    <select value="{{model.UnitSort$::change}}" class="mdc-select">
+                        <option value=1>Mass</option>
+                        <option value=2>Length</option>
+                        <option value=3>Area</option>
+                        <option value=4>Volume</option>
+                    </select>
+                    <select value="{{model.Waste.Unit$::change}}" class="mdc-select">
+                        <template is="dom-repeat" items="{{model.UnitSuffixes}}">
+                            <option value="{{item.PrefixPower}}">{{item.Label}}</option>
+                        </template>
+                    </select>
                     <br />
                     <div class="mdc-textfield">
                         <input class="mdc-textfield__input" type="number" id="wastetrader-sell-form__price" value="{{model.Waste.Price$::change}}" />
@@ -38,7 +45,7 @@
             </form>
 
             <button class="mdc-button mdc-button--raised mdc-button--accent" onclick="++this.value" value="{{model.SubmitTrigger$::click}}" data-mdc-auto-init="MDCRipple">Skapa</button>
-        </div> 
+        </div>
         <script>
             (function () {
                 const textfields = document.querySelectorAll('.mdc-textfield');

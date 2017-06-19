@@ -16,10 +16,9 @@ namespace WasteTrader.Measurements
             Symbols.TryGetValue(UnitMetricPrefixPower, out Unit unit);
 
             if (unit != null)
-                return CalcValue(unit) + " " + unit.Text;
-
+                return Quantity + " " + unit.Text;
             else
-                return CalcValue(new Unit("E", 0)) + " " + "E" + UnitMetricPrefixPower;
+                return Quantity + " " + "E" + UnitMetricPrefixPower;
         }
 
         public void ConvertOptimal()

@@ -11,7 +11,7 @@ namespace WasteTrader.Measurements
             this.UnitMetricPrefixPower = UnitMetricPrefixPower;
         }
 
-        private static Dictionary<int, Unit> Units = MetricPrefixes.Symbol.ToDictionary(ConvertKey, ConvertValue);
+        public static Dictionary<int, Unit> Units = MetricPrefixes.Symbol.ToDictionary(ConvertKey, ConvertValue);
 
         private static int ConvertKey(KeyValuePair<int, string> pair)
         {

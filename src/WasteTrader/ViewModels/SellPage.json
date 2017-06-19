@@ -9,6 +9,13 @@
     "LongitudeDD$": 0,
     "Price$": 0
   },
+  "UnitSort$": 0,
+  "UnitSuffixes": [
+    {
+      "PrefixPower": 0,
+      "Label": ""
+    }
+  ],
   "SubmitTrigger$": 0,
   "ShowSuccessMessage": false
 }

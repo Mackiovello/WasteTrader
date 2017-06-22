@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace WasteTrader.Helpers
 {
-    public class InputValidation
+    public class StringValidation
     {
-        private string ToValidate { get; set; }
         public bool IsValid => !ValidationResult.Any(v => v == false);
+
+        private string ToValidate { get; set; }
 
         private List<bool> ValidationResult = new List<bool>();
 
-
-        public InputValidation(string toValidate)
+        public StringValidation(string toValidate)
         {
             this.ToValidate = toValidate;
         }
 
-        public InputValidation ValidateLength(int minLength, int maxLength)
+        public StringValidation ValidateLength(int minLength, int maxLength)
         {
             if (ToValidate.Length < minLength || ToValidate.Length > maxLength)
                 ValidationResult.Add(false);
@@ -29,7 +29,7 @@ namespace WasteTrader.Helpers
             return this;
         }
 
-        public InputValidation IsOnlyDigits()
+        public StringValidation IsOnlyDigits()
         {
             bool onlyDigits = true;
             foreach (char c in ToValidate)
@@ -46,7 +46,7 @@ namespace WasteTrader.Helpers
             return this;
         }
 
-        public InputValidation OnlyLetters()
+        public StringValidation OnlyLetters()
         {
             bool allLetters = ToValidate.All(Char.IsLetter);
             ValidationResult.Add(allLetters);

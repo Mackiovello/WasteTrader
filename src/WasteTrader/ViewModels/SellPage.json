@@ -4,17 +4,17 @@
     "Title": {
       "Value$": "",
       "Message": "",
-      "IsValid": true
+      "IsValid": false
     },
     "Description": {
       "Value$": "",
       "Message": "",
-      "IsValid": true
+      "IsValid": false
     },
     "Price": {
       "Value$": 0,
       "Message": "",
-      "IsValud": true
+      "IsValid": false
     },
     "Quantity": {
       "Value$": 0
@@ -30,5 +30,6 @@
     }
   },
   "SubmitTrigger$": 0,
-  "ShowSuccessMessage": false
+  "SubmitMessage": "",
+  "ValidInput": false
 }

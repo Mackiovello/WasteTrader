@@ -15,7 +15,26 @@ namespace WasteTrader.ViewModels
             DefaultTemplate.Waste.LongitudeDD.Value.InstanceType = typeof(double);
         }
 
+        public bool ValidInput => 
+            this.Waste.Description.IsValid &&
+            this.Waste.Title.IsValid &&
+            this.Waste.Price.IsValid;
+
         void Handle(Input.SubmitTrigger action)
+        {
+            if (ValidInput)
+            {
+                this.CreateWaste();
+                this.ClearViewModel();
+                this.SubmitMessage = "Annonsen är nu inlagd";
+            }
+            else
+            {
+                this.SubmitMessage = "Du har inte fyllt i alla fält riktigt";
+            }
+        }
+
+        private void CreateWaste()
         {
             Db.Transact(() =>
             {
@@ -30,9 +49,6 @@ namespace WasteTrader.ViewModels
                     User = SystemUser.GetCurrentSystemUser()
                 };
             });
-
-            this.ClearViewModel();
-            this.ShowSuccessMessage = true;
         }
 
         private void ClearViewModel()
@@ -53,7 +69,7 @@ namespace WasteTrader.ViewModels
 
             void Handle(Input.Value action)
             {
-                this.IsValid = new InputValidation(action.Value)
+                this.IsValid = new StringValidation(action.Value)
                     .ValidateLength(MinLength, MaxLength)
                     .IsValid;
 
@@ -70,11 +86,26 @@ namespace WasteTrader.ViewModels
 
             void Handle(Input.Value action)
             {
-                this.IsValid = new InputValidation(action.Value)
+                this.IsValid = new StringValidation(action.Value)
                     .ValidateLength(MinLength, MaxLength)
                     .IsValid;
 
                 this.Message = this.IsValid ? string.Empty : InvalidDescriptionWarning;
+            }
+        }
+
+        [SellPage_json.Waste.Price]
+        partial class WastePrice : Json
+        {
+            private string InvalidPriceWarning = "Priset måste vara högre än noll";
+
+            void Handle(Input.Value action)
+            {
+                this.IsValid = new NumberValidation(action.Value)
+                    .IsMoreThanZero()
+                    .IsValid;
+
+                this.Message = this.IsValid ? string.Empty : InvalidPriceWarning;
             }
         }
     }

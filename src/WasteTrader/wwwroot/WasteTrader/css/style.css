@@ -60,3 +60,7 @@ body {
 .mdc-wastetrader__textfield--large textarea {
     width: 100%;
 }
+
+.wastetrader-submit-message {
+    margin-top: 5px;
+}

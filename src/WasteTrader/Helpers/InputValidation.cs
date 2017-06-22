@@ -9,7 +9,9 @@ namespace WasteTrader.Helpers
     public class InputValidation
     {
         private string ToValidate { get; set; }
-        public bool IsValid { get; private set; }
+        public bool IsValid => !ValidationResult.Any(v => v == false);
+
+        private List<bool> ValidationResult = new List<bool>();
 
 
         public InputValidation(string toValidate)
@@ -20,24 +22,26 @@ namespace WasteTrader.Helpers
         public InputValidation ValidateLength(int minLength, int maxLength)
         {
             if (ToValidate.Length < minLength || ToValidate.Length > maxLength)
-            {
-                IsValid = false;
-            }
+                ValidationResult.Add(false);
+            else
+                ValidationResult.Add(true);
 
             return this;
         }
 
-        public InputValidation OnlyDigits()
+        public InputValidation IsOnlyDigits()
         {
+            bool onlyDigits = true;
             foreach (char c in ToValidate)
             {
                 if (c < '0' || c > '9')
                 {
-                    IsValid = false;
+                    onlyDigits = false;
                     break;
                 }
-                
             }
+
+            ValidationResult.Add(onlyDigits);
 
             return this;
         }
@@ -45,11 +49,7 @@ namespace WasteTrader.Helpers
         public InputValidation OnlyLetters()
         {
             bool allLetters = ToValidate.All(Char.IsLetter);
-            if (!allLetters)
-            {
-                IsValid = false;
-            }
-
+            ValidationResult.Add(allLetters);
             return this;
         }
     }

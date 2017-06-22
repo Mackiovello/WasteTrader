@@ -72,6 +72,7 @@
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Database\BuyWaste.cs" />
     <Compile Include="Database\Client.cs" />
+    <Compile Include="Helpers\InputValidation.cs" />
     <Compile Include="Matchmaking\BasicMatchParameters.cs" />
     <Compile Include="MathUtils\ILocation.cs" />
     <Compile Include="Database\SellWaste.cs" />

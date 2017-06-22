@@ -2,6 +2,8 @@ using Starcounter;
 using WasteTrader.Database;
 using Simplified.Ring3;
 using System.Linq;
+using WasteTrader.Helpers;
+using WasteTrader.MathUtils;
 
 namespace WasteTrader.ViewModels
 {
@@ -9,21 +11,22 @@ namespace WasteTrader.ViewModels
     {
         static SellPage()
         {
-            DefaultTemplate.Waste.LatitudeDD.InstanceType = typeof(double);
-            DefaultTemplate.Waste.LongitudeDD.InstanceType = typeof(double);
+            DefaultTemplate.Waste.LatitudeDD.Value.InstanceType = typeof(double);
+            DefaultTemplate.Waste.LongitudeDD.Value.InstanceType = typeof(double);
         }
 
         void Handle(Input.SubmitTrigger action)
         {
             Db.Transact(() =>
             {
-                SellWaste sellWaste = new SellWaste(new MathUtils.NoDBLocation(this.Waste.LongitudeDD, this.Waste.LatitudeDD))
+                var location = new NoDBLocation(this.Waste.LongitudeDD.Value, this.Waste.LatitudeDD.Value);
+                SellWaste sellWaste = new SellWaste(location)
                 {
-                    Title = this.Waste.Title,
-                    Description = this.Waste.Description,
-                    Quantity = this.Waste.Quantity,
-                    Price = this.Waste.Price,
-                    Unit = (UnitType)this.Waste.Unit,
+                    Title = this.Waste.Title.Value,
+                    Description = this.Waste.Description.Value,
+                    Quantity = this.Waste.Quantity.Value,
+                    Price = this.Waste.Price.Value,
+                    Unit = (UnitType)this.Waste.Unit.Value,
                     User = SystemUser.GetCurrentSystemUser()
                 };
             });
@@ -34,11 +37,28 @@ namespace WasteTrader.ViewModels
 
         private void ClearViewModel()
         {
-            this.Waste.Description = "";
-            this.Waste.Quantity = 0;
-            this.Waste.Unit = 0;
-            this.Waste.Title = "";
-            this.Waste.Price = 0;
+            this.Waste.Description.Value = "";
+            this.Waste.Quantity.Value = 0;
+            this.Waste.Unit.Value = 0;
+            this.Waste.Title.Value = "";
+            this.Waste.Price.Value = 0;
+        }
+
+        [SellPage_json.Waste.Title]
+        partial class WasteTitle : Json
+        {
+            private const int MinLength = 3;
+            private const int MaxLength = 100;
+            private string InvalidTitleWarning = $"Lösenordet måste vara mellan {MinLength} och {MaxLength} tecken långt";
+
+            void Handle(Input.Value action)
+            {
+                this.IsValid = new InputValidation(action.Value)
+                    .ValidateLength(MinLength, MaxLength)
+                    .IsValid;
+
+                this.Message = this.IsValid ? string.Empty : InvalidTitleWarning;
+            }
         }
     }
 }

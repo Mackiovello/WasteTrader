@@ -11,10 +11,10 @@
                 </section>
                 <section class="mdc-card__supporting-text">
                     <div class="mdc-textfield wastetrader-input--fullwidth">
-                        <input class="mdc-textfield__input" type="text" id="wastetrader-sell-form__title" value="{{model.Waste.Title$::change}}" />
+                        <input class="mdc-textfield__input" type="text" id="wastetrader-sell-form__title" value="{{model.Waste.Title.Value$::change}}" />
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__title">Titel</label>
                     </div>
-                    <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Message.Title}}</p>
+                    <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Waste.Title.Message}}</p>
 
                     <div class="mdc-textfield mdc-textfield--multiline mdc-wastetrader__textfield--large">
                         <textarea rows="10" class="mdc-textfield__input" type="text" id="wastetrader-sell-form__description" value="{{model.Waste.Description$::change}}"></textarea>

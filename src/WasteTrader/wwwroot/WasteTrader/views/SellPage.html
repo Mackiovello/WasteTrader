@@ -14,11 +14,14 @@
                         <input class="mdc-textfield__input" type="text" id="wastetrader-sell-form__title" value="{{model.Waste.Title$::change}}" />
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__title">Titel</label>
                     </div>
+                    <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Message.Title}}</p>
 
                     <div class="mdc-textfield mdc-textfield--multiline mdc-wastetrader__textfield--large">
                         <textarea rows="10" class="mdc-textfield__input" type="text" id="wastetrader-sell-form__description" value="{{model.Waste.Description$::change}}"></textarea>
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__description">Beskrivning</label>
                     </div>
+                    <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Message.Description}}</p>
+
                     <br />
                     <div class="mdc-textfield">
                         <input class="mdc-textfield__input" type="number" id="wastetrader-sell-form__quantity" value="{{model.Waste.Quantity$::change}}">
@@ -34,6 +37,7 @@
                         <input class="mdc-textfield__input" type="number" id="wastetrader-sell-form__price" value="{{model.Waste.Price$::change}}" />
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__price">Pris (SEK)</label>
                     </div>
+                    <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Message.Price}}</p>
                 </section>
             </form>
 

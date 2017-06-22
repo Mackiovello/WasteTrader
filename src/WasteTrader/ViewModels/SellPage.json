@@ -1,14 +1,35 @@
 {
   "Html": "/WasteTrader/views/SellPage.html",
   "Waste": {
-    "Title$": "",
-    "Description$": "",
-    "Quantity$": 0,
-    "Unit$": 0,
-    "LatitudeDD$": 0,
-    "LongitudeDD$": 0,
-    "Price$": 0
+    "Title": {
+      "Value$": "",
+      "Message": "",
+      "IsValid": false
+    },
+    "Description": {
+      "Value$": "",
+      "Message": "",
+      "IsValid": false
+    },
+    "Price": {
+      "Value$": 0,
+      "Message": "",
+      "IsValid": false
+    },
+    "Quantity": {
+      "Value$": 0
+    },
+    "Unit": {
+      "Value$": 0
+    },
+    "LatitudeDD": {
+      "Value$": 0
+    },
+    "LongitudeDD": {
+      "Value$": 0
+    }
   },
   "SubmitTrigger$": 0,
-  "ShowSuccessMessage": false
+  "SubmitMessage": "",
+  "ValidInput": false
 }

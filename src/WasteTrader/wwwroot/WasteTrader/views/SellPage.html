@@ -17,10 +17,10 @@
                     <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Waste.Title.Message}}</p>
 
                     <div class="mdc-textfield mdc-textfield--multiline mdc-wastetrader__textfield--large">
-                        <textarea rows="10" class="mdc-textfield__input" type="text" id="wastetrader-sell-form__description" value="{{model.Waste.Description$::change}}"></textarea>
+                        <textarea rows="10" class="mdc-textfield__input" type="text" id="wastetrader-sell-form__description" value="{{model.Waste.Description.Value$::change}}"></textarea>
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__description">Beskrivning</label>
                     </div>
-                    <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Message.Description}}</p>
+                    <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Waste.Description.Message}}</p>
 
                     <br />
                     <div class="mdc-textfield">

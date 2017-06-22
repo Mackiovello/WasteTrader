@@ -60,5 +60,22 @@ namespace WasteTrader.ViewModels
                 this.Message = this.IsValid ? string.Empty : InvalidTitleWarning;
             }
         }
+
+        [SellPage_json.Waste.Description]
+        partial class WasteDescription : Json
+        {
+            private const int MinLength = 20;
+            private const int MaxLength = 2000;
+            private string InvalidDescriptionWarning = $"Beskrivningen måste vara mellan {MinLength} och {MaxLength} tecken långt";
+
+            void Handle(Input.Value action)
+            {
+                this.IsValid = new InputValidation(action.Value)
+                    .ValidateLength(MinLength, MaxLength)
+                    .IsValid;
+
+                this.Message = this.IsValid ? string.Empty : InvalidDescriptionWarning;
+            }
+        }
     }
 }

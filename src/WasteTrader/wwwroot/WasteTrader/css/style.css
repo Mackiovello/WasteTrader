@@ -5,6 +5,7 @@
 
 body {
     margin: 0;
+    background-color: #f8f8f8;
 }
 
 .wastetrader-below-toolbar {
@@ -24,7 +25,12 @@ body {
     flex-grow: 1;
 }
 
+.wastetrader-drawer--full-height {
+    height: 100vh;
+}
+
 .wastetrader-card {
+    background-color: #fff;
     margin-bottom: 20px;
 }
 

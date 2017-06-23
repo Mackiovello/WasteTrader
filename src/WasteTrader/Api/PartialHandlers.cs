@@ -1,4 +1,5 @@
-﻿using Starcounter;
+﻿using Simplified.Ring3;
+using Starcounter;
 using WasteTrader.Database;
 using WasteTrader.ViewModels;
 using WasteTrader.ViewModels.Sorters;
@@ -7,7 +8,6 @@ namespace WasteTrader.Api
 {
     public class PartialHandlers : IHandler
     {
-
         protected HandlerOptions internalOption = new HandlerOptions { SelfOnly = true };
 
         public void Register()
@@ -25,9 +25,9 @@ namespace WasteTrader.Api
                 return page;
             }, internalOption);
 
-            Handle.GET("/Waste2Value/partial/Home", () => new HomePage(), internalOption);
-
             Handle.GET("/Waste2Value/partial/drawer", () => new Drawer(), internalOption);
+
+            Handle.GET("/Waste2Value/partial/Home", () => new HomePage(), internalOption);
 
             Handle.GET("/Waste2Value/partial/header", () => new Header(), internalOption);
 

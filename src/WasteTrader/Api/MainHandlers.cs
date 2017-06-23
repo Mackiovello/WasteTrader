@@ -100,6 +100,15 @@ namespace WasteTrader.Api
                 master.CurrentPage = Self.GET("/Waste2Value/partial/user/" + username);
                 return master;
             });
+
+            Handle.GET("/Waste2Value/minsida", () =>
+            {
+                if (NoUser())
+                    return Self.GET("/Waste2Value/logon");
+                var master = GetMasterPage();
+                master.CurrentPage = Self.GET("/Waste2Value/partial/user/" + SystemUser.GetCurrentSystemUser().Username);
+                return master;
+            });
         }
 
         public bool NoUser()

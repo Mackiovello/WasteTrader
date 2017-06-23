@@ -1,24 +1,30 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
 
 <template>
-    <nav class="mdc-permanent-drawer wastetrader-drawer--full-height">
-        <div class="mdc-list-group">
-            <a href="/Waste2Value" class="mdc-list-item">
-                <i class="mdc-list-item__start-detail material-icons">home</i>
-                Hem
-            </a>
-            <a href="/Waste2Value/Salj" class="mdc-list-item">
-                <i class="mdc-list-item__start-detail material-icons">store</i>
-                Sälj
-            </a>
-            <a href="/Waste2Value/Kop" class="mdc-list-item">
-                <i class="mdc-list-item__start-detail material-icons">shopping_cart</i>
-                Köp
-            </a>
-            <a href="/Waste2Value/Hitta" class="mdc-list-item">
-                <i class="mdc-list-item__start-detail material-icons">search</i>
-                Hitta
-            </a>
-        </div>
-    </nav>
+    <template is="dom-bind">
+        <nav class="mdc-permanent-drawer wastetrader-drawer--full-height">
+            <div class="mdc-list-group">
+                <a href="/Waste2Value" class="mdc-list-item">
+                    <i class="mdc-list-item__start-detail material-icons">home</i>
+                    Hem
+                </a>
+                <a href="/Waste2Value/Salj" class="mdc-list-item">
+                    <i class="mdc-list-item__start-detail material-icons">store</i>
+                    Sälj
+                </a>
+                <a href="/Waste2Value/Kop" class="mdc-list-item">
+                    <i class="mdc-list-item__start-detail material-icons">shopping_cart</i>
+                    Köp
+                </a>
+                <a href="/Waste2Value/Hitta" class="mdc-list-item">
+                    <i class="mdc-list-item__start-detail material-icons">search</i>
+                    Hitta
+                </a>
+                <a href="/Waste2Value/minsida" class="mdc-list-item">
+                    <i class="mdc-list-item__start-detail material-icons">person</i>
+                    Min sida
+                </a>
+            </div>
+        </nav>
+    </template>
 </template>

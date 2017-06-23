@@ -22,6 +22,10 @@ namespace WasteTrader.Measurements
 
         public static IMeasurement Read(UnitType unit, long quantity, int unitMetricPrefixPower)
         {
+            if (unit < 0 || (int)unit > 3)
+            {
+                return new Mass(300, 2);
+            }
             return Types[unit](quantity, unitMetricPrefixPower);
         }
     }

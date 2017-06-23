@@ -18,46 +18,6 @@ namespace WasteTrader.ViewModels
             DefaultTemplate.Waste.LongitudeDD.Value.InstanceType = typeof(double);
         }
 
-        protected static Tuple<int, string>[] MassUnits = UnitsToTuples(Mass.Units);
-        protected static Tuple<int, string>[] LengthUnits = UnitsToTuples(Length.Units);
-        protected static Tuple<int, string>[] AreaUnits = UnitsToTuples(Area.Units);
-        protected static Tuple<int, string>[] VolumeUnits = UnitsToTuples(Volume.Units);
-
-        protected static Tuple<int, string>[] UnitsToTuples(IDictionary<int, Unit> dictionary)
-        {
-            return dictionary.Select(kvp => new Tuple<int, string>(kvp.Key + kvp.Value.Offset, kvp.Value.Text)).ToArray();
-        }
-
-        void Handle(Input.UnitSort action)
-        {
-            UnitSuffixes.Clear();
-            switch ((UnitType)action.Value)
-            {
-                case UnitType.Mass:
-                    AddUnitSuffixes(MassUnits);
-                    break;
-                case UnitType.Length:
-                    AddUnitSuffixes(LengthUnits);
-                    break;
-                case UnitType.Area:
-                    AddUnitSuffixes(AreaUnits);
-                    break;
-                case UnitType.Volume:
-                    AddUnitSuffixes(VolumeUnits);
-                    break;
-            }
-        }
-
-        protected void AddUnitSuffixes(Tuple<int, string>[] options)
-        {
-            foreach (Tuple<int, string> unit in options)
-            {
-                var option = UnitSuffixes.Add();
-                option.Label = unit.Item2;
-                option.PrefixPower = unit.Item1;
-            }
-        }
-
         public bool ValidInput => 
             this.Waste.Description.IsValid &&
             this.Waste.Title.IsValid &&
@@ -88,7 +48,8 @@ namespace WasteTrader.ViewModels
                     Description = this.Waste.Description.Value,
                     Quantity = this.Waste.Quantity.Value,
                     Price = this.Waste.Price.Value,
-                    Unit = (UnitType)this.Waste.Unit.Value,
+                    Unit = (UnitType)this.Waste.Quantity.Unit,
+                    UnitMetricPrefixPower = (int)this.Waste.Quantity.PrefixPower,
                     User = SystemUser.GetCurrentSystemUser()
                 };
             });

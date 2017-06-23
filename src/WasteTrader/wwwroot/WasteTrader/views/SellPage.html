@@ -28,17 +28,64 @@
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__quantity">Mängd</label>
                     </div>
 
-                    <select value="{{model.UnitSort$::change}}" class="mdc-select">
-                        <option value="0">Mass</option>
-                        <option value="1">Length</option>
-                        <option value="2">Area</option>
-                        <option value="3">Volume</option>
-                    </select>
-                    <select value="{{model.Waste.Unit.Value$::change}}" class="mdc-select">
-                        <template is="dom-repeat" items="{{model.UnitSuffixes}}">
-                            <option value="{{item.PrefixPower}}">{{item.Label}}</option>
-                        </template>
-                    </select>
+                    <div class="mdc-select" role="listbox" tabindex="0">
+                        <span class="mdc-select__selected-text">Välj en enhet</span>
+                        <div class="mdc-simple-menu mdc-select__menu">
+                            <ul class="mdc-list mdc-simple-menu__items">
+                                <li class="mdc-list-item" role="option" aria-disabled="true">
+                                    Välj en enhet
+                                </li>
+                                <li class="mdc-list-item"
+                                    role="option" 
+                                    tabindex="0" 
+                                    on-click="selectUnit"
+                                    data-unit="2"
+                                    data-prefix-power="0">
+                                    Meter
+                                </li>
+                                <li class="mdc-list-item" 
+                                    role="option" 
+                                    tabindex="0" 
+                                    on-click="selectUnit"
+                                    data-unit="2"
+                                    data-prefix-power="3">
+                                    Kilometer
+                                </li>
+                                <li class="mdc-list-item" 
+                                    role="option" 
+                                    tabindex="0" 
+                                    on-click="selectUnit"
+                                    data-unit="0"
+                                    data-prefix-power="0">
+                                    Kilogram
+                                </li>
+                                <li class="mdc-list-item" 
+                                    role="option" 
+                                    tabindex="0" 
+                                    on-click="selectUnit"
+                                    data-unit="0"
+                                    data-prefix-power="3">
+                                    Ton
+                                </li>
+                                <li class="mdc-list-item" 
+                                    role="option" 
+                                    tabindex="0" 
+                                    on-click="selectUnit"
+                                    data-unit="1"
+                                    data-prefix-power="0">
+                                    Kvadratmeter
+                                </li>
+                                <li class="mdc-list-item" 
+                                    role="option" 
+                                    tabindex="0" 
+                                    on-click="selectUnit"
+                                    data-unit="3"
+                                    data-prefix-power="0">
+                                    Kubikmeter
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <br />
                     <div class="mdc-textfield">
                         <input class="mdc-textfield__input" type="number" id="wastetrader-sell-form__price" value="{{model.Waste.Price.Value$::change}}" />
@@ -53,14 +100,29 @@
         </div>
         <script>
             (function () {
-                const textfields = document.querySelectorAll('.mdc-textfield');
+                const textFields = document.querySelectorAll(".mdc-textfield");
 
-                for (let i = 0; i < textfields.length; i++) {
-                    mdc.textfield.MDCTextfield.attachTo(textfields[i]);
+                var selectElement = document.querySelector(".mdc-select");
+                mdc.select.MDCSelect.attachTo(selectElement);
+
+                for(let i = 0; i < textFields.length; i++){
+                    mdc.textfield.MDCTextfield.attachTo(textFields[i]);
                 }
 
                 mdc.autoInit();
             })();
         </script>
     </template>
+    <script>
+        (function () {
+            const script = document._currentScript || document.currentScript;
+            const template = script.previousElementSibling;
+
+            template.selectUnit = function (event) {
+                template.model.Waste.Quantity.Unit$ = event.target.getAttribute("data-unit");
+                template.model.Waste.Quantity.PrefixPower$ = event.target.getAttribute("data-prefix-power");
+            }
+
+        })();
+    </script>
 </template>

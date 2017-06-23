@@ -17,7 +17,9 @@
       "IsValid": false
     },
     "Quantity": {
-      "Value$": 0
+      "Value$": 0,
+      "Unit$": 0,
+      "PrefixPower$": 0
     },
     "Unit": {
       "Value$": 0

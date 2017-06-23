@@ -36,6 +36,10 @@ body {
     width: 100%;
 }
 
+.wastetrader-input--fullwidth > .mdc-textfield__input {
+    width: 100%;
+}
+
 .wastetrader__expand-icon {
     height: 30px;
     width: 30px;
@@ -59,4 +63,8 @@ body {
 
 .mdc-wastetrader__textfield--large textarea {
     width: 100%;
+}
+
+.wastetrader-submit-message {
+    margin-top: 5px;
 }

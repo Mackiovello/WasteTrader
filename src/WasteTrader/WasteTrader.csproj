@@ -72,6 +72,8 @@
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Database\BuyWaste.cs" />
     <Compile Include="Database\Client.cs" />
+    <Compile Include="Helpers\StringValidation.cs" />
+    <Compile Include="Helpers\NumberValidation.cs" />
     <Compile Include="Matchmaking\BasicMatchParameters.cs" />
     <Compile Include="MathUtils\ILocation.cs" />
     <Compile Include="Database\SellWaste.cs" />
@@ -103,6 +105,9 @@
     <Compile Include="Measurements\Volume.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BuyPage.json.cs">
+      <DependentUpon>BuyPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Drawer.json.cs">
       <DependentUpon>Drawer.json</DependentUpon>
     </Compile>
@@ -165,7 +170,12 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\views\BuyPage.html" />
+    <Content Include="wwwroot\WasteTrader\views\WasteEntry.html" />
     <TypedJSON Include="ViewModels\WasteEntry.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\BuyPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\WasteEntry.html" />

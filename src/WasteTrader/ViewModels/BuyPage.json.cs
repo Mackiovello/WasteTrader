@@ -2,63 +2,20 @@ using Starcounter;
 using WasteTrader.Database;
 using Simplified.Ring3;
 using System.Linq;
-using WasteTrader.Measurements;
-using System;
-using System.Collections.Generic;
 using WasteTrader.Helpers;
 using WasteTrader.MathUtils;
 
 namespace WasteTrader.ViewModels
 {
-    partial class SellPage : Json
+    partial class BuyPage : Json
     {
-        static SellPage()
+        static BuyPage()
         {
             DefaultTemplate.Waste.LatitudeDD.Value.InstanceType = typeof(double);
             DefaultTemplate.Waste.LongitudeDD.Value.InstanceType = typeof(double);
         }
 
-        protected static Tuple<int, string>[] MassUnits = UnitsToTuples(Mass.Units);
-        protected static Tuple<int, string>[] LengthUnits = UnitsToTuples(Length.Units);
-        protected static Tuple<int, string>[] AreaUnits = UnitsToTuples(Area.Units);
-        protected static Tuple<int, string>[] VolumeUnits = UnitsToTuples(Volume.Units);
-
-        protected static Tuple<int, string>[] UnitsToTuples(IDictionary<int, Unit> dictionary)
-        {
-            return dictionary.Select(kvp => new Tuple<int, string>(kvp.Key + kvp.Value.Offset, kvp.Value.Text)).ToArray();
-        }
-
-        void Handle(Input.UnitSort action)
-        {
-            UnitSuffixes.Clear();
-            switch ((UnitType)action.Value)
-            {
-                case UnitType.Mass:
-                    AddUnitSuffixes(MassUnits);
-                    break;
-                case UnitType.Length:
-                    AddUnitSuffixes(LengthUnits);
-                    break;
-                case UnitType.Area:
-                    AddUnitSuffixes(AreaUnits);
-                    break;
-                case UnitType.Volume:
-                    AddUnitSuffixes(VolumeUnits);
-                    break;
-            }
-        }
-
-        protected void AddUnitSuffixes(Tuple<int, string>[] options)
-        {
-            foreach (Tuple<int, string> unit in options)
-            {
-                var option = UnitSuffixes.Add();
-                option.Label = unit.Item2;
-                option.PrefixPower = unit.Item1;
-            }
-        }
-
-        public bool ValidInput => 
+        public bool ValidInput =>
             this.Waste.Description.IsValid &&
             this.Waste.Title.IsValid &&
             this.Waste.Price.IsValid;
@@ -82,7 +39,7 @@ namespace WasteTrader.ViewModels
             Db.Transact(() =>
             {
                 var location = new NoDBLocation(this.Waste.LongitudeDD.Value, this.Waste.LatitudeDD.Value);
-                SellWaste sellWaste = new SellWaste(location)
+                BuyWaste buyWaste = new BuyWaste(location)
                 {
                     Title = this.Waste.Title.Value,
                     Description = this.Waste.Description.Value,
@@ -103,7 +60,7 @@ namespace WasteTrader.ViewModels
             this.Waste.Price.Value = 0;
         }
 
-        [SellPage_json.Waste.Title]
+        [BuyPage_json.Waste.Title]
         partial class WasteTitle : Json
         {
             private const int MinLength = 3;
@@ -120,7 +77,7 @@ namespace WasteTrader.ViewModels
             }
         }
 
-        [SellPage_json.Waste.Description]
+        [BuyPage_json.Waste.Description]
         partial class WasteDescription : Json
         {
             private const int MinLength = 20;
@@ -137,7 +94,7 @@ namespace WasteTrader.ViewModels
             }
         }
 
-        [SellPage_json.Waste.Price]
+        [BuyPage_json.Waste.Price]
         partial class WastePrice : Json
         {
             private string InvalidPriceWarning = "Priset måste vara högre än noll";

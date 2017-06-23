@@ -1,5 +1,5 @@
 {
-  "Html": "/WasteTrader/views/SellPage.html",
+  "Html": "/WasteTrader/views/BuyPage.html",
   "Waste": {
     "Title": {
       "Value$": "",
@@ -29,13 +29,6 @@
       "Value$": 0
     }
   },
-  "UnitSort$": 0,
-  "UnitSuffixes": [
-    {
-      "PrefixPower": 0,
-      "Label": ""
-    }
-  ],
   "SubmitTrigger$": 0,
   "SubmitMessage": "",
   "ValidInput": false

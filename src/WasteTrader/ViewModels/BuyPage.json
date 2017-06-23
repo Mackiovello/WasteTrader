@@ -1,0 +1,35 @@
+{
+  "Html": "/WasteTrader/views/BuyPage.html",
+  "Waste": {
+    "Title": {
+      "Value$": "",
+      "Message": "",
+      "IsValid": false
+    },
+    "Description": {
+      "Value$": "",
+      "Message": "",
+      "IsValid": false
+    },
+    "Price": {
+      "Value$": 0,
+      "Message": "",
+      "IsValid": false
+    },
+    "Quantity": {
+      "Value$": 0
+    },
+    "Unit": {
+      "Value$": 0
+    },
+    "LatitudeDD": {
+      "Value$": 0
+    },
+    "LongitudeDD": {
+      "Value$": 0
+    }
+  },
+  "SubmitTrigger$": 0,
+  "SubmitMessage": "",
+  "ValidInput": false
+}

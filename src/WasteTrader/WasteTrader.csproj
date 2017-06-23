@@ -105,6 +105,9 @@
     <Compile Include="Measurements\Volume.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BuyPage.json.cs">
+      <DependentUpon>BuyPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\Drawer.json.cs">
       <DependentUpon>Drawer.json</DependentUpon>
     </Compile>
@@ -167,8 +170,12 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\views\BuyPage.html" />
     <Content Include="wwwroot\WasteTrader\views\WasteEntry.html" />
     <TypedJSON Include="ViewModels\WasteEntry.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\BuyPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\WasteEntry.html" />

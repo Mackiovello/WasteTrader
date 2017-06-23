@@ -70,6 +70,18 @@ namespace WasteTrader.Api
                 return master;
             });
 
+            Handle.GET("/Waste2Value/Kop", () =>
+            {
+                if (NoUser())
+                    return Self.GET("/Waste2Value/logon");
+
+                var master = GetMasterPage();
+
+                master.CurrentPage = new BuyPage();
+
+                return master;
+            });
+
             Handle.GET("/Waste2Value/Hitta", () =>
             {
                 if (NoUser())

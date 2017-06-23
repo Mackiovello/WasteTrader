@@ -28,6 +28,16 @@ body {
     margin-bottom: 20px;
 }
 
+.wastetrader-card--expandable {
+    overflow: hidden;
+    height: 550px;
+    transition: height .2s;
+}
+
+.wastetrader-card--expandable:hover {
+    height: 300px;
+}
+
 .wastetrader-main-headline {
     text-align: center;
 }
@@ -41,11 +51,11 @@ body {
 }
 
 .wastetrader__expand-icon {
-    height: 30px;
-    width: 30px;
+    height: 24px;
+    width: 24px;
     float: right;
     cursor: pointer;
-    transition: transform .2s cubic-bezier(.19,0,.9,1);
+    transition: transform .3s cubic-bezier(.19,0,.9,1);
 }
 
 .wastetrader__expand-icon--rotated {
@@ -53,7 +63,12 @@ body {
 }
 
 .wastetrader--hidden {
-    display: none;
+    height: 0;
+    transition: height .3s ease-in-out;
+}
+
+.wastetrader--open {
+    height: 360px;
 }
 
 .mdc-wastetrader__textfield--large {

@@ -31,7 +31,7 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/partial/header", () => new Header(), internalOption);
 
-            Handle.GET("/Waste2Value/partial/logon", () =>  new LogonPage(), internalOption);
+            Handle.GET("/Waste2Value/partial/logon", () =>  new Json(), internalOption);
 
             Handle.GET("/Waste2Value/partial/user/{?}", (string username) => 
             {

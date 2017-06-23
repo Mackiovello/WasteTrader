@@ -123,9 +123,6 @@
     <Compile Include="ViewModels\Location.json.cs">
       <DependentUpon>Location.json</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\LogonPage.json.cs">
-      <DependentUpon>LogonPage.json</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
     </Compile>
@@ -183,9 +180,6 @@
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\UserPage.html" />
-    <TypedJSON Include="ViewModels\LogonPage.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\WeightedSorter.html" />
     <None Include="wwwroot\WasteTrader\views\DescendingSorter.html" />
     <None Include="wwwroot\WasteTrader\views\MatchParametersPage.html" />

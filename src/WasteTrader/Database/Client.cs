@@ -2,6 +2,7 @@
 using Starcounter;
 using Simplified.Ring3;
 using System.Linq;
+using System;
 
 namespace WasteTrader.Database
 {
@@ -33,13 +34,9 @@ namespace WasteTrader.Database
 
         public static Client GetClient(SystemUser systemUser)
         {
-            if (systemUser == null) return null;
+            systemUser = systemUser ?? throw new ArgumentNullException();
             Client client = Db.SQL<Client>(SELECT_CLIENT_WHERE_USER, systemUser).FirstOrDefault();
-            if (client == null)
-            {
-                Db.Transact(() => client = new Client(systemUser));
-            }
-            return client;
+            return client ?? Db.Transact(() => new Client(systemUser));
         }
 
         public static Client GetClientFromUsername(string username)

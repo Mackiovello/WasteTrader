@@ -36,5 +36,6 @@ namespace WasteTrader.Database
         public long Price { get; set; }
         public Client User { get; set; }
         public string Key => this.GetObjectID();
+        public bool Active { get; set; }
     }
 }

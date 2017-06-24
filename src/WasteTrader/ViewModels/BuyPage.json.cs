@@ -46,7 +46,8 @@ namespace WasteTrader.ViewModels
                     Quantity = this.Waste.Quantity.Value,
                     Price = this.Waste.Price.Value,
                     Unit = (UnitType)this.Waste.Unit.Value,
-                    User = SystemUser.GetCurrentSystemUser()
+                    User = SystemUser.GetCurrentSystemUser(),
+                    Active = true
                 };
             });
         }

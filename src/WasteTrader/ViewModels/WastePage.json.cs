@@ -10,8 +10,7 @@ namespace WasteTrader.ViewModels
         void Handle(Input.DeleteTrigger action)
         {
             this.RedirectUrl = $"/Waste2Value/user/{this.User.Username}";
-            var waste = Db.FromId<Waste>(this.Key);
-            Db.Transact(() => waste.Delete());
+            Db.Transact(() => this.Data.Active = false);
         }
     }
 }

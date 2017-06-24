@@ -50,7 +50,8 @@ namespace WasteTrader.ViewModels
                     Price = this.Waste.Price.Value,
                     Unit = (UnitType)this.Waste.Quantity.Unit,
                     UnitMetricPrefixPower = (int)this.Waste.Quantity.PrefixPower,
-                    User = SystemUser.GetCurrentSystemUser()
+                    User = SystemUser.GetCurrentSystemUser(),
+                    Active = true
                 };
             });
         }

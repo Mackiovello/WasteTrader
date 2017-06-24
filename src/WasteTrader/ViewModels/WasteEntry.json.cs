@@ -6,7 +6,7 @@ namespace WasteTrader.ViewModels
 {
     partial class WasteEntry : Json, IBound<SellWaste>
     {
-        public string FormattedEntryTime => Data.EntryTime.Date.ToString("d");
+        public string FormattedEntryTime => Data?.EntryTime.Date.ToString("d");
 
         public string Amount => MeasurementReader.Read((UnitType) Unit, Quantity, (int) UnitMetricPrefixPower).ToString();
 

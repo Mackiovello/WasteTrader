@@ -5,7 +5,7 @@ using WasteTrader.Helpers;
 namespace WasteTraderTests
 {
     [TestClass]
-    public class ValidatesInput
+    public class ValidatesStringInput
     {
         [TestMethod]
         public void NoValidationIsTrue()
@@ -43,30 +43,6 @@ namespace WasteTraderTests
         {
             var validation = new StringValidation("123985")
                 .IsOnlyDigits();
-            Assert.AreEqual(true, validation.IsValid);
-        }
-
-        [TestMethod]
-        public void LessThanZeroIsInvalid()
-        {
-            var validation = new NumberValidation(-5)
-                .IsMoreThanZero();
-            Assert.AreEqual(false, validation.IsValid);
-        }
-
-        [TestMethod]
-        public void ZeroIsInvalid()
-        {
-            var validation = new NumberValidation(0)
-                .IsMoreThanZero();
-            Assert.AreEqual(false, validation.IsValid);
-        }
-
-        [TestMethod]
-        public void MoreThanZeroIsValid()
-        {
-            var validation = new NumberValidation(5)
-                .IsMoreThanZero();
             Assert.AreEqual(true, validation.IsValid);
         }
 

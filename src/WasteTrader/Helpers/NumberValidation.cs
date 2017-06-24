@@ -6,18 +6,9 @@ using System.Threading.Tasks;
 
 namespace WasteTrader.Helpers
 {
-    public class NumberValidation
+    public class NumberValidation : Validator<double>
     {
-        public bool IsValid => !ValidationResult.Any(v => v == false);
-
-        private double ToValidate { get; set; }
-
-        private List<bool> ValidationResult = new List<bool>();
-
-        public NumberValidation(double toValidate)
-        {
-            this.ToValidate = toValidate;
-        }
+        public NumberValidation(double toValidate) : base(toValidate){}
 
         public NumberValidation IsMoreThanZero()
         {

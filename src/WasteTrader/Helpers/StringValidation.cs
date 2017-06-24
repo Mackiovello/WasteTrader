@@ -1,23 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WasteTrader.Helpers
 {
-    public class StringValidation
+    public class StringValidation : Validator<string>
     {
-        public bool IsValid => !ValidationResult.Any(v => v == false);
-
-        private string ToValidate { get; set; }
-
-        private List<bool> ValidationResult = new List<bool>();
-
-        public StringValidation(string toValidate)
-        {
-            this.ToValidate = toValidate;
-        }
+        public StringValidation(string toValidate) : base(toValidate){}
 
         public StringValidation ValidateLength(int minLength, int maxLength)
         {

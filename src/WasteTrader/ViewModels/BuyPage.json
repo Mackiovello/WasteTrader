@@ -11,17 +11,6 @@
       "Message": "",
       "IsValid": false
     },
-    "Price": {
-      "Value$": 0,
-      "Message": "",
-      "IsValid": false
-    },
-    "Quantity": {
-      "Value$": 0
-    },
-    "Unit": {
-      "Value$": 0
-    },
     "LatitudeDD": {
       "Value$": 0
     },

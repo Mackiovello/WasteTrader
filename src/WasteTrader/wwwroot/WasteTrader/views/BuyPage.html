@@ -21,23 +21,6 @@
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__description">Beskrivning</label>
                     </div>
                     <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Waste.Description.Message}}</p>
-
-                    <br />
-                    <div class="mdc-textfield">
-                        <input class="mdc-textfield__input" type="number" id="wastetrader-sell-form__quantity" value="{{model.Waste.Quantity.Value$::change}}">
-                        <label class="mdc-textfield__label" for="wastetrader-sell-form__quantity">Mängd</label>
-                    </div>
-
-                    <div class="mdc-textfield">
-                        <input class="mdc-textfield__input" type="text" id="wastetrader-sell-form__unit" value="{{model.Waste.Unit.Value$::change}}">
-                        <label class="mdc-textfield__label" for="wastetrader-sell-form__unit">Enhet</label>
-                    </div>
-                    <br />
-                    <div class="mdc-textfield">
-                        <input class="mdc-textfield__input" type="number" id="wastetrader-sell-form__price" value="{{model.Waste.Price.Value$::change}}" />
-                        <label class="mdc-textfield__label" for="wastetrader-sell-form__price">Pris (SEK)</label>
-                    </div>
-                    <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Waste.Price.Message}}</p>
                 </section>
             </form>
 

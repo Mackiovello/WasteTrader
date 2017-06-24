@@ -109,6 +109,15 @@ namespace WasteTrader.Api
                 master.CurrentPage = Self.GET("/Waste2Value/partial/user/" + SystemUser.GetCurrentSystemUser().Username);
                 return master;
             });
+
+            Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
+            {
+                if (NoUser())
+                    return Self.GET("/Waste2Value/logon");
+                var master = GetMasterPage();
+                master.CurrentPage = Self.GET("/Waste2Value/partial/waste/" + objectId);
+                return master;
+            });
         }
 
         public bool NoUser()

@@ -40,6 +40,13 @@ namespace WasteTrader.Api
                     Data = Client.GetClientFromUsername(username)
                 };
             }, internalOption);
+
+            Handle.GET("/Waste2Value/partial/waste/{?}", (string objectId) =>
+            {
+                Waste waste = Db.FromId<Waste>(objectId);
+
+                return new WastePage();
+            });
         }
     }
 }

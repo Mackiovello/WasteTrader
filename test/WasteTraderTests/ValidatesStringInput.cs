@@ -4,7 +4,7 @@ using WasteTrader.Helpers;
 
 namespace WasteTraderTests
 {
-    [TestClass]
+    [TestCategory("Validation"), TestClass]
     public class ValidatesStringInput
     {
         [TestMethod]

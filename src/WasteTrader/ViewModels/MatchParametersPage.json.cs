@@ -6,11 +6,14 @@ using System;
 using WasteTrader.Database;
 using WasteTrader.MathUtils;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace WasteTrader.ViewModels
 {
     partial class MatchParametersPage : Json
     {
+        private static readonly string SELECT_WASTE = $"SELECT i FROM {typeof(Waste)} i";
+
         static MatchParametersPage()
         {
             DefaultTemplate.MaxDistance.InstanceType = typeof(double);
@@ -37,7 +40,7 @@ namespace WasteTrader.ViewModels
                 Sorter = (IMatchSorter)Sorter,
             };
             SimpleMatchMaker matchMaker = new SimpleMatchMaker();
-            Waste[] matches = matchMaker.Match(matchParams, Db.SQL<Waste>($"SELECT i FROM {typeof(Waste)} i"));
+            Waste[] matches = matchMaker.Match(matchParams, Db.SQL<Waste>(SELECT_WASTE).Where(w => w.Active));
             WasteDump(matches);
         }
 

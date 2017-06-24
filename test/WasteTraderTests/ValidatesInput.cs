@@ -7,7 +7,14 @@ namespace WasteTraderTests
     [TestClass]
     public class ValidatesInput
     {
-        [TestCategory("LengthValidation"), TestMethod]
+        [TestMethod]
+        public void NoValidationIsTrue()
+        {
+            var validation = new StringValidation("test");
+            Assert.AreEqual(true, validation.IsValid);
+        }
+
+        [TestMethod]
         public void TooShortLengthIsInvalid()
         {
             var validation = new StringValidation("test")
@@ -15,7 +22,7 @@ namespace WasteTraderTests
             Assert.AreEqual(false, validation.IsValid);
         }
 
-        [TestCategory("LengthValidation"), TestMethod]
+        [TestMethod]
         public void TooLongLenghtIsInvalid()
         {
             var validation = new StringValidation("testtest")
@@ -23,7 +30,7 @@ namespace WasteTraderTests
             Assert.AreEqual(false, validation.IsValid);
         }
 
-        [TestCategory("LengthValidation"), TestMethod]
+        [TestMethod]
         public void CorrectLengthIsValid()
         {
             var validation = new StringValidation("test")
@@ -31,7 +38,7 @@ namespace WasteTraderTests
             Assert.AreEqual(true, validation.IsValid);
         }
 
-        [TestCategory("OnlyDigitValidation"), TestMethod]
+        [TestMethod]
         public void AllDigitsIsValid()
         {
             var validation = new StringValidation("123985")
@@ -39,7 +46,7 @@ namespace WasteTraderTests
             Assert.AreEqual(true, validation.IsValid);
         }
 
-        [TestCategory("NumberValidation"), TestMethod]
+        [TestMethod]
         public void LessThanZeroIsInvalid()
         {
             var validation = new NumberValidation(-5)
@@ -47,7 +54,7 @@ namespace WasteTraderTests
             Assert.AreEqual(false, validation.IsValid);
         }
 
-        [TestCategory("NumberValidation"), TestMethod]
+        [TestMethod]
         public void ZeroIsInvalid()
         {
             var validation = new NumberValidation(0)
@@ -55,12 +62,42 @@ namespace WasteTraderTests
             Assert.AreEqual(false, validation.IsValid);
         }
 
-        [TestCategory("NumberValidation"), TestMethod]
+        [TestMethod]
         public void MoreThanZeroIsValid()
         {
             var validation = new NumberValidation(5)
                 .IsMoreThanZero();
             Assert.AreEqual(true, validation.IsValid);
+        }
+
+        [TestMethod]
+        public void ChainedTrueValidationsReturnTrue()
+        {
+            var validation = new StringValidation("test")
+                .OnlyLetters()
+                .ValidateLength(3, 5);
+
+            Assert.AreEqual(true, validation.IsValid);
+        }
+
+        [TestMethod]
+        public void ChainedFalseValidationsReturnFalse()
+        {
+            var validation = new StringValidation("test")
+                .IsOnlyDigits()
+                .ValidateLength(6, 9);
+
+            Assert.AreEqual(false, validation.IsValid);
+        }
+
+        [TestMethod]
+        public void ChainedMixedValidationReturnFalse()
+        {
+            var validation = new StringValidation("test")
+                .OnlyLetters()
+                .ValidateLength(6, 9);
+
+            Assert.AreEqual(false, validation.IsValid);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/puppet-redirect/puppet-redirect.html">
 
 <template>
     <template is="dom-bind">
@@ -12,8 +13,16 @@
                     <p>Inlagd: {{model.FormattedEntryTime}}</p>
                     <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>
                 </section>
+                <section class="mdc-card__actions">
+                    <button class="mdc-button" 
+                            value="{{model.DeleteTrigger$::click}}" 
+                            onclick="++this.value"
+                            data-mdc-auto-init="MDCRipple">
+                    Radera</button>
+                </section>
             </div>
         </div>
         <script>mdc.autoInit()</script>
+        <link is="puppet-redirect" history url$="{{model.RedirectUrl$}}" />
     </template>
 </template>

@@ -14,5 +14,7 @@
     "Name": "",
     "Username": ""
   },
-  "FormattedEntryTime": ""
+  "FormattedEntryTime": "",
+  "DeleteTrigger$": 0,
+  "RedirectUrl$": ""
 }

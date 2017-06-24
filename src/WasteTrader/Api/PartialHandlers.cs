@@ -45,7 +45,7 @@ namespace WasteTrader.Api
             {
                 Waste waste = Db.FromId<Waste>(objectId);
 
-                return new WastePage();
+                return new WastePage() { Data = waste};
             });
         }
     }

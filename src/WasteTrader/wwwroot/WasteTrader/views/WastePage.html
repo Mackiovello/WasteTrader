@@ -2,6 +2,18 @@
 
 <template>
     <template is="dom-bind">
-        <h1>waste page</h1>
+        <div class="wastetrader-wrapper">
+            <h1 class="mdc-typography--display2 wastetrader-main-headline">{{model.Title}}</h1>
+            <div class="mdc-card wastetrader-card">
+                <section class="mdc-card__supporting-text">
+                    <p>Beskrivning: {{model.Description}}</p>
+                    <p>Mängd: {{model.Amount}} ({{model.RawAmount}})</p>
+                    <p>Pris: {{model.Price}} SEK</p>
+                    <p>Inlagd: {{model.FormattedEntryTime}}</p>
+                    <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>
+                </section>
+            </div>
+        </div>
+        <script>mdc.autoInit()</script>
     </template>
 </template>

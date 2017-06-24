@@ -26,7 +26,10 @@ body {
 }
 
 .wastetrader-drawer--full-height {
-    height: 100%;
+    height: 100vh;
+    background: linear-gradient(#fff 95%, #f8f8f8);
+    border: none;
+    box-shadow: 3px 0px 2px #eee;
 }
 
 .wastetrader-card {

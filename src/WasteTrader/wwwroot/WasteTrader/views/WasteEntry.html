@@ -13,6 +13,14 @@
                 <p>Inlagd: {{model.FormattedEntryTime}}</p>
                 <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>
             </section>
+            <section class="mdc-card__actions">
+                <a class="mdc-button" 
+                   data-mdc-auto-init="MDCRipple"
+                   href$="/waste2value/avfall/{{model.Key}}">
+                Läs mer
+                </a>
+            </section>
         </div>
+        <script>mdc.autoInit()</script>
     </template>
 </template>

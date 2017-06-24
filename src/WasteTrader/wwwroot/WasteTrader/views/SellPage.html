@@ -38,7 +38,6 @@
                                 <li class="mdc-list-item"
                                     role="option" 
                                     tabindex="0" 
-                                    on-click="selectUnit"
                                     data-unit="2"
                                     data-prefix-power="0">
                                     Meter
@@ -46,7 +45,6 @@
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    on-click="selectUnit"
                                     data-unit="2"
                                     data-prefix-power="3">
                                     Kilometer
@@ -54,7 +52,6 @@
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    on-click="selectUnit"
                                     data-unit="0"
                                     data-prefix-power="0">
                                     Kilogram
@@ -62,7 +59,6 @@
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    on-click="selectUnit"
                                     data-unit="0"
                                     data-prefix-power="3">
                                     Ton
@@ -70,7 +66,6 @@
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    on-click="selectUnit"
                                     data-unit="1"
                                     data-prefix-power="0">
                                     Kvadratmeter
@@ -78,7 +73,6 @@
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    on-click="selectUnit"
                                     data-unit="3"
                                     data-prefix-power="0">
                                     Kubikmeter
@@ -100,29 +94,29 @@
         </div>
         <script>
             (function () {
+                const script = document._currentScript || document.currentScript;
+                const template = script.parentElement.lastElementChild;
+
                 const textFields = document.querySelectorAll(".mdc-textfield");
 
-                var selectElement = document.querySelector(".mdc-select");
-                mdc.select.MDCSelect.attachTo(selectElement);
+                const selectElement = document.querySelector(".mdc-select");
+                const select = mdc.select.MDCSelect.attachTo(selectElement);
 
                 for(let i = 0; i < textFields.length; i++){
                     mdc.textfield.MDCTextfield.attachTo(textFields[i]);
                 }
 
+                selectElement.addEventListener('MDCSelect:change', () => {
+                    const selectedItem = select.selectedOptions[0];
+                    const unit = selectedItem.getAttribute("data-unit");
+                    const prefixPower = selectedItem.getAttribute("data-prefix-power");
+
+                    template.model.Waste.Quantity.Unit$ = unit;
+                    template.model.Waste.Quantity.PrefixPower$ = prefixPower;
+                })
+
                 mdc.autoInit();
             })();
         </script>
     </template>
-    <script>
-        (function () {
-            const script = document._currentScript || document.currentScript;
-            const template = script.previousElementSibling;
-
-            template.selectUnit = function (event) {
-                template.model.Waste.Quantity.Unit$ = event.target.getAttribute("data-unit");
-                template.model.Waste.Quantity.PrefixPower$ = event.target.getAttribute("data-prefix-power");
-            }
-
-        })();
-    </script>
 </template>

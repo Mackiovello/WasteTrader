@@ -3,7 +3,7 @@
 <template>
     <template is="dom-bind">
         <div class="wastetrader-wrapper">
-            <h1>{{model.Name}}'s page</h1>
+            <h1 class="mdc-typography--display2 wastetrader-main-headline">Min sida</h1>
             <template is="dom-repeat" items="{{model.WasteEntries}}">
                 <starcounter-include partial="{{item}}"></starcounter-include>
             </template>

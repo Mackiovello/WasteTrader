@@ -6,6 +6,7 @@ namespace WasteTrader.Api
 {
     class MainHandlers : IHandler
     {
+        private bool NoUser => SystemUser.GetCurrentSystemUser() == null;
 
         public void Register()
         {
@@ -58,7 +59,7 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/Salj", () =>
             {
-                if (NoUser())
+                if (this.NoUser)
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
@@ -70,7 +71,7 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/Kop", () =>
             {
-                if (NoUser())
+                if (this.NoUser)
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
@@ -82,20 +83,19 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/Hitta", () =>
             {
-                if (NoUser())
+                if (this.NoUser)
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
-
                 master.CurrentPage = Self.GET("/Waste2Value/partial/Hitta");
-
                 return master;
             });
 
             Handle.GET("/Waste2Value/user/{?}", (string username) =>
             {
-                if (NoUser())
+                if (this.NoUser)
                     return Self.GET("/Waste2Value/logon");
+
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET("/Waste2Value/partial/user/" + username);
                 return master;
@@ -103,8 +103,9 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/minsida", () =>
             {
-                if (NoUser())
+                if (this.NoUser)
                     return Self.GET("/Waste2Value/logon");
+
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET("/Waste2Value/partial/user/" + SystemUser.GetCurrentSystemUser().Username);
                 return master;
@@ -112,25 +113,28 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
             {
-                if (NoUser())
+                if (this.NoUser)
                     return Self.GET("/Waste2Value/logon");
+
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET("/Waste2Value/partial/waste/" + objectId);
                 return master;
             });
-        }
 
-        public bool NoUser()
-        {
-            return SystemUser.GetCurrentSystemUser() == null;
+            Handle.GET("/Waste2Value/matching/{?}", (string objectId) =>
+            {
+                if (this.NoUser)
+                    return Self.GET("/Waste2Value/logon");
+
+                var master = GetMasterPage();
+                master.CurrentPage = Self.GET($"/Waste2Value/partial/matching/{objectId}");
+                return master;
+            });
         }
 
         private MasterPage GetMasterPage()
         {
-            if (Session.Current == null)
-            {
-                Session.Current = new Session(SessionOptions.PatchVersioning);
-            }
+            Session.Current = Session.Current ?? new Session(SessionOptions.PatchVersioning);
 
             MasterPage master = Session.Current.Data as MasterPage;
 

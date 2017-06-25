@@ -50,7 +50,12 @@ namespace WasteTrader.Api
                 Waste waste = Db.FromId<Waste>(objectId);
 
                 return new WastePage() { Data = waste};
-            });
+            }, internalOption);
+
+            Handle.GET("/Waste2Value/partial/matching/{?}", (string objectId) =>
+            {
+                return new MatchingPage();
+            }, internalOption);
         }
     }
 }

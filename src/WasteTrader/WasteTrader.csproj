@@ -127,6 +127,9 @@
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\MatchingPage.json.cs">
+      <DependentUpon>MatchingPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\MatchParametersPage.json.cs">
       <DependentUpon>MatchParametersPage.json</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <TypedJSON Include="ViewModels\MatchingPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <None Include="wwwroot\WasteTrader\views\MatchingPage.html" />
     <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <TypedJSON Include="ViewModels\WastePage.json">
       <Generator>MsBuild:Compile</Generator>

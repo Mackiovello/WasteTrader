@@ -13,6 +13,9 @@ namespace WasteTrader.Helpers
 
         public StringValidation ValidateLength(int minLength, int maxLength)
         {
+            if (minLength > maxLength)
+                throw new ArgumentException("minLength can't be longer than maxLength");
+
             if (ToValidate.Length < minLength || ToValidate.Length > maxLength)
                 ValidationResult.Add(false);
             else

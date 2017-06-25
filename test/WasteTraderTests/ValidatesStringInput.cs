@@ -46,6 +46,13 @@ namespace WasteTraderTests
         }
 
         [TestMethod]
+        public void LongerMinThanMaxThrowsException()
+        {
+            Assert.ThrowsException<ArgumentException>(() =>
+                new StringValidation("test").ValidateLength(5, 3));
+        }
+
+        [TestMethod]
         public void AllDigitsIsValid()
         {
             var validation = new StringValidation("123985")

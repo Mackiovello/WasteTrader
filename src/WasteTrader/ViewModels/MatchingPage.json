@@ -1,3 +1,4 @@
 {
-  "Html": "/WasteTrader/views/MatchingPage.html"
+  "Html": "/WasteTrader/views/MatchingPage.html",
+  "Matches": [ {} ]
 }

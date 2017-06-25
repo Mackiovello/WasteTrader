@@ -11,7 +11,6 @@ namespace WasteTrader.Helpers
     {
         private Waste WasteToMatch { get; set; }
         private IEnumerable<Waste> ToMatchAgainst { get; set; }
-        public IEnumerable<Waste> Matches { get; private set; }
 
         public WasteMatching(Waste wasteToMatch, IEnumerable<Waste> toMatchAgainst)
         {
@@ -19,7 +18,7 @@ namespace WasteTrader.Helpers
             this.ToMatchAgainst = toMatchAgainst ?? throw new ArgumentNullException("toMatchAgainst");
         }
 
-        public WasteMatching Match()
+        public IEnumerable<Waste> Match()
         {
             string titleToMatchAgainst = WasteToMatch.Title;
             List<Waste> matches = new List<Waste>();
@@ -30,9 +29,7 @@ namespace WasteTrader.Helpers
                     matches.Add(waste);
             }
 
-            Matches = matches;
-
-            return this;
+            return matches;
         }
     }
 }

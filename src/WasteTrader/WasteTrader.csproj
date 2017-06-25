@@ -75,6 +75,7 @@
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Helpers\StringValidation.cs" />
     <Compile Include="Helpers\NumberValidation.cs" />
+    <Compile Include="Helpers\WasteMatching.cs" />
     <Compile Include="Matchmaking\BasicMatchParameters.cs" />
     <Compile Include="MathUtils\ILocation.cs" />
     <Compile Include="Database\SellWaste.cs" />

@@ -1,7 +1,10 @@
 ﻿using Simplified.Ring3;
 using Starcounter;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using WasteTrader.Database;
+using WasteTrader.Helpers;
 using WasteTrader.ViewModels;
 using WasteTrader.ViewModels.Sorters;
 
@@ -11,6 +14,7 @@ namespace WasteTrader.Api
     {
         private static readonly string SELECT_WASTE_BY_ENTRYTIME =
             $"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC";
+        private static readonly string SELECT_WASTE = $"SELECT w FROM {typeof(Waste)} w";
 
         protected HandlerOptions internalOption = new HandlerOptions { SelfOnly = true };
 
@@ -54,7 +58,14 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/partial/matchning/{?}", (string objectId) =>
             {
-                return new MatchingPage();
+                Waste wasteToMatch = Db.FromId<Waste>(objectId);
+                IEnumerable<Waste> toMatchAgainst = Db.SQL<Waste>(SELECT_WASTE);
+
+                IEnumerable<Waste> matches = new WasteMatching(wasteToMatch, toMatchAgainst).Match();
+
+                var page = new MatchingPage();
+                page.Matches.Data = matches;
+                return page;
             }, internalOption);
         }
     }

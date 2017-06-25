@@ -52,7 +52,7 @@ namespace WasteTrader.Api
                 return new WastePage() { Data = waste};
             }, internalOption);
 
-            Handle.GET("/Waste2Value/partial/matching/{?}", (string objectId) =>
+            Handle.GET("/Waste2Value/partial/matchning/{?}", (string objectId) =>
             {
                 return new MatchingPage();
             }, internalOption);

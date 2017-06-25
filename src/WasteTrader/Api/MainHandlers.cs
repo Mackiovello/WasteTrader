@@ -121,13 +121,13 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            Handle.GET("/Waste2Value/matching/{?}", (string objectId) =>
+            Handle.GET("/Waste2Value/matchning/{?}", (string objectId) =>
             {
                 if (this.NoUser)
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET($"/Waste2Value/partial/matching/{objectId}");
+                master.CurrentPage = Self.GET($"/Waste2Value/partial/matchning/{objectId}");
                 return master;
             });
         }

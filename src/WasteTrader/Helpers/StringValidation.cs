@@ -5,7 +5,11 @@ namespace WasteTrader.Helpers
 {
     public class StringValidation : Validator<string>
     {
-        public StringValidation(string toValidate) : base(toValidate){}
+        public StringValidation(string toValidate) : base(toValidate)
+        {
+            if (string.IsNullOrEmpty(toValidate))
+                throw new ArgumentNullException(toValidate);
+        }
 
         public StringValidation ValidateLength(int minLength, int maxLength)
         {

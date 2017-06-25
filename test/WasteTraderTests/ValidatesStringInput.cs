@@ -15,6 +15,13 @@ namespace WasteTraderTests
         }
 
         [TestMethod]
+        public void ValidatingNullThrowsException()
+        {
+            Assert.ThrowsException<ArgumentNullException>(() => 
+                new StringValidation(null));
+        }
+
+        [TestMethod]
         public void TooShortLengthIsInvalid()
         {
             var validation = new StringValidation("test")

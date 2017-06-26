@@ -15,6 +15,8 @@ namespace WasteTrader.Api
         private static readonly string SELECT_WASTE_BY_ENTRYTIME =
             $"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC";
         private static readonly string SELECT_WASTE = $"SELECT w FROM {typeof(Waste)} w";
+        private static readonly string SELECT_SELLWASTE = $"SELECT w FROM {typeof(SellWaste)} w";
+        private static readonly string SELECT_BUYWASTE = $"SELECT w FROM {typeof(BuyWaste)} w";
 
         protected HandlerOptions internalOption = new HandlerOptions { SelfOnly = true };
 
@@ -59,7 +61,13 @@ namespace WasteTrader.Api
             Handle.GET("/Waste2Value/partial/matchning/{?}", (string objectId) =>
             {
                 Waste wasteToMatch = Db.FromId<Waste>(objectId);
-                IEnumerable<Waste> toMatchAgainst = Db.SQL<Waste>(SELECT_WASTE);
+
+                string query = wasteToMatch.GetType() == typeof(SellWaste) ?
+                    SELECT_BUYWASTE :
+                    SELECT_SELLWASTE;
+
+                IEnumerable<Waste> toMatchAgainst = Db.SQL<Waste>(query)
+                    .Where(w => w.Key != wasteToMatch.Key);
 
                 IEnumerable<Waste> matches = new WasteMatching(wasteToMatch, toMatchAgainst).Match();
 

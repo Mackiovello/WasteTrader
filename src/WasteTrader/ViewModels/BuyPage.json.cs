@@ -42,7 +42,8 @@ namespace WasteTrader.ViewModels
                 {
                     Title = this.Waste.Title.Value,
                     Description = this.Waste.Description.Value,
-                    User = SystemUser.GetCurrentSystemUser()
+                    User = SystemUser.GetCurrentSystemUser(),
+                    Active = true 
                 };
             });
         }

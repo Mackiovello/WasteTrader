@@ -4,7 +4,7 @@ using WasteTrader.Database;
 
 namespace WasteTrader.ViewModels
 {
-    partial class WasteEntry : Json, IBound<SellWaste>
+    partial class WasteEntry : Json, IBound<Waste>
     {
         public string FormattedEntryTime => Data?.EntryTime.Date.ToString("d");
 

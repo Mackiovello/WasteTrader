@@ -44,7 +44,7 @@ namespace WasteTrader.Api
             {
                 var master = GetMasterPage();
 
-                master.CurrentPage = Self.GET(BuildPartialUri("home"));
+                master.CurrentPage = Self.GET(BuildPartialUri("sell"));
 
                 return master;
             });
@@ -65,7 +65,7 @@ namespace WasteTrader.Api
 
                 var master = GetMasterPage();
 
-                master.CurrentPage = new SellPage();
+                master.CurrentPage = Self.GET(BuildPartialUri("sell"));
 
                 return master;
             });
@@ -77,7 +77,7 @@ namespace WasteTrader.Api
 
                 var master = GetMasterPage();
 
-                master.CurrentPage = new BuyPage();
+                master.CurrentPage = Self.GET(BuildPartialUri("buy"));
 
                 return master;
             });

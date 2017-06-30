@@ -1,6 +1,7 @@
 ﻿using Starcounter;
 using WasteTrader.ViewModels;
 using Simplified.Ring3;
+using System.Text;
 
 namespace WasteTrader.Api
 {
@@ -43,7 +44,7 @@ namespace WasteTrader.Api
             {
                 var master = GetMasterPage();
 
-                master.CurrentPage = Self.GET("/Waste2Value/partial/Home");
+                master.CurrentPage = Self.GET(BuildPartialUri("home"));
 
                 return master;
             });
@@ -52,7 +53,7 @@ namespace WasteTrader.Api
             {
                 var master = GetMasterPage();
 
-                master.CurrentPage = Self.GET("/Waste2Value/partial/logon");
+                master.CurrentPage = Self.GET(BuildPartialUri("logon"));
 
                 return master;
             });
@@ -87,7 +88,7 @@ namespace WasteTrader.Api
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET("/Waste2Value/partial/Hitta");
+                master.CurrentPage = Self.GET(BuildPartialUri("Hitta"));
                 return master;
             });
 
@@ -97,7 +98,7 @@ namespace WasteTrader.Api
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET("/Waste2Value/partial/user/" + username);
+                master.CurrentPage = Self.GET(BuildPartialUri("user", username));
                 return master;
             });
 
@@ -107,7 +108,8 @@ namespace WasteTrader.Api
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET("/Waste2Value/partial/user/" + SystemUser.GetCurrentSystemUser().Username);
+                string username = SystemUser.GetCurrentSystemUser().Username;
+                master.CurrentPage = Self.GET(BuildPartialUri("user", username));
                 return master;
             });
 
@@ -117,7 +119,7 @@ namespace WasteTrader.Api
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET("/Waste2Value/partial/waste/" + objectId);
+                master.CurrentPage = Self.GET(BuildPartialUri("waste", objectId));
                 return master;
             });
 
@@ -127,9 +129,22 @@ namespace WasteTrader.Api
                     return Self.GET("/Waste2Value/logon");
 
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET($"/Waste2Value/partial/matchning/{objectId}");
+                master.CurrentPage = Self.GET(BuildPartialUri("matchning", objectId));
                 return master;
             });
+        }
+
+        private string BuildPartialUri(string partialName, string parameterOne = null, string parameterTwo = null)
+        {
+            var uriBuilder = new StringBuilder();
+            uriBuilder.Append(PartialHandlers.partialPrefix);
+            uriBuilder.Append(partialName);
+            if (!string.IsNullOrWhiteSpace(parameterOne))
+                uriBuilder.Append("/").Append(parameterOne);
+            if (!string.IsNullOrWhiteSpace(parameterTwo))
+                uriBuilder.Append("/").Append(parameterTwo);
+
+            return uriBuilder.ToString();
         }
 
         private MasterPage GetMasterPage()
@@ -143,8 +158,8 @@ namespace WasteTrader.Api
                 master = new MasterPage()
                 {
                     Session = Session.Current,
-                    Drawer = Self.GET("/Waste2Value/partial/drawer"),
-                    Header = Self.GET("/Waste2Value/partial/header")
+                    Drawer = Self.GET(BuildPartialUri("drawer")),
+                    Header = Self.GET(BuildPartialUri("header"))
                 };
             }
 

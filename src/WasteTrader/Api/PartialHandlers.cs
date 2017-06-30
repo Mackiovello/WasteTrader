@@ -12,6 +12,7 @@ namespace WasteTrader.Api
 {
     public class PartialHandlers : IHandler
     {
+        public static string partialPrefix = "/Waste2Value/partial/";
         private static readonly string SELECT_WASTE_BY_ENTRYTIME =
             $"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC";
         private static readonly string SELECT_WASTE = $"SELECT w FROM {typeof(Waste)} w";
@@ -22,7 +23,7 @@ namespace WasteTrader.Api
 
         public void Register()
         {
-            Handle.GET("/Waste2Value/partial/Hitta", () =>
+            Handle.GET(partialPrefix + "Hitta", () =>
             {
                 var page = new FindPage();
                 page.Filter = new MatchParametersPage
@@ -35,15 +36,17 @@ namespace WasteTrader.Api
                 return page;
             }, internalOption);
 
-            Handle.GET("/Waste2Value/partial/drawer", () => new Drawer(), internalOption);
+            Handle.GET(partialPrefix + "drawer", () => new Drawer(), internalOption);
 
-            Handle.GET("/Waste2Value/partial/Home", () => new HomePage(), internalOption);
+            Handle.GET(partialPrefix + "Home", () => new HomePage(), internalOption);
 
-            Handle.GET("/Waste2Value/partial/header", () => new Header(), internalOption);
+            Handle.GET(partialPrefix + "header", () => new Header(), internalOption);
 
-            Handle.GET("/Waste2Value/partial/logon", () =>  new Json(), internalOption);
+            Handle.GET(partialPrefix + "logon", () =>  new Json(), internalOption);
 
-            Handle.GET("/Waste2Value/partial/user/{?}", (string username) => 
+            Handle.GET(partialPrefix + "sell", () => new SellPage(), internalOption);
+
+            Handle.GET(partialPrefix + "user/{?}", (string username) => 
             {
                 return new UserPage()
                 {
@@ -51,14 +54,14 @@ namespace WasteTrader.Api
                 };
             }, internalOption);
 
-            Handle.GET("/Waste2Value/partial/waste/{?}", (string objectId) =>
+            Handle.GET(partialPrefix + "waste/{?}", (string objectId) =>
             {
                 Waste waste = Db.FromId<Waste>(objectId);
 
                 return new WastePage() { Data = waste};
             }, internalOption);
 
-            Handle.GET("/Waste2Value/partial/matchning/{?}", (string objectId) =>
+            Handle.GET(partialPrefix + "matchning/{?}", (string objectId) =>
             {
                 Waste wasteToMatch = Db.FromId<Waste>(objectId);
 

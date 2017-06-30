@@ -2,13 +2,12 @@
 using WasteTrader.ViewModels;
 using Simplified.Ring3;
 using System.Text;
+using WasteTrader.Helpers;
 
 namespace WasteTrader.Api
 {
     class MainHandlers : IHandler
     {
-        private bool NoUser => SystemUser.GetCurrentSystemUser() == null;
-
         public void Register()
         {
             var html = @"<!DOCTYPE html>
@@ -43,91 +42,62 @@ namespace WasteTrader.Api
             Handle.GET("/Waste2Value", () =>
             {
                 var master = GetMasterPage();
-
                 master.CurrentPage = Self.GET(BuildPartialUri("sell"));
-
                 return master;
             });
 
             Handle.GET("/Waste2Value/logon", () =>
             {
                 var master = GetMasterPage();
-
                 master.CurrentPage = Self.GET(BuildPartialUri("logon"));
-
                 return master;
             });
 
-            Handle.GET("/Waste2Value/Salj", () =>
+            AuthorizedHandle.GET("/Waste2Value/Salj", () =>
             {
-                if (this.NoUser)
-                    return Self.GET("/Waste2Value/logon");
-
                 var master = GetMasterPage();
-
                 master.CurrentPage = Self.GET(BuildPartialUri("sell"));
-
                 return master;
             });
 
-            Handle.GET("/Waste2Value/Kop", () =>
+            AuthorizedHandle.GET("/Waste2Value/Kop", () =>
             {
-                if (this.NoUser)
-                    return Self.GET("/Waste2Value/logon");
-
                 var master = GetMasterPage();
-
                 master.CurrentPage = Self.GET(BuildPartialUri("buy"));
-
                 return master;
             });
 
-            Handle.GET("/Waste2Value/Hitta", () =>
+            AuthorizedHandle.GET("/Waste2Value/Hitta", () =>
             {
-                if (this.NoUser)
-                    return Self.GET("/Waste2Value/logon");
-
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET(BuildPartialUri("Hitta"));
                 return master;
             });
 
-            Handle.GET("/Waste2Value/user/{?}", (string username) =>
+            AuthorizedHandle.GET("/Waste2Value/user/{?}", (string username) =>
             {
-                if (this.NoUser)
-                    return Self.GET("/Waste2Value/logon");
-
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET(BuildPartialUri("user", username));
                 return master;
             });
 
-            Handle.GET("/Waste2Value/minsida", () =>
+            AuthorizedHandle.GET("/Waste2Value/minsida", () =>
             {
-                if (this.NoUser)
-                    return Self.GET("/Waste2Value/logon");
-
                 var master = GetMasterPage();
                 string username = SystemUser.GetCurrentSystemUser().Username;
                 master.CurrentPage = Self.GET(BuildPartialUri("user", username));
                 return master;
             });
 
-            Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
+            AuthorizedHandle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
             {
-                if (this.NoUser)
-                    return Self.GET("/Waste2Value/logon");
-
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET(BuildPartialUri("waste", objectId));
                 return master;
             });
 
-            Handle.GET("/Waste2Value/matchning/{?}", (string objectId) =>
+            AuthorizedHandle.GET("/Waste2Value/matchning/{?}", (string objectId) =>
             {
-                if (this.NoUser)
-                    return Self.GET("/Waste2Value/logon");
-
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET(BuildPartialUri("matchning", objectId));
                 return master;

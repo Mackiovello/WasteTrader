@@ -72,6 +72,7 @@
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Database\BuyWaste.cs" />
     <Compile Include="Database\Client.cs" />
+    <Compile Include="Helpers\AuthorizedHandle.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Helpers\StringValidation.cs" />
     <Compile Include="Helpers\NumberValidation.cs" />

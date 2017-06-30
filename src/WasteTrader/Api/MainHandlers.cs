@@ -60,13 +60,6 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            AuthorizedHandle.GET("/Waste2Value/Kop", () =>
-            {
-                var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("buy"));
-                return master;
-            });
-
             AuthorizedHandle.GET("/Waste2Value/Hitta", () =>
             {
                 var master = GetMasterPage();

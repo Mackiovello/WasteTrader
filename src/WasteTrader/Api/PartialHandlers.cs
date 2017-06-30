@@ -46,8 +46,6 @@ namespace WasteTrader.Api
 
             Handle.GET(partialPrefix + "sell", () => new SellPage(), internalOption);
 
-            Handle.GET(partialPrefix + "buy", () => new BuyPage(), internalOption);
-
             Handle.GET(partialPrefix + "user/{?}", (string username) => 
             {
                 return new UserPage()

@@ -4,9 +4,17 @@
     <template is="dom-bind">
         <div class="wastetrader-wrapper">
             <h1 class="mdc-typography--display2 wastetrader-main-headline">Min sida</h1>
-            <template is="dom-repeat" items="{{model.WasteEntries}}">
+            <nav class="mdc-tab-bar" data-mdc-auto-init="MDCTabBar">
+                <div class="mdc-tab" value="{{model.OpenActiveTrigger$::click}}" onclick="++this.value">Aktiva annonser</div>
+                <div class="mdc-tab" value="{{model.OpenInactiveTrigger$::click}}" onclick="++this.value">Inaktiva annonser</div>
+                <span class="mdc-tab-bar__indicator"></span>
+            </nav>
+            <template is="dom-repeat" items="{{model.WasteToDisplay}}">
                 <starcounter-include partial="{{item}}"></starcounter-include>
             </template>
         </div>
+        <script>
+            (function () { mdc.autoInit(); })();
+        </script>
     </template>
 </template>

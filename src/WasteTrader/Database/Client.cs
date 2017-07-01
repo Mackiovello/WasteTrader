@@ -64,6 +64,7 @@ namespace WasteTrader.Database
         public string Description => User.Description;
         public IEnumerable<SellWaste> SellWastes => Db.SQL<SellWaste>(SELECT_SELLWASTE_WHERE_USER, this).Where(w => w.Active);
         public IEnumerable<BuyWaste> BuyWastes => Db.SQL<BuyWaste>(SELECT_BUYWASTE_WHERE_USER, this).Where(w => w.Active);
-        public IEnumerable<Waste> WasteEntries => Db.SQL<Waste>(SELECT_WASTE_WHERE_USER, this).Where(w => w.Active);
+        public IEnumerable<Waste> ActiveWaste => Db.SQL<Waste>(SELECT_WASTE_WHERE_USER, this).Where(w => w.Active);
+        public IEnumerable<Waste> InactiveWaste => Db.SQL<Waste>(SELECT_WASTE_WHERE_USER, this).Where(w => !w.Active);
     }
 }

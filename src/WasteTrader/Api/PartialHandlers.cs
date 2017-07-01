@@ -6,7 +6,6 @@ using System.Linq;
 using WasteTrader.Database;
 using WasteTrader.Helpers;
 using WasteTrader.ViewModels;
-using WasteTrader.ViewModels.Sorters;
 
 namespace WasteTrader.Api
 {
@@ -26,12 +25,6 @@ namespace WasteTrader.Api
             Handle.GET(partialPrefix + "Hitta", () =>
             {
                 var page = new FindPage();
-                page.Filter = new MatchParametersPage
-                {
-                    Sorter = new DateSorterPage(),
-                    SelectedSorter = "DateSorter",
-                    WasteDump = (Waste[] waste) => page.WasteEntries.Data = waste
-                };
                 page.WasteEntries.Data = Db.SQL<Waste>(SELECT_WASTE_BY_ENTRYTIME).Where(w => w.Active);
                 return page;
             }, internalOption);

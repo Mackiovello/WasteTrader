@@ -132,29 +132,8 @@
     <Compile Include="ViewModels\MatchingPage.json.cs">
       <DependentUpon>MatchingPage.json</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\MatchParametersPage.json.cs">
-      <DependentUpon>MatchParametersPage.json</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\SellPage.json.cs">
       <DependentUpon>SellPage.json</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\Sorters\DateSorterPage.json.cs">
-      <DependentUpon>DateSorterPage.json</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\Sorters\DistanceSorterPage.json.cs">
-      <DependentUpon>DistanceSorterPage.json</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\Sorters\PricePerUnitSorterPage.json.cs">
-      <DependentUpon>PricePerUnitSorterPage.json</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\Sorters\PriceSorterPage.json.cs">
-      <DependentUpon>PriceSorterPage.json</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\Sorters\QuantitySorterPage.json.cs">
-      <DependentUpon>QuantitySorterPage.json</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\Sorters\WeightedSorterPage.json.cs">
-      <DependentUpon>WeightedSorterPage.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\UserPage.json.cs">
       <DependentUpon>UserPage.json</DependentUpon>
@@ -179,7 +158,6 @@
     <TypedJSON Include="ViewModels\MatchingPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
-    <None Include="wwwroot\WasteTrader\views\MatchingPage.html" />
     <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <TypedJSON Include="ViewModels\WastePage.json">
       <Generator>MsBuild:Compile</Generator>
@@ -197,33 +175,9 @@
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\UserPage.html" />
-    <None Include="wwwroot\WasteTrader\views\WeightedSorter.html" />
-    <None Include="wwwroot\WasteTrader\views\DescendingSorter.html" />
-    <None Include="wwwroot\WasteTrader\views\MatchParametersPage.html" />
     <None Include="app.config" />
     <None Include="packages.config" />
     <TypedJSON Include="ViewModels\Location.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <TypedJSON Include="ViewModels\MatchParametersPage.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <TypedJSON Include="ViewModels\Sorters\DateSorterPage.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <TypedJSON Include="ViewModels\Sorters\DistanceSorterPage.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <TypedJSON Include="ViewModels\Sorters\PricePerUnitSorterPage.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <TypedJSON Include="ViewModels\Sorters\PriceSorterPage.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <TypedJSON Include="ViewModels\Sorters\QuantitySorterPage.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
-    <TypedJSON Include="ViewModels\Sorters\WeightedSorterPage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <TypedJSON Include="ViewModels\Header.json">

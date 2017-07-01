@@ -10,5 +10,6 @@
   },
   "FormattedEntryTime": "",
   "DeleteTrigger$": 0,
-  "RedirectUrl$": ""
+  "RedirectUrl$": "",
+  "IsOwner": false
 }

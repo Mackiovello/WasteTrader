@@ -14,11 +14,14 @@
                     <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>
                 </section>
                 <section class="mdc-card__actions">
-                    <button class="mdc-button" 
-                            value="{{model.DeleteTrigger$::click}}" 
-                            onclick="++this.value"
-                            data-mdc-auto-init="MDCRipple">
-                    Radera</button>
+                    <template is="dom-if" if="{{model.IsOwner}}">
+                        <button class="mdc-button" 
+                                value="{{model.DeleteTrigger$::click}}" 
+                                onclick="++this.value"
+                                data-mdc-auto-init="MDCRipple">
+                                Radera
+                        </button>
+                    </template>
                 </section>
             </div>
         </div>

@@ -53,24 +53,6 @@ namespace WasteTrader.Api
 
                 return new WastePage() { Data = waste};
             }, internalOption);
-
-            Handle.GET(partialPrefix + "matchning/{?}", (string objectId) =>
-            {
-                Waste wasteToMatch = Db.FromId<Waste>(objectId);
-
-                string query = wasteToMatch.GetType() == typeof(SellWaste) ?
-                    SELECT_BUYWASTE :
-                    SELECT_SELLWASTE;
-
-                IEnumerable<Waste> toMatchAgainst = Db.SQL<Waste>(query)
-                    .Where(w => w.Key != wasteToMatch.Key);
-
-                IEnumerable<Waste> matches = new WasteMatching(wasteToMatch, toMatchAgainst).Match();
-
-                var page = new MatchingPage();
-                page.Matches.Data = matches;
-                return page;
-            }, internalOption);
         }
     }
 }

@@ -88,13 +88,6 @@ namespace WasteTrader.Api
                 master.CurrentPage = Self.GET(BuildPartialUri("waste", objectId));
                 return master;
             });
-
-            AuthorizedHandle.GET("/Waste2Value/matchning/{?}", (string objectId) =>
-            {
-                var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("matchning", objectId));
-                return master;
-            });
         }
 
         private string BuildPartialUri(string partialName, string parameterOne = null, string parameterTwo = null)

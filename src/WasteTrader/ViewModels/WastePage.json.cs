@@ -1,4 +1,4 @@
-using Starcounter;
+﻿using Starcounter;
 using WasteTrader.Database;
 
 namespace WasteTrader.ViewModels
@@ -7,10 +7,10 @@ namespace WasteTrader.ViewModels
     {
         public string FormattedEntryTime => Data?.EntryTime.Date.ToString("d");
 
-        void Handle(Input.DeleteTrigger action)
+        [WasteEntry_json.User]
+        partial class WasteUser : Json, IBound<Client>
         {
-            this.RedirectUrl = $"/Waste2Value/user/{this.User.Username}";
-            Db.Transact(() => this.Data.Active = false);
+
         }
     }
 }

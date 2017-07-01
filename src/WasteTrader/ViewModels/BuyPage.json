@@ -10,12 +10,6 @@
       "Value$": "",
       "Message": "",
       "IsValid": false
-    },
-    "LatitudeDD": {
-      "Value$": 0
-    },
-    "LongitudeDD": {
-      "Value$": 0
     }
   },
   "SubmitTrigger$": 0,

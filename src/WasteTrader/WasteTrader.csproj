@@ -76,36 +76,8 @@
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Helpers\StringValidation.cs" />
     <Compile Include="Helpers\NumberValidation.cs" />
-    <Compile Include="Helpers\WasteMatching.cs" />
-    <Compile Include="Matchmaking\BasicMatchParameters.cs" />
-    <Compile Include="MathUtils\ILocation.cs" />
     <Compile Include="Database\SellWaste.cs" />
     <Compile Include="Database\Waste.cs" />
-    <Compile Include="Database\Location.cs" />
-    <Compile Include="Matchmaking\Sorters\DateSorter.cs" />
-    <Compile Include="Matchmaking\Sorters\DistanceSorter.cs" />
-    <Compile Include="Matchmaking\Sorters\GenericSorter.cs" />
-    <Compile Include="Matchmaking\IMatchMaker.cs" />
-    <Compile Include="Matchmaking\IMatchParameters.cs" />
-    <Compile Include="Matchmaking\Sorters\IMatchSorter.cs" />
-    <Compile Include="Matchmaking\Sorters\PricePerUnitSorter.cs" />
-    <Compile Include="Matchmaking\Sorters\PriceSorter.cs" />
-    <Compile Include="Matchmaking\Sorters\QuantitySorter.cs" />
-    <Compile Include="Matchmaking\RoughMatchMaker.cs" />
-    <Compile Include="Matchmaking\SimpleMatchMaker.cs" />
-    <Compile Include="Matchmaking\Sorters\WeightedSorter.cs" />
-    <Compile Include="MathUtils\GeographyMath.cs" />
-    <Compile Include="MathUtils\LongMath.cs" />
-    <Compile Include="MathUtils\NoDBLocation.cs" />
-    <Compile Include="Measurements\Area.cs" />
-    <Compile Include="Measurements\IMeasurement.cs" />
-    <Compile Include="Measurements\Length.cs" />
-    <Compile Include="Measurements\Mass.cs" />
-    <Compile Include="Measurements\Measurement.cs" />
-    <Compile Include="Measurements\MeasurementReader.cs" />
-    <Compile Include="Measurements\MetricPrefixes.cs" />
-    <Compile Include="Measurements\Unit.cs" />
-    <Compile Include="Measurements\Volume.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BuyPage.json.cs">
@@ -122,9 +94,6 @@
     </Compile>
     <Compile Include="ViewModels\HomePage.json.cs">
       <DependentUpon>HomePage.json</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\Location.json.cs">
-      <DependentUpon>Location.json</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MasterPage.json.cs">
       <DependentUpon>MasterPage.json</DependentUpon>
@@ -152,10 +121,10 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
-    <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <TypedJSON Include="ViewModels\WastePage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
+    <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <None Include="wwwroot\WasteTrader\views\BuyPage.html" />
     <Content Include="wwwroot\WasteTrader\views\WasteEntry.html" />
     <TypedJSON Include="ViewModels\WasteEntry.json">
@@ -171,9 +140,6 @@
     <None Include="wwwroot\WasteTrader\views\UserPage.html" />
     <None Include="app.config" />
     <None Include="packages.config" />
-    <TypedJSON Include="ViewModels\Location.json">
-      <Generator>MsBuild:Compile</Generator>
-    </TypedJSON>
     <TypedJSON Include="ViewModels\Header.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>

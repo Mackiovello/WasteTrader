@@ -3,18 +3,11 @@ using WasteTrader.Database;
 using Simplified.Ring3;
 using System.Linq;
 using WasteTrader.Helpers;
-using WasteTrader.MathUtils;
 
 namespace WasteTrader.ViewModels
 {
     partial class BuyPage : Json
     {
-        static BuyPage()
-        {
-            DefaultTemplate.Waste.LatitudeDD.Value.InstanceType = typeof(double);
-            DefaultTemplate.Waste.LongitudeDD.Value.InstanceType = typeof(double);
-        }
-
         public bool ValidInput =>
             this.Waste.Description.IsValid &&
             this.Waste.Title.IsValid;
@@ -37,8 +30,7 @@ namespace WasteTrader.ViewModels
         {
             Db.Transact(() =>
             {
-                var location = new NoDBLocation(this.Waste.LongitudeDD.Value, this.Waste.LatitudeDD.Value);
-                BuyWaste buyWaste = new BuyWaste(location)
+                BuyWaste buyWaste = new BuyWaste()
                 {
                     Title = this.Waste.Title.Value,
                     Description = this.Waste.Description.Value,

@@ -1,23 +1,12 @@
 using Starcounter;
 using WasteTrader.Database;
 using Simplified.Ring3;
-using System.Linq;
-using WasteTrader.Measurements;
-using System;
-using System.Collections.Generic;
 using WasteTrader.Helpers;
-using WasteTrader.MathUtils;
 
 namespace WasteTrader.ViewModels
 {
     partial class SellPage : Json
     {
-        static SellPage()
-        {
-            DefaultTemplate.Waste.LatitudeDD.Value.InstanceType = typeof(double);
-            DefaultTemplate.Waste.LongitudeDD.Value.InstanceType = typeof(double);
-        }
-
         public bool ValidInput => 
             this.Waste.Description.IsValid &&
             this.Waste.Title.IsValid &&
@@ -41,15 +30,11 @@ namespace WasteTrader.ViewModels
         {
             Db.Transact(() =>
             {
-                var location = new NoDBLocation(this.Waste.LongitudeDD.Value, this.Waste.LatitudeDD.Value);
-                SellWaste sellWaste = new SellWaste(location)
+                SellWaste sellWaste = new SellWaste()
                 {
                     Title = this.Waste.Title.Value,
                     Description = this.Waste.Description.Value,
-                    Quantity = this.Waste.Quantity.Value,
                     Price = this.Waste.Price.Value,
-                    Unit = (UnitType)this.Waste.Quantity.Unit,
-                    UnitMetricPrefixPower = (int)this.Waste.Quantity.PrefixPower,
                     User = SystemUser.GetCurrentSystemUser(),
                     Active = true
                 };
@@ -59,8 +44,6 @@ namespace WasteTrader.ViewModels
         private void ClearViewModel()
         {
             this.Waste.Description.Value = "";
-            this.Waste.Quantity.Value = 0;
-            this.Waste.Unit.Value = 0;
             this.Waste.Title.Value = "";
             this.Waste.Price.Value = 0;
         }

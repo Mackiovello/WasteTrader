@@ -2,14 +2,8 @@
   "Html": "/WasteTrader/views/WastePage.html",
   "Title": "",
   "Description": "",
-  "Quantity": 0,
-  "UnitMetricPrefixPower": 0,
-  "Unit": 0,
-  "Amount": "",
-  "RawAmount": 0.0,
   "Price": 0,
   "Key": "",
-  "Location": {},
   "User": {
     "Name": "",
     "Username": ""

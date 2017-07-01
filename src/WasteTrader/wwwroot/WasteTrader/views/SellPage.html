@@ -38,43 +38,37 @@
                                 <li class="mdc-list-item"
                                     role="option" 
                                     tabindex="0" 
-                                    data-unit="2"
-                                    data-prefix-power="0">
+                                    data-unit="0">
                                     Meter
                                 </li>
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    data-unit="2"
-                                    data-prefix-power="3">
+                                    data-unit="1">
                                     Kilometer
                                 </li>
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    data-unit="0"
-                                    data-prefix-power="0">
+                                    data-unit="2">
                                     Kilogram
                                 </li>
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    data-unit="0"
-                                    data-prefix-power="3">
+                                    data-unit="3">
                                     Ton
                                 </li>
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    data-unit="1"
-                                    data-prefix-power="0">
+                                    data-unit="4">
                                     Kvadratmeter
                                 </li>
                                 <li class="mdc-list-item" 
                                     role="option" 
                                     tabindex="0" 
-                                    data-unit="3"
-                                    data-prefix-power="0">
+                                    data-unit="5">
                                     Kubikmeter
                                 </li>
                             </ul>
@@ -109,10 +103,8 @@
                 selectElement.addEventListener('MDCSelect:change', () => {
                     const selectedItem = select.selectedOptions[0];
                     const unit = selectedItem.getAttribute("data-unit");
-                    const prefixPower = selectedItem.getAttribute("data-prefix-power");
 
-                    template.model.Waste.Quantity.Unit$ = unit;
-                    template.model.Waste.Quantity.PrefixPower$ = prefixPower;
+                    template.model.Waste.Unit$ = unit;
                 })
 
                 mdc.autoInit();

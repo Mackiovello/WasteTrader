@@ -15,7 +15,8 @@
       "Value$": 0,
       "Message": "",
       "IsValid": false
-    }
+    },
+    "Unit$": 0
   },
   "SubmitTrigger$": 0,
   "SubmitMessage": "",

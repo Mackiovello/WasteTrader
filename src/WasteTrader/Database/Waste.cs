@@ -3,6 +3,16 @@ using Starcounter;
 
 namespace WasteTrader.Database
 {
+    public enum Unit
+    {
+        Meter,
+        Kilometer,
+        Kilogram,
+        Tonne,
+        SquareMeter,
+        CubicMeter
+    }
+
     [Database]
     public class Waste
     {
@@ -14,10 +24,10 @@ namespace WasteTrader.Database
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime EntryTime { get; }
-        
+        public Unit Unit { get; set; }
         public long Price { get; set; }
         public Client User { get; set; }
-        public string Key => this.GetObjectID();
         public bool Active { get; set; }
+        public string Key => this.GetObjectID();
     }
 }

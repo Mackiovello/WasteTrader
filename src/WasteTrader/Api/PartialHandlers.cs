@@ -29,13 +29,14 @@ namespace WasteTrader.Api
                 return page;
             }, internalOption);
 
-            Handle.GET(partialPrefix + "drawer", () => new Drawer(), internalOption);
+            Handle.GET(partialPrefix + "drawer", () =>
+            {
+                return new Drawer() { Authorized = SystemUser.GetCurrentSystemUser() != null };
+            }, internalOption);
 
             Handle.GET(partialPrefix + "Home", () => new HomePage(), internalOption);
 
             Handle.GET(partialPrefix + "header", () => new Header(), internalOption);
-
-            Handle.GET(partialPrefix + "logon", () =>  new Json(), internalOption);
 
             Handle.GET(partialPrefix + "sell", () => new SellPage(), internalOption);
 

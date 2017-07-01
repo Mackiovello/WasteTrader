@@ -1,3 +1,4 @@
 {
-  "Html": "/WasteTrader/views/drawer.html"
+  "Html": "/WasteTrader/views/drawer.html",
+  "Authorized": false
 }

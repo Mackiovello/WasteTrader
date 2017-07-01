@@ -46,10 +46,10 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            Handle.GET("/Waste2Value/logon", () =>
+            Handle.GET("/Waste2Value/empty", () =>
             {
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("logon"));
+                master.CurrentPage = new EmptyPage();
                 return master;
             });
 

@@ -86,6 +86,9 @@
     <Compile Include="ViewModels\Drawer.json.cs">
       <DependentUpon>Drawer.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\EmptyPage.json.cs">
+      <DependentUpon>EmptyPage.json</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\FindPage.json.cs">
       <DependentUpon>FindPage.json</DependentUpon>
     </Compile>
@@ -124,8 +127,12 @@
     <TypedJSON Include="ViewModels\WastePage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
+    <TypedJSON Include="ViewModels\EmptyPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\WastePage.html" />
     <None Include="wwwroot\WasteTrader\views\BuyPage.html" />
+    <None Include="wwwroot\WasteTrader\views\EmptyPage.html" />
     <Content Include="wwwroot\WasteTrader\views\WasteEntry.html" />
     <TypedJSON Include="ViewModels\WasteEntry.json">
       <Generator>MsBuild:Compile</Generator>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WasteTrader.ViewModels;
 
 namespace WasteTrader.Helpers
 {
@@ -17,7 +18,7 @@ namespace WasteTrader.Helpers
             Handle.GET(uriTemplate, () =>
             {
                 if (NoUser)
-                    return Self.GET("/Waste2Value/logon");
+                    return Self.GET("/Waste2Value/Empty");
                 else
                     return code();
             });
@@ -28,7 +29,7 @@ namespace WasteTrader.Helpers
             Handle.GET<T>(uriTemplate, (parameters) =>
             {
                 if (NoUser)
-                    return Self.GET("/Waste2Value/logon");
+                    return Self.GET("/Waste2Value/Empty");
                 else
                     return code(parameters);
             });

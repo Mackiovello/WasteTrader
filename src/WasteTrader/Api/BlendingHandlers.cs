@@ -7,7 +7,6 @@ namespace WasteTrader.Api
         public void Register()
         {
             Blender.MapUri("/Waste2Value/partial/header", "user");
-            Blender.MapUri("/Waste2Value/partial/logon", "userform");
         }
     }
 }

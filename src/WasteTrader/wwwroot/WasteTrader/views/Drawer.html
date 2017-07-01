@@ -4,18 +4,22 @@
     <template is="dom-bind">
         <nav class="mdc-permanent-drawer wastetrader-drawer--full-height">
             <div class="mdc-list-group">
-                <a href="/Waste2Value/Salj" class="mdc-list-item">
-                    <i class="mdc-list-item__start-detail material-icons">store</i>
-                    Sälj
-                </a>
+                <template is="dom-if" if="{{model.Authorized}}">
+                    <a href="/Waste2Value/Salj" class="mdc-list-item">
+                        <i class="mdc-list-item__start-detail material-icons">store</i>
+                        Sälj
+                    </a>
+                </template>
                 <a href="/Waste2Value/Hitta" class="mdc-list-item">
                     <i class="mdc-list-item__start-detail material-icons">search</i>
                     Hitta
                 </a>
-                <a href="/Waste2Value/minsida" class="mdc-list-item">
-                    <i class="mdc-list-item__start-detail material-icons">person</i>
-                    Min sida
-                </a>
+                <template is="dom-if" if="{{model.Authorized}}">
+                    <a href="/Waste2Value/minsida" class="mdc-list-item">
+                        <i class="mdc-list-item__start-detail material-icons">person</i>
+                        Min sida
+                    </a>
+                </template>
             </div>
         </nav>
     </template>

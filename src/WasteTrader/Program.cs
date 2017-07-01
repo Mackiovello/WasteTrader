@@ -10,7 +10,8 @@ namespace WasteTrader
             {
                 new MainHandlers(),
                 new PartialHandlers(),
-                new BlendingHandlers()
+                new BlendingHandlers(),
+                new CommitHooks()
             };
 
             foreach (var handler in handlers)

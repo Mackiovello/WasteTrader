@@ -66,6 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\CommitHooks.cs" />
     <Compile Include="Api\IHandler.cs" />
     <Compile Include="Api\MainHandlers.cs" />
     <Compile Include="Api\BlendingHandlers.cs" />

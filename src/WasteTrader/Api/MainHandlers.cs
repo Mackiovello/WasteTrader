@@ -82,6 +82,13 @@ namespace WasteTrader.Api
                 return master;
             });
 
+            Handle.GET("/Waste2Value/Registrera", () =>
+            {
+                var master = GetMasterPage();
+                master.CurrentPage = Self.GET(BuildPartialUri("Registrera"));
+                return master;
+            });
+
             Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
             {
                 var master = GetMasterPage();

@@ -20,6 +20,12 @@
                         Min sida
                     </a>
                 </template>
+                <template is="dom-if" if="{{!model.Authorized}}">
+                    <a href="/Waste2Value/Registrera" class="mdc-list-item">
+                        <i class="mdc-list-item__start-detail material-icons">add</i>
+                        Skapa konto
+                    </a>
+                </template>
             </div>
         </nav>
     </template>

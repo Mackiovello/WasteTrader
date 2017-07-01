@@ -1,26 +1,28 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/puppet-redirect/puppet-redirect.html">
 
 <template>
     <template is="dom-bind">
-        <div class="mdc-card wastetrader-card">
-            <section class="mdc-card__primary">
-                <h2 class="mdc-card__title mdc-card__title--large">{{model.Title}}</h2>
-            </section>
-            <section class="mdc-card__supporting-text">
-                <p>Beskrivning: {{model.Description}}</p>
-                <p>Mängd: {{model.FormattedQuantity}}</p>
-                <p>Pris: {{model.Price}} SEK</p>
-                <p>Inlagd: {{model.FormattedEntryTime}}</p>
-                <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>
-            </section>
-            <section class="mdc-card__actions">
-                <a class="mdc-button" 
-                   data-mdc-auto-init="MDCRipple"
-                   href$="/waste2value/avfall/{{model.Key}}">
-                Läs mer
-                </a>
-            </section>
+        <div class="mdc-card wastetrader-card wastetrader-card--clickable" on-click="openEntry">
+            <div class="mdc-card__horizontal-block">
+                <section class="mdc-card__primary">
+                    <h1 class="mdc-card__title mdc-card__title--large">{{model.Title}}</h1>
+                    <h2 class="mdc-card__subtitle">{{model.FormattedQuantity}} för {{model.Price}} SEK</h2>
+                </section>
+                <img class="mdc-card__media-item mdc-card__media-item--2x" src="http://via.placeholder.com/200x120" />
+            </div>
+            <section class="mdc-card__actions"></section>
         </div>
-        <script>mdc.autoInit()</script>
+        <link is="puppet-redirect" history url$="{{model.RedirectUrl$}}" />
     </template>
+    <script>
+        (function () {
+            const script = document._currentScript || document.currentScript;
+            const template = script.previousElementSibling;
+
+            template.openEntry = function () {
+                template.model.RedirectUrl$ = "/Waste2Value/avfall/" + template.model.Key;
+            }
+        })();
+    </script>
 </template>

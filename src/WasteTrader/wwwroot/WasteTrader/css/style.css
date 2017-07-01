@@ -92,3 +92,12 @@ body {
 .wastetrader-submit-message {
     margin-top: 5px;
 }
+
+.wastetrader-card--clickable {
+    cursor: pointer;
+    transition: box-shadow .2s ease-in;
+}
+
+.wastetrader-card--clickable:hover {
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, .2);
+}

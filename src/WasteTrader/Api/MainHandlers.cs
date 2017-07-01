@@ -42,7 +42,7 @@ namespace WasteTrader.Api
             Handle.GET("/Waste2Value", () =>
             {
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("sell"));
+                master.CurrentPage = Self.GET(BuildPartialUri("Hitta"));
                 return master;
             });
 

@@ -21,5 +21,7 @@
   },
   "SubmitTrigger$": 0,
   "SubmitMessage": "",
-  "ValidInput": false
+  "ValidInput": false,
+  "RedirectUrl$": "",
+  "WasteKey": ""
 }

@@ -16,7 +16,8 @@ namespace WasteTrader.ViewModels
         {
             if (ValidInput)
             {
-                this.CreateWaste();
+                var waste = this.CreateWaste();
+                this.WasteKey = waste.Key;
                 this.ClearViewModel();
                 this.SubmitMessage = "";
             }
@@ -26,11 +27,11 @@ namespace WasteTrader.ViewModels
             }
         }
 
-        private void CreateWaste()
+        private Waste CreateWaste()
         {
-            Db.Transact(() =>
+            return Db.Transact(() =>
             {
-                SellWaste sellWaste = new SellWaste()
+                return new SellWaste()
                 {
                     Title = this.Waste.Title.Value,
                     Description = this.Waste.Description.Value,

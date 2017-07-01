@@ -1,4 +1,5 @@
 ﻿<link rel="import" href="/sys/polymer/polymer.html">
+<link rel="import" href="/sys/puppet-redirect/puppet-redirect.html">
 
 <template>
     <template is="dom-bind">
@@ -92,9 +93,11 @@
                  aria-hidden="true">
                 <div class="mdc-snackbar__text"></div>
                 <div class="mdc-snackbar__action-wrapper">
-                    <button type="button" class="mdc-button mdc-snackbar__action-button"></button>
+                    <button type="button" class="mdc-button mdc-button--accent mdc-button--raised mdc-snackbar__action-button"></button>
                 </div>
             </div>
+
+            <link is="puppet-redirect" history url$="{{model.RedirectUrl$}}" />
         </div>
         <script>
             (function () {
@@ -123,7 +126,12 @@
                     template.model.SubmitTrigger$++;
                     if (template.model.ValidInput) {
                         snackbar.show({
-                            message: "Annonsen har skapats"
+                            message: "Annonsen har skapats",
+                            actionOnBottom: true,
+                            actionText: "Visa",
+                            actionHandler: function() {
+                                template.model.RedirectUrl$ = "/Waste2Value/avfall/" + template.model.WasteKey;
+                            },
                         });
                     }
                 }

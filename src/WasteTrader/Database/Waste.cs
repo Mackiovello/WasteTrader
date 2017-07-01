@@ -25,6 +25,7 @@ namespace WasteTrader.Database
         public string Description { get; set; }
         public DateTime EntryTime { get; }
         public Unit Unit { get; set; }
+        public long Quantity { get; set; }
         public long Price { get; set; }
         public Client User { get; set; }
         public bool Active { get; set; }

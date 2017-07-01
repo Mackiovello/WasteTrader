@@ -7,7 +7,7 @@ namespace WasteTrader.ViewModels
     partial class WasteEntry : Json, IBound<Waste>
     {
         public string FormattedEntryTime => Data?.EntryTime.Date.ToString("d");
-        public string FormattedUnit => UnitEnumToString[Data.Unit];
+        public string FormattedQuantity => $"{Data.Quantity} {UnitEnumToString[Data.Unit]}";
 
         Dictionary<Unit, string> UnitEnumToString = new Dictionary<Unit, string>()
         {

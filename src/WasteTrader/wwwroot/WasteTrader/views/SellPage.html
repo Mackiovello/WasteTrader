@@ -83,8 +83,18 @@
                 </section>
             </form>
 
-            <button class="mdc-button mdc-button--raised mdc-button--accent" onclick="++this.value" value="{{model.SubmitTrigger$::click}}" data-mdc-auto-init="MDCRipple">Skapa</button>
+            <button class="mdc-button mdc-button--raised mdc-button--accent" on-click="submit" data-mdc-auto-init="MDCRipple">Skapa</button>
             <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent wastetrader-submit-message">{{model.SubmitMessage}}</p>
+
+            <div class="mdc-snackbar"
+                 aria-live="assertive"
+                 aria-atomic="true"
+                 aria-hidden="true">
+                <div class="mdc-snackbar__text"></div>
+                <div class="mdc-snackbar__action-wrapper">
+                    <button type="button" class="mdc-button mdc-snackbar__action-button"></button>
+                </div>
+            </div>
         </div>
         <script>
             (function () {
@@ -106,6 +116,17 @@
 
                     template.model.Waste.Unit$ = unit;
                 })
+
+                const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
+
+                template.submit = function () {
+                    template.model.SubmitTrigger$++;
+                    if (template.model.ValidInput) {
+                        snackbar.show({
+                            message: "Annonsen har skapats"
+                        });
+                    }
+                }
 
                 mdc.autoInit();
             })();

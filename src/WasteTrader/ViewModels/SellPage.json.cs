@@ -18,7 +18,7 @@ namespace WasteTrader.ViewModels
             {
                 this.CreateWaste();
                 this.ClearViewModel();
-                this.SubmitMessage = "Annonsen är nu inlagd";
+                this.SubmitMessage = "";
             }
             else
             {

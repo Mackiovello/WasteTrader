@@ -60,7 +60,7 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            AuthorizedHandle.GET("/Waste2Value/Hitta", () =>
+            Handle.GET("/Waste2Value/Hitta", () =>
             {
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET(BuildPartialUri("Hitta"));
@@ -82,7 +82,7 @@ namespace WasteTrader.Api
                 return master;
             });
 
-            AuthorizedHandle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
+            Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
             {
                 var master = GetMasterPage();
                 master.CurrentPage = Self.GET(BuildPartialUri("waste", objectId));

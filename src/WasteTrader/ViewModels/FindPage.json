@@ -1,4 +1,5 @@
 {
   "Html": "/WasteTrader/views/FindPage.html",
-  "WasteEntries": [ {} ]
+  "WasteEntries": [ {} ],
+  "NoWaste": false
 }

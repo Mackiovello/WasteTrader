@@ -7,6 +7,13 @@
             <template is="dom-repeat" items="{{model.WasteEntries}}">
                 <starcounter-include partial="{{item}}"></starcounter-include>
             </template>
+            <template is="dom-if" if="{{model.NoWaste}}">
+                <div class="mdc-card wastetrader-card">
+                    <section class="mdc-card__primary">
+                        <h1 class="mdc-card__title mdc-card__title--large">Det finns inga annonser här just nu</h1>
+                    </section>
+                </div>
+            </template>
         </div>
     </template>
 </template>

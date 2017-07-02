@@ -8,5 +8,7 @@ namespace WasteTrader.ViewModels
         {
             DefaultTemplate.WasteEntries.ElementType.InstanceType = typeof(WasteEntry);
         }
+
+        public bool NoWaste => this.WasteEntries.Count == 0;
     }
 }

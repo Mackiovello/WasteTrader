@@ -1,9 +1,10 @@
 {
   "Html": "/WasteTrader/views/UserPage.html",
-  "Name": "",
   "WasteToDisplay": [ {} ],
   "ActiveWaste": [ {} ],
   "InactiveWaste": [ {} ],
+  "NoWaste": true,
+  "NoWasteMessage": "",
   "OpenActiveTrigger$": 0,
   "OpenInactiveTrigger$": 0
 }

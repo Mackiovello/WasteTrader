@@ -12,6 +12,13 @@
             <template is="dom-repeat" items="{{model.WasteToDisplay}}">
                 <starcounter-include partial="{{item}}"></starcounter-include>
             </template>
+            <template is="dom-if" if="{{model.NoWaste}}">
+                <div class="mdc-card wastetrader-card">
+                    <section class="mdc-card__primary">
+                        <h1 class="mdc-card__title mdc-card__title--large">{{model.NoWasteMessage}}</h1>
+                    </section>
+                </div>
+            </template>
         </div>
         <script>
             (function () { mdc.autoInit(); })();

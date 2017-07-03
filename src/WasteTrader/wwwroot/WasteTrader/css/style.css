@@ -105,3 +105,17 @@ body {
 .mdc-tab-bar {
     width: 100%;
 }
+
+.wastetrader-card--large .mdc-card__primary {
+    margin-right: auto;
+}
+
+.wastetrader-card--large {
+    margin-top: 30px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.wastetrader-card--large .mdc-card__supporting-text {
+    word-break: break-word;
+}

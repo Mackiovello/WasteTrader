@@ -12,12 +12,12 @@ namespace WasteTrader.ViewModels
 
         Dictionary<Unit, string> UnitEnumToString = new Dictionary<Unit, string>()
         {
-            { Unit.Meter, "Meter" },
-            { Unit.Kilometer, "Kilometer" },
-            { Unit.Kilogram, "Kilogram" },
-            { Unit.Tonne, "Ton" },
-            { Unit.SquareMeter, "Kvadratmeter" },
-            { Unit.CubicMeter, "Kubikmeter" }
+            { Unit.Meter, "meter" },
+            { Unit.Kilometer, "kilometer" },
+            { Unit.Kilogram, "kilogram" },
+            { Unit.Tonne, "ton" },
+            { Unit.SquareMeter, "kvadratmeter" },
+            { Unit.CubicMeter, "kubikmeter" }
         };
 
         [WasteEntry_json.User]

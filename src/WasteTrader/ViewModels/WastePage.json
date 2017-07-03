@@ -10,6 +10,7 @@
     "Username": ""
   },
   "FormattedEntryTime": "",
+  "FormattedQuantity": "",
   "DeleteTrigger$": 0,
   "RedirectUrl$": "",
   "ShowDeleteButton": false

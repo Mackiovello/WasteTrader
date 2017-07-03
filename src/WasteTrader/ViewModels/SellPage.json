@@ -9,7 +9,7 @@
     "Description": {
       "Value$": "",
       "Message": "",
-      "IsValid": false
+      "IsValid": true
     },
     "Price": {
       "Value$": 0,

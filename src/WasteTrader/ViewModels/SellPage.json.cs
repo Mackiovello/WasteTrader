@@ -72,14 +72,13 @@ namespace WasteTrader.ViewModels
         [SellPage_json.Waste.Description]
         partial class WasteDescription : Json
         {
-            private const int MinLength = 20;
             private const int MaxLength = 2000;
-            private string InvalidDescriptionWarning = $"Beskrivningen måste vara mellan {MinLength} och {MaxLength} tecken långt";
+            private string InvalidDescriptionWarning = $"Beskrivningen kan inte vara mer än {MaxLength} tecken långt";
 
             void Handle(Input.Value action)
             {
                 this.IsValid = new StringValidation(action.Value)
-                    .ValidateLength(MinLength, MaxLength)
+                    .ValidateLength(0, MaxLength)
                     .IsValid;
 
                 this.Message = this.IsValid ? string.Empty : InvalidDescriptionWarning;

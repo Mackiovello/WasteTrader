@@ -1,3 +1,4 @@
+using Simplified.Ring3;
 using Starcounter;
 using System.Collections.Generic;
 using WasteTrader.Database;
@@ -20,7 +21,7 @@ namespace WasteTrader.ViewModels
         };
 
         [WasteEntry_json.User]
-        partial class WasteUser : Json, IBound<Client>
+        partial class WasteUser : Json, IBound<SystemUser>
         {
 
         }

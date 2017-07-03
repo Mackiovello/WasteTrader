@@ -6,5 +6,7 @@
   "NoWaste": true,
   "NoWasteMessage": "",
   "OpenActiveTrigger$": 0,
-  "OpenInactiveTrigger$": 0
+  "OpenInactiveTrigger$": 0,
+  "Username": "",
+  "Key": ""
 }

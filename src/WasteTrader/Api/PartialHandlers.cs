@@ -44,17 +44,23 @@ namespace WasteTrader.Api
 
             Handle.GET(partialPrefix + "user/{?}", (string username) => 
             {
-                return new UserPage()
-                {
-                    Data = Client.GetClientFromUsername(username)
-                };
+                var page = new UserPage();
+                page.Data = Db.SQL<SystemUser>($"SELECT c FROM {typeof(SystemUser)} c WHERE c.{nameof(SystemUser.Username)} = ?", username).FirstOrDefault();
+                return page;
             }, internalOption);
 
-            Handle.GET(partialPrefix + "waste/{?}", (string objectId) =>
+            Handle.GET(partialPrefix + "WastePage/{?}", (string objectId) =>
             {
                 Waste waste = Db.FromId<Waste>(objectId);
 
                 return new WastePage() { Data = waste};
+            }, internalOption);
+
+            Handle.GET(partialPrefix + "WasteEntry/{?}", (string objectId) =>
+            {
+                Waste waste = Db.FromId<Waste>(objectId);
+
+                return new WasteEntry() { Data = waste };
             }, internalOption);
         }
     }

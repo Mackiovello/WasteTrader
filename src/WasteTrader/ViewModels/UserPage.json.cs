@@ -1,12 +1,28 @@
 using Starcounter;
 using System.Linq;
-using WasteTrader.Helpers;
-using System;
+using Simplified.Ring3;
+using WasteTrader.Api;
+using WasteTrader.Database;
 
 namespace WasteTrader.ViewModels
 {
-    partial class UserPage : Json, IBound<Database.Client>
+    partial class UserPage : Json, IBound<SystemUser>
     {
+        protected override void OnData()
+        {
+            var waste = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w WHERE w.{nameof(Database.Waste.User)}.{nameof(SystemUser.Key)} = ?", this.Key);
+
+            foreach (var item in waste)
+            {
+                if (item.Active)
+                    this.ActiveWaste.Add(Self.GET(PartialHandlers.partialPrefix + "WasteEntry/" + item.Key));
+                else
+                    this.InactiveWaste.Add(Self.GET(PartialHandlers.partialPrefix + "WasteEntry/" + item.Key));
+            }
+
+            this.WasteToDisplay = this.ActiveWaste;
+        }
+
         public bool NoWaste => this.WasteToDisplay.Count() == 0;
         public string NoWasteMessage
         {
@@ -17,18 +33,6 @@ namespace WasteTrader.ViewModels
                 else
                     return "Du har inga inaktiva annonser just nu";
             }
-        }
-
-        protected override void OnData()
-        {
-            this.WasteToDisplay = this.ActiveWaste;
-        }
-
-        static UserPage()
-        {
-            DefaultTemplate.WasteToDisplay.ElementType.InstanceType = typeof(WasteEntry);
-            DefaultTemplate.ActiveWaste.ElementType.InstanceType = typeof(WasteEntry);
-            DefaultTemplate.InactiveWaste.ElementType.InstanceType = typeof(WasteEntry);
         }
 
         void Handle(Input.OpenActiveTrigger action)

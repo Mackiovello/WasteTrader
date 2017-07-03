@@ -17,7 +17,7 @@ namespace WasteTrader.ViewModels
                 if (user == null)
                     return false;
 
-                return this.Data.User.Key == Client.GetClient(user).Key;
+                return this.Data.User.Key == user.Key;
             }
         }
 
@@ -31,7 +31,7 @@ namespace WasteTrader.ViewModels
         }
 
         [WasteEntry_json.User]
-        partial class WasteUser : Json, IBound<Client>
+        partial class WasteUser : Json, IBound<SystemUser>
         {
 
         }

@@ -37,6 +37,8 @@ namespace WasteTrader.Api
 
             Handle.GET(partialPrefix + "Registrera", () => new Json(), internalOption);
 
+            Handle.GET(partialPrefix + "Valkommen", () => new WelcomeMessage(), internalOption);
+
             Handle.GET(partialPrefix + "sell", () => new SellPage(), internalOption);
 
             Handle.GET(partialPrefix + "user/{?}", (string username) => 

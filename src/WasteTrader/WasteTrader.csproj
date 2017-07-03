@@ -109,6 +109,9 @@
     <Compile Include="ViewModels\WastePage.json.cs">
       <DependentUpon>WastePage.json</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\WelcomeMessage.json.cs">
+      <DependentUpon>WelcomeMessage.json</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -120,10 +123,14 @@
     <Content Include="wwwroot\sys\material-components-web.min.css" />
     <Content Include="wwwroot\sys\material-components-web.min.js" />
     <Content Include="wwwroot\WasteTrader\css\style.css" />
+    <None Include="wwwroot\WasteTrader\views\WelcomeMessage.html" />
     <TypedJSON Include="ViewModels\WastePage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <TypedJSON Include="ViewModels\EmptyPage.json">
+      <Generator>MsBuild:Compile</Generator>
+    </TypedJSON>
+    <TypedJSON Include="ViewModels\WelcomeMessage.json">
       <Generator>MsBuild:Compile</Generator>
     </TypedJSON>
     <None Include="wwwroot\WasteTrader\views\WastePage.html" />

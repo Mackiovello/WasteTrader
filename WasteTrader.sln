@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasteTrader", "src\WasteTra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasteTraderTests", "test\WasteTraderTests\WasteTraderTests.csproj", "{5BEDAAA4-3686-4E89-BF3A-00FF57F1D5A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasteModels", "WasteModels\WasteModels.csproj", "{189657CF-7DA8-4B68-99E0-89D50D4038DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasteModels", "src\WasteModels\WasteModels.csproj", "{189657CF-7DA8-4B68-99E0-89D50D4038DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

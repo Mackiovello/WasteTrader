@@ -112,7 +112,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\WasteModels\WasteModels.csproj">
+    <ProjectReference Include="..\WasteModels\WasteModels.csproj">
       <Project>{189657cf-7da8-4b68-99e0-89d50d4038df}</Project>
       <Name>WasteModels</Name>
     </ProjectReference>

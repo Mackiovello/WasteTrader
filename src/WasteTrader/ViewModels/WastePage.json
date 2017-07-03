@@ -4,6 +4,7 @@
   "Description": "",
   "Price": 0,
   "Key": "",
+  "Active": false,
   "User": {
     "Name": "",
     "Username": ""
@@ -11,5 +12,5 @@
   "FormattedEntryTime": "",
   "DeleteTrigger$": 0,
   "RedirectUrl$": "",
-  "IsOwner": false
+  "ShowDeleteButton": false
 }

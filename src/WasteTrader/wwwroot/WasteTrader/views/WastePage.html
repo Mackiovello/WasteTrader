@@ -14,7 +14,7 @@
                     <p>Försäljare: <a href$="/waste2value/user/{{model.User.Username}}">{{model.User.Name}} ({{model.User.Username}})</a></p>
                 </section>
                 <section class="mdc-card__actions">
-                    <template is="dom-if" if="{{model.IsOwner}}">
+                    <template is="dom-if" if="{{model.ShowDeleteButton}}">
                         <button class="mdc-button" 
                                 value="{{model.DeleteTrigger$::click}}" 
                                 onclick="++this.value"

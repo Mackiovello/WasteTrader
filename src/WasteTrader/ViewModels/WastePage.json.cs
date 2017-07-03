@@ -9,7 +9,7 @@ namespace WasteTrader.ViewModels
     {
         public string FormattedEntryTime => Data?.EntryTime.Date.ToString("d");
 
-        public bool IsOwner
+        private bool IsOwner
         {
             get
             {
@@ -20,6 +20,8 @@ namespace WasteTrader.ViewModels
                 return this.Data.User.Key == user.Key;
             }
         }
+
+        public bool ShowDeleteButton => IsOwner && this.Active;
 
         void Handle(Input.DeleteTrigger action)
         {

@@ -57,7 +57,7 @@ namespace WasteTrader.ViewModels
         {
             private const int MinLength = 3;
             private const int MaxLength = 100;
-            private string InvalidTitleWarning = $"Lösenordet måste vara mellan {MinLength} och {MaxLength} tecken långt";
+            private string InvalidTitleWarning = $"Titeln måste vara mellan {MinLength} och {MaxLength} tecken långt";
 
             void Handle(Input.Value action)
             {

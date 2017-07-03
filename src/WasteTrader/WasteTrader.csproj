@@ -75,8 +75,6 @@
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Helpers\StringValidation.cs" />
     <Compile Include="Helpers\NumberValidation.cs" />
-    <Compile Include="Database\SellWaste.cs" />
-    <Compile Include="Database\Waste.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Drawer.json.cs">
@@ -113,7 +111,12 @@
       <DependentUpon>WelcomeMessage.json</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\WasteModels\WasteModels.csproj">
+      <Project>{189657cf-7da8-4b68-99e0-89d50d4038df}</Project>
+      <Name>WasteModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <TypedJSON Include="ViewModels\MasterPage.json">
       <Generator>MsBuild:Compile</Generator>

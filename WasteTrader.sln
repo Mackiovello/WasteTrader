@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasteTrader", "src\WasteTra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasteTraderTests", "test\WasteTraderTests\WasteTraderTests.csproj", "{5BEDAAA4-3686-4E89-BF3A-00FF57F1D5A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WasteModels", "WasteModels\WasteModels.csproj", "{189657CF-7DA8-4B68-99E0-89D50D4038DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,12 @@ Global
 		{5BEDAAA4-3686-4E89-BF3A-00FF57F1D5A8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5BEDAAA4-3686-4E89-BF3A-00FF57F1D5A8}.Release|x64.ActiveCfg = Release|Any CPU
 		{5BEDAAA4-3686-4E89-BF3A-00FF57F1D5A8}.Release|x64.Build.0 = Release|Any CPU
+		{189657CF-7DA8-4B68-99E0-89D50D4038DF}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{189657CF-7DA8-4B68-99E0-89D50D4038DF}.Debug|x64.ActiveCfg = Debug|x64
+		{189657CF-7DA8-4B68-99E0-89D50D4038DF}.Debug|x64.Build.0 = Debug|x64
+		{189657CF-7DA8-4B68-99E0-89D50D4038DF}.Release|Any CPU.ActiveCfg = Release|x64
+		{189657CF-7DA8-4B68-99E0-89D50D4038DF}.Release|x64.ActiveCfg = Release|x64
+		{189657CF-7DA8-4B68-99E0-89D50D4038DF}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

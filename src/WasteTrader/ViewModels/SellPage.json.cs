@@ -32,7 +32,7 @@ namespace WasteTrader.ViewModels
         {
             return Db.Transact(() =>
             {
-                return new SellWaste()
+                return new Waste()
                 {
                     Title = this.Waste.Title.Value,
                     Description = this.Waste.Description.Value,

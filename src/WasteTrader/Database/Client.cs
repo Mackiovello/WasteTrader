@@ -27,16 +27,19 @@ namespace WasteTrader.Database
         private static readonly string SELECT_WASTE_WHERE_USER =
             $"SELECT w FROM {typeof(Waste)} w WHERE w.{nameof(Waste.User)} = ?";
 
-        public Client(SystemUser sysUser)
-        {
-            this.User = sysUser;
-        }
-
         public static Client GetClient(SystemUser systemUser)
         {
             systemUser = systemUser ?? throw new ArgumentNullException();
             Client client = Db.SQL<Client>(SELECT_CLIENT_WHERE_USER, systemUser).FirstOrDefault();
-            return client ?? Db.Transact(() => new Client(systemUser));
+            if (client == null)
+            {
+                Db.Transact(() => {
+                    client = new Client();
+                    client.User = systemUser;
+                });
+            }
+
+            return client;
         }
 
         public static Client GetClientFromUsername(string username)
@@ -50,7 +53,7 @@ namespace WasteTrader.Database
             return GetClient(systemUser);
         }
 
-        public SystemUser User { get; }
+        public SystemUser User { get; private set; }
         public string EmailAddress
         {
             get

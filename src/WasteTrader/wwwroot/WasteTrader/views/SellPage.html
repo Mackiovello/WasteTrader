@@ -17,6 +17,35 @@
                     </div>
                     <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Waste.Title.Message}}</p>
 
+                    <div class="mdc-select wastetrader-category-select" role="listbox" tabindex="0">
+                        <span class="mdc-select__selected-text">Välj en kategori</span>
+                        <div class="mdc-simple-menu mdc-select__menu">
+                            <ul class="mdc-list mdc-simple-menu__items">
+                                <li class="mdc-list-item" role="option" aria-disabled="true">
+                                    Välj en kategori
+                                </li>
+                                <li class="mdc-list-item"
+                                    role="option"
+                                    tabindex="0"
+                                    data-category="0">
+                                    Koppar
+                                </li>
+                                <li class="mdc-list-item"
+                                    role="option"
+                                    tabindex="0"
+                                    data-category="1">
+                                    Trä
+                                </li>
+                                <li class="mdc-list-item"
+                                    role="option"
+                                    tabindex="0"
+                                    data-category="2">
+                                    Grus
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="mdc-textfield mdc-textfield--multiline mdc-wastetrader__textfield--large">
                         <textarea rows="10" class="mdc-textfield__input" type="text" id="wastetrader-sell-form__description" value="{{model.Waste.Description.Value$::change}}"></textarea>
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__description">Beskrivning</label>
@@ -29,7 +58,7 @@
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__quantity">Mängd</label>
                     </div>
 
-                    <div class="mdc-select" role="listbox" tabindex="0">
+                    <div class="mdc-select wastetrader-unit-select" role="listbox" tabindex="0">
                         <span class="mdc-select__selected-text">Välj en enhet</span>
                         <div class="mdc-simple-menu mdc-select__menu">
                             <ul class="mdc-list mdc-simple-menu__items">
@@ -106,18 +135,28 @@
 
                 const textFields = document.querySelectorAll(".mdc-textfield");
 
-                const selectElement = document.querySelector(".mdc-select");
-                const select = mdc.select.MDCSelect.attachTo(selectElement);
+                const unitSelectElement = document.querySelector(".wastetrader-unit-select");
+                const selectUnit = mdc.select.MDCSelect.attachTo(unitSelectElement);
+
+                const categorySelectElement = document.querySelector(".wastetrader-category-select");
+                const selectCategory = mdc.select.MDCSelect.attachTo(categorySelectElement);
 
                 for(let i = 0; i < textFields.length; i++){
                     mdc.textfield.MDCTextfield.attachTo(textFields[i]);
                 }
 
-                selectElement.addEventListener('MDCSelect:change', () => {
-                    const selectedItem = select.selectedOptions[0];
+                unitSelectElement.addEventListener('MDCSelect:change', () => {
+                    const selectedItem = selectUnit.selectedOptions[0];
                     const unit = selectedItem.getAttribute("data-unit");
 
                     template.model.Waste.Unit$ = unit;
+                })
+
+                categorySelectElement.addEventListener('MDCSelect:change', () => {
+                    const selectedItem = selectCategory.selectedOptions[0];
+                    const category = selectedItem.getAttribute("data-category");
+
+                    template.model.Waste.Category$ = category;
                 })
 
                 const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));

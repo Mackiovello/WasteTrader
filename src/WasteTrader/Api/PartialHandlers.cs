@@ -14,9 +14,6 @@ namespace WasteTrader.Api
         public static string partialPrefix = "/Waste2Value/partial/";
         private static readonly string SELECT_WASTE_BY_ENTRYTIME =
             $"SELECT w FROM {typeof(Waste)} w ORDER BY w.{nameof(Waste.EntryTime)} DESC";
-        private static readonly string SELECT_WASTE = $"SELECT w FROM {typeof(Waste)} w";
-        private static readonly string SELECT_SELLWASTE = $"SELECT w FROM {typeof(SellWaste)} w";
-        private static readonly string SELECT_BUYWASTE = $"SELECT w FROM {typeof(BuyWaste)} w";
 
         protected HandlerOptions internalOption = new HandlerOptions { SelfOnly = true };
 

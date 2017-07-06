@@ -51,6 +51,7 @@ namespace WasteTrader.ViewModels
             this.Waste.Description.Value = "";
             this.Waste.Title.Value = "";
             this.Waste.Price.Value = 0;
+            this.Waste.Quantity = 0;
         }
 
         [SellPage_json.Waste.Title]

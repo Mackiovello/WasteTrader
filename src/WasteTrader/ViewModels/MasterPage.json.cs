@@ -9,19 +9,19 @@ namespace WasteTrader.ViewModels
     {
         internal void RefreshSignInState<T>(T createdItem)
         {
-            this.Drawer = Self.GET(PartialHandlers.partialPrefix + "drawer");
+            this.Drawer = Self.GET(PartialHandlers.PartialPrefix + "drawer");
             SystemUser user = SystemUser.GetCurrentSystemUser();
 
             if (typeof(T) == typeof(SystemUser))
             {
-                this.CurrentPage = Self.GET(PartialHandlers.partialPrefix + "Valkommen");
+                this.CurrentPage = Self.GET(PartialHandlers.PartialPrefix + "Valkommen");
             }
             else
             {
                 if (user == null)
-                    this.CurrentPage = Self.GET(PartialHandlers.partialPrefix + "Hitta");
+                    this.CurrentPage = Self.GET(PartialHandlers.PartialPrefix + "Hitta");
                 else
-                    this.CurrentPage = Self.GET($"{PartialHandlers.partialPrefix}user/{user.Username}");
+                    this.CurrentPage = Self.GET($"{PartialHandlers.PartialPrefix}user/{user.Username}");
             }
         }
     }

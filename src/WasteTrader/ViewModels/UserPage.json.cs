@@ -15,9 +15,9 @@ namespace WasteTrader.ViewModels
             foreach (var item in waste)
             {
                 if (item.Active)
-                    this.ActiveWaste.Add(Self.GET(PartialHandlers.partialPrefix + "WasteEntry/" + item.Key));
+                    this.ActiveWaste.Add(Self.GET(PartialHandlers.PartialPrefix + "WasteEntry/" + item.Key));
                 else
-                    this.InactiveWaste.Add(Self.GET(PartialHandlers.partialPrefix + "WasteEntry/" + item.Key));
+                    this.InactiveWaste.Add(Self.GET(PartialHandlers.PartialPrefix + "WasteEntry/" + item.Key));
             }
 
             this.WasteToDisplay = this.ActiveWaste;

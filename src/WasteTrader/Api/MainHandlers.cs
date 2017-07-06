@@ -3,10 +3,12 @@ using WasteTrader.ViewModels;
 using Simplified.Ring3;
 using System.Text;
 using WasteTrader.Helpers;
+using System;
+using System.Linq;
 
 namespace WasteTrader.Api
 {
-    class MainHandlers : IHandler
+    public class MainHandlers : IHandler
     {
         public void Register()
         {
@@ -70,7 +72,7 @@ namespace WasteTrader.Api
             AuthorizedHandle.GET("/Waste2Value/user/{?}", (string username) =>
             {
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("user", username));
+                master.CurrentPage = Self.GET(BuildPartialUri("user", new[] { username }));
                 return master;
             });
 
@@ -78,7 +80,7 @@ namespace WasteTrader.Api
             {
                 var master = GetMasterPage();
                 string username = SystemUser.GetCurrentSystemUser().Username;
-                master.CurrentPage = Self.GET(BuildPartialUri("user", username));
+                master.CurrentPage = Self.GET(BuildPartialUri("user", new[] { username }));
                 return master;
             });
 
@@ -92,22 +94,53 @@ namespace WasteTrader.Api
             Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
             {
                 var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("WastePage", objectId));
+                master.CurrentPage = Self.GET(BuildPartialUri("WastePage", new string[] { objectId }));
                 return master;
             });
         }
 
-        private string BuildPartialUri(string partialName, string parameterOne = null, string parameterTwo = null)
+        public string BuildPartialUri(string partialName, string[] parameters = null)
         {
+            ValidatePartialName(partialName);
+
             var uriBuilder = new StringBuilder();
-            uriBuilder.Append(PartialHandlers.partialPrefix);
+            uriBuilder.Append(PartialHandlers.PartialPrefix);
             uriBuilder.Append(partialName);
-            if (!string.IsNullOrWhiteSpace(parameterOne))
-                uriBuilder.Append("/").Append(parameterOne);
-            if (!string.IsNullOrWhiteSpace(parameterTwo))
-                uriBuilder.Append("/").Append(parameterTwo);
+            uriBuilder.Append(BuildParameterString(parameters));
 
             return uriBuilder.ToString();
+        }
+
+        private string BuildParameterString(string[] parameters)
+        {
+            if (parameters == null)
+                return "";
+
+            var uriBuilder = new StringBuilder();
+
+            ValidateParameters(parameters);
+            foreach (var parameter in parameters)
+                uriBuilder.Append("/").Append(parameter);
+
+            return uriBuilder.ToString();
+        }
+
+        private void ValidateParameters(string[] parameters)
+        {
+            foreach (var parameter in parameters)
+            {
+                if (parameter.Any(Char.IsWhiteSpace))
+                    throw new ArgumentException("URI parameters cannot contain spaces");
+            }
+        }
+
+        private void ValidatePartialName(string partialName)
+        {
+            if (partialName == null)
+                throw new ArgumentNullException(nameof(partialName));
+
+            if (partialName.Any(Char.IsWhiteSpace))
+                throw new ArgumentException($"{nameof(partialName)} cannot contain spaces");
         }
 
         private MasterPage GetMasterPage()

@@ -36,66 +36,50 @@ namespace WasteTrader.Api
             Application.Current.Use(new HtmlFromJsonProvider());
             Application.Current.Use(new PartialToStandaloneHtmlProvider(html));
 
-            Handle.GET("/WasteTrader", () =>
-            {
-                return Self.GET("/Waste2Value");
-            });
+            Handle.GET("/WasteTrader", () => Self.GET("/Waste2Value"));
 
             Handle.GET("/Waste2Value", () =>
             {
-                var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("Hitta"));
-                return master;
+                return GetMasterPageWithCurrentPage(Self.GET(BuildPartialUri("Hitta")));
             });
 
             Handle.GET("/Waste2Value/empty", () =>
             {
-                var master = GetMasterPage();
-                master.CurrentPage = new EmptyPage();
-                return master;
-            });
-
-            AuthorizedHandle.GET("/Waste2Value/Salj", () =>
-            {
-                var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("sell"));
-                return master;
+                return GetMasterPageWithCurrentPage(new EmptyPage());
             });
 
             Handle.GET("/Waste2Value/Hitta", () =>
             {
-                var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("Hitta"));
-                return master;
-            });
-
-            AuthorizedHandle.GET("/Waste2Value/user/{?}", (string username) =>
-            {
-                var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("user", new[] { username }));
-                return master;
-            });
-
-            AuthorizedHandle.GET("/Waste2Value/minsida", () =>
-            {
-                var master = GetMasterPage();
-                string username = SystemUser.GetCurrentSystemUser().Username;
-                master.CurrentPage = Self.GET(BuildPartialUri("user", new[] { username }));
-                return master;
+                return GetMasterPageWithCurrentPage(Self.GET(BuildPartialUri("Hitta")));
             });
 
             Handle.GET("/Waste2Value/Registrera", () =>
             {
-                var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("Registrera"));
-                return master;
+                return GetMasterPageWithCurrentPage(Self.GET(BuildPartialUri("Registrera")));
             });
 
             Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
             {
-                var master = GetMasterPage();
-                master.CurrentPage = Self.GET(BuildPartialUri("WastePage", new string[] { objectId }));
-                return master;
+                Json partial = Self.GET(BuildPartialUri("WastePage", new string[] { objectId }));
+                return GetMasterPageWithCurrentPage(partial);
+            });
+
+            AuthorizedHandle.GET("/Waste2Value/Salj", () =>
+            {
+                return GetMasterPageWithCurrentPage(Self.GET(BuildPartialUri("sell")));
+            });
+
+            AuthorizedHandle.GET("/Waste2Value/user/{?}", (string username) =>
+            {
+                Json partial = Self.GET(BuildPartialUri("user", new[] { username }));
+                return GetMasterPageWithCurrentPage(partial);
+            });
+
+            AuthorizedHandle.GET("/Waste2Value/minsida", () =>
+            {
+                string username = SystemUser.GetCurrentSystemUser().Username;
+                Json partial = Self.GET(BuildPartialUri("user", new[] { username }));
+                return GetMasterPageWithCurrentPage(partial);
             });
         }
 
@@ -141,6 +125,13 @@ namespace WasteTrader.Api
 
             if (partialName.Any(Char.IsWhiteSpace))
                 throw new ArgumentException($"{nameof(partialName)} cannot contain spaces");
+        }
+
+        private MasterPage GetMasterPageWithCurrentPage(Json partial)
+        {
+            var master = GetMasterPage();
+            master.CurrentPage = partial;
+            return master;
         }
 
         private MasterPage GetMasterPage()

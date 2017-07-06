@@ -72,6 +72,7 @@
     <Compile Include="Api\BlendingHandlers.cs" />
     <Compile Include="Api\PartialHandlers.cs" />
     <Compile Include="Helpers\AuthorizedHandle.cs" />
+    <Compile Include="Helpers\DatabaseTranslators.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Helpers\StringValidation.cs" />
     <Compile Include="Helpers\NumberValidation.cs" />

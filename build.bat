@@ -16,5 +16,6 @@ IF EXIST "%programfiles(x86)%\Microsoft Visual Studio\2017\Community\Common7\Too
 )
 
 PUSHD %~dp0
-msbuild
+msbuild .\src\WasteTrader\WasteTrader.csproj
+msbuild .\src\WasteModels\WasteModel.csproj
 POPD

@@ -3,6 +3,7 @@ using System.Linq;
 using Simplified.Ring3;
 using WasteTrader.Api;
 using WasteTrader.Database;
+using WasteTrader.Helpers;
 
 namespace WasteTrader.ViewModels
 {
@@ -12,11 +13,9 @@ namespace WasteTrader.ViewModels
         {
             var waste = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w WHERE w.{nameof(Waste.User)}.{nameof(SystemUser.Key)} = ?", this.Key);
 
-            var mainHandlers = new MainHandlers();
-
             foreach (var item in waste)
             {
-                var wasteEntry = Self.GET<WasteEntry>(mainHandlers.BuildPartialUri("WasteEntry", new[] { item.Key }));
+                var wasteEntry = Self.GET<WasteEntry>(UriHelper.BuildPartialUri("WasteEntry", new[] { item.Key }));
 
                 if (item.Active)
                     this.ActiveWaste.Add(wasteEntry);

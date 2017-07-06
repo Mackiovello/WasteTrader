@@ -1,4 +1,5 @@
 ﻿using Starcounter;
+using WasteTrader.Helpers;
 
 namespace WasteTrader.Api
 {
@@ -6,9 +7,8 @@ namespace WasteTrader.Api
     {
         public void Register()
         {
-            var mainHandlers = new MainHandlers();
-            Blender.MapUri(mainHandlers.BuildPartialUri("header"), "user");
-            Blender.MapUri(mainHandlers.BuildPartialUri("Registrera"), "userform");
+            Blender.MapUri(UriHelper.BuildPartialUri("header"), "user");
+            Blender.MapUri(UriHelper.BuildPartialUri("Registrera"), "userform");
         }
     }
 }

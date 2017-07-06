@@ -40,7 +40,7 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value", () =>
             {
-                return GetMasterPageWithCurrentPage(Self.GET(BuildPartialUri("Hitta")));
+                return GetMasterPageWithCurrentPage(Self.GET(UriHelper.BuildPartialUri("Hitta")));
             });
 
             Handle.GET("/Waste2Value/empty", () =>
@@ -50,81 +50,37 @@ namespace WasteTrader.Api
 
             Handle.GET("/Waste2Value/Hitta", () =>
             {
-                return GetMasterPageWithCurrentPage(Self.GET(BuildPartialUri("Hitta")));
+                return GetMasterPageWithCurrentPage(Self.GET(UriHelper.BuildPartialUri("Hitta")));
             });
 
             Handle.GET("/Waste2Value/Registrera", () =>
             {
-                return GetMasterPageWithCurrentPage(Self.GET(BuildPartialUri("Registrera")));
+                return GetMasterPageWithCurrentPage(Self.GET(UriHelper.BuildPartialUri("Registrera")));
             });
 
             Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
             {
-                Json partial = Self.GET(BuildPartialUri("WastePage", new string[] { objectId }));
+                Json partial = Self.GET(UriHelper.BuildPartialUri("WastePage", new string[] { objectId }));
                 return GetMasterPageWithCurrentPage(partial);
             });
 
             AuthorizedHandle.GET("/Waste2Value/Salj", () =>
             {
-                return GetMasterPageWithCurrentPage(Self.GET(BuildPartialUri("sell")));
+                return GetMasterPageWithCurrentPage(Self.GET(UriHelper.BuildPartialUri("sell")));
             });
 
             AuthorizedHandle.GET("/Waste2Value/user/{?}", (string username) =>
             {
-                Json partial = Self.GET(BuildPartialUri("user", new[] { username }));
+                Json partial = Self.GET(UriHelper.BuildPartialUri("user", new[] { username }));
                 return GetMasterPageWithCurrentPage(partial);
             });
 
             AuthorizedHandle.GET("/Waste2Value/minsida", () =>
             {
                 string username = SystemUser.GetCurrentSystemUser().Username;
-                Json partial = Self.GET(BuildPartialUri("user", new[] { username }));
+                Json partial = Self.GET(UriHelper.BuildPartialUri("user", new[] { username }));
                 return GetMasterPageWithCurrentPage(partial);
             });
-        }
-
-        public string BuildPartialUri(string partialName, string[] parameters = null)
-        {
-            ValidatePartialName(partialName);
-
-            var uriBuilder = new StringBuilder();
-            uriBuilder.Append(PartialHandlers.PartialPrefix);
-            uriBuilder.Append(partialName);
-            uriBuilder.Append(BuildParameterString(parameters));
-
-            return uriBuilder.ToString();
-        }
-
-        private string BuildParameterString(string[] parameters)
-        {
-            if (parameters == null)
-                return "";
-
-            var uriBuilder = new StringBuilder();
-
-            ValidateParameters(parameters);
-            foreach (var parameter in parameters)
-                uriBuilder.Append("/").Append(parameter);
-
-            return uriBuilder.ToString();
-        }
-
-        private void ValidateParameters(string[] parameters)
-        {
-            foreach (var parameter in parameters)
-            {
-                if (parameter.Any(Char.IsWhiteSpace))
-                    throw new ArgumentException("URI parameters cannot contain spaces");
-            }
-        }
-
-        private void ValidatePartialName(string partialName)
-        {
-            if (partialName == null)
-                throw new ArgumentNullException(nameof(partialName));
-
-            if (partialName.Any(Char.IsWhiteSpace))
-                throw new ArgumentException($"{nameof(partialName)} cannot contain spaces");
         }
 
         private MasterPage GetMasterPageWithCurrentPage(Json partial)
@@ -145,8 +101,8 @@ namespace WasteTrader.Api
                 master = new MasterPage()
                 {
                     Session = Session.Current,
-                    Drawer = Self.GET(BuildPartialUri("drawer")),
-                    Header = Self.GET(BuildPartialUri("header"))
+                    Drawer = Self.GET(UriHelper.BuildPartialUri("drawer")),
+                    Header = Self.GET(UriHelper.BuildPartialUri("header"))
                 };
             }
 

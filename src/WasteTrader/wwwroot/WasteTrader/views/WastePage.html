@@ -5,13 +5,10 @@
     <template is="dom-bind">
         <div class="wastetrader-wrapper">
             <div class="mdc-card wastetrader-card wastetrader-card--large">
-                <div class="mdc-card__horizontal-block">
-                    <img class="mdc-card__media-item mdc-card__media-item--2x" src="http://via.placeholder.com/200x120" />
-                    <section class="mdc-card__primary">
-                        <h1 class="mdc-card__title mdc-card__title--large">{{model.Title}}</h1>
-                        <h2 class="mdc-card__subtitle">{{model.Price}}:- för {{model.FormattedQuantity}}</h2>
-                    </section>
-                </div>
+                <section class="mdc-card__primary">
+                    <h1 class="mdc-card__title mdc-card__title--large">{{model.Title}}</h1>
+                    <h2 class="mdc-card__subtitle">{{model.Price}}:- för {{model.FormattedQuantity}}</h2>
+                </section>
                 <section class="mdc-card__supporting-text">
                     {{model.Description}}
                 </section>

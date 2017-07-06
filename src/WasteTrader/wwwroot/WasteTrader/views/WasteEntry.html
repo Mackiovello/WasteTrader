@@ -4,13 +4,10 @@
 <template>
     <template is="dom-bind">
         <div class="mdc-card wastetrader-card wastetrader-card--clickable" on-click="openEntry">
-            <div class="mdc-card__horizontal-block">
-                <section class="mdc-card__primary">
-                    <h1 class="mdc-card__title mdc-card__title--large">{{model.Title}}</h1>
-                    <h2 class="mdc-card__subtitle">{{model.FormattedQuantity}} för {{model.Price}} SEK</h2>
-                </section>
-                <img class="mdc-card__media-item mdc-card__media-item--2x" src="http://via.placeholder.com/200x120" />
-            </div>
+            <section class="mdc-card__primary">
+                <h1 class="mdc-card__title mdc-card__title--large">{{model.Title}}</h1>
+                <h2 class="mdc-card__subtitle">{{model.FormattedQuantity}} för {{model.Price}} SEK</h2>
+            </section>
             <section class="mdc-card__actions"></section>
         </div>
         <link is="puppet-redirect" history url$="{{model.RedirectUrl$}}" />

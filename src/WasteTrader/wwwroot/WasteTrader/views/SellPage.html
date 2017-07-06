@@ -125,6 +125,7 @@
                 template.submit = function () {
                     template.model.SubmitTrigger$++;
                     if (template.model.ValidInput) {
+                        selectUnit.selectedIndex = 0;
                         snackbar.show({
                             message: "Annonsen har skapats",
                             actionOnBottom: true,

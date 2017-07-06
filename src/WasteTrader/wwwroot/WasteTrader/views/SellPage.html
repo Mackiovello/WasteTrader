@@ -109,9 +109,6 @@
                 const unitSelectElement = document.querySelector(".wastetrader-unit-select");
                 const selectUnit = mdc.select.MDCSelect.attachTo(unitSelectElement);
 
-                const categorySelectElement = document.querySelector(".wastetrader-category-select");
-                const selectCategory = mdc.select.MDCSelect.attachTo(categorySelectElement);
-
                 for(let i = 0; i < textFields.length; i++){
                     mdc.textfield.MDCTextfield.attachTo(textFields[i]);
                 }
@@ -121,13 +118,6 @@
                     const unit = selectedItem.getAttribute("data-unit");
 
                     template.model.Waste.Unit$ = unit;
-                })
-
-                categorySelectElement.addEventListener('MDCSelect:change', () => {
-                    const selectedItem = selectCategory.selectedOptions[0];
-                    const category = selectedItem.getAttribute("data-category");
-
-                    template.model.Waste.Category$ = category;
                 })
 
                 const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));

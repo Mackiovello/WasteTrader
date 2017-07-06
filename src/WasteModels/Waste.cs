@@ -14,13 +14,6 @@ namespace WasteTrader.Database
         CubicMeter
     }
 
-    public enum Category
-    {
-        Copper,
-        Wood,
-        Gravel
-    }
-
     [Database]
     public class Waste
     {
@@ -34,7 +27,6 @@ namespace WasteTrader.Database
         public DateTime EntryTime { get; }
         public Unit Unit { get; set; }
         public long Quantity { get; set; }
-        public Category Category { get; set; }
         public long Price { get; set; }
         public SystemUser User { get; set; }
         public bool Active { get; set; }

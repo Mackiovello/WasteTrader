@@ -17,35 +17,6 @@
                     </div>
                     <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent">{{model.Waste.Title.Message}}</p>
 
-                    <div class="mdc-select wastetrader-category-select" role="listbox" tabindex="0">
-                        <span class="mdc-select__selected-text">Välj en kategori</span>
-                        <div class="mdc-simple-menu mdc-select__menu">
-                            <ul class="mdc-list mdc-simple-menu__items">
-                                <li class="mdc-list-item" role="option" aria-disabled="true">
-                                    Välj en kategori
-                                </li>
-                                <li class="mdc-list-item"
-                                    role="option"
-                                    tabindex="0"
-                                    data-category="0">
-                                    Koppar
-                                </li>
-                                <li class="mdc-list-item"
-                                    role="option"
-                                    tabindex="0"
-                                    data-category="1">
-                                    Trä
-                                </li>
-                                <li class="mdc-list-item"
-                                    role="option"
-                                    tabindex="0"
-                                    data-category="2">
-                                    Grus
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
                     <div class="mdc-textfield mdc-textfield--multiline mdc-wastetrader__textfield--large">
                         <textarea rows="10" class="mdc-textfield__input" type="text" id="wastetrader-sell-form__description" value="{{model.Waste.Description.Value$::change}}"></textarea>
                         <label class="mdc-textfield__label" for="wastetrader-sell-form__description">Beskrivning</label>

@@ -10,14 +10,18 @@ namespace WasteTrader.ViewModels
     {
         protected override void OnData()
         {
-            var waste = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w WHERE w.{nameof(Database.Waste.User)}.{nameof(SystemUser.Key)} = ?", this.Key);
+            var waste = Db.SQL<Waste>($"SELECT w FROM {typeof(Waste)} w WHERE w.{nameof(Waste.User)}.{nameof(SystemUser.Key)} = ?", this.Key);
+
+            var mainHandlers = new MainHandlers();
 
             foreach (var item in waste)
             {
+                var wasteEntry = Self.GET<WasteEntry>(mainHandlers.BuildPartialUri("WasteEntry", new[] { item.Key }));
+
                 if (item.Active)
-                    this.ActiveWaste.Add(Self.GET(PartialHandlers.PartialPrefix + "WasteEntry/" + item.Key));
+                    this.ActiveWaste.Add(wasteEntry);
                 else
-                    this.InactiveWaste.Add(Self.GET(PartialHandlers.PartialPrefix + "WasteEntry/" + item.Key));
+                    this.InactiveWaste.Add(wasteEntry);
             }
 
             this.WasteToDisplay = this.ActiveWaste;

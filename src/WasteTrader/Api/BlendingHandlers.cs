@@ -9,6 +9,7 @@ namespace WasteTrader.Api
         {
             Blender.MapUri(UriHelper.BuildPartialUri("header"), "user");
             Blender.MapUri(UriHelper.BuildPartialUri("Registrera"), "userform");
+            Blender.MapUri(UriHelper.BuildPartialUri("reset-password"), "reset-password");
         }
     }
 }

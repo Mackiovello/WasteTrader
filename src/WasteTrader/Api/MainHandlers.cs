@@ -58,6 +58,11 @@ namespace WasteTrader.Api
                 return GetMasterPageWithCurrentPage(Self.GET(UriHelper.BuildPartialUri("Registrera")));
             });
 
+            Handle.GET("/Waste2Value/reset-password", () =>
+            {
+                return GetMasterPageWithCurrentPage(Self.GET(UriHelper.BuildPartialUri("reset-password")));
+            });
+
             Handle.GET("/Waste2Value/avfall/{?}", (string objectId) =>
             {
                 Json partial = Self.GET(UriHelper.BuildPartialUri("WastePage", new string[] { objectId }));

@@ -41,6 +41,8 @@ namespace WasteTrader.Api
 
             Handle.GET(PartialPrefix + "sell", () => new SellPage(), internalOption);
 
+            Handle.GET(PartialPrefix + "reset-password", () => new Json(), internalOption);
+
             Handle.GET(PartialPrefix + "user/{?}", (string username) => 
             {
                 var page = new UserPage();
